@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <div className="mb-16">
             <Hero/>
-            <Link to='/assets/ITAHARI.jpeg'>ff</Link>
+            <Link to='/ITAHARI.jpeg'>ff</Link>
         </div>
     )
 }
