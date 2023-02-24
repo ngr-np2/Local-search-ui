@@ -9,11 +9,11 @@ const Mid = () => {
       </div>
       <form className="flex gap-3 w-full max-sm:grid">
         <div className="my-5 relative flex-1 max-sm:mb-0">
-          <input type="search" autocomplete="off" placeholder="Search by company name, business category, brand or keyword ..." name="search" id="search" className="bg-gray-200 rounded-md text-gray-900 outline-none py-2 px-4 pr-8 overflow-ellipsis w-full" />
+          <input type="search" autoComplete="off" placeholder="Search by company name, business category, brand or keyword ..." name="search" id="search" className="bg-gray-200 rounded-md text-gray-900 outline-none py-2 px-4 pr-8 overflow-ellipsis w-full" />
           <RiSearchLine className="absolute top-2 right-2  font-bold text-[1.3rem] text-black" />
         </div>
         <div className="my-5 max-sm:mb-0 max-sm:mt-2 max-sm:hidden relative flex-[0.3] max-lg:hover:flex-1 ease-in-out duration-500">
-          <input type="search" autocomplete="off" placeholder="In which tole or ward?" name="search" id="search" className="bg-gray-200 rounded-md text-gray-900 outline-none py-2 px-4 overflow-ellipsis w-full" />
+          <input type="search" autoComplete="off" placeholder="In which tole or ward?" name="search" id="search" className="bg-gray-200 rounded-md text-gray-900 outline-none py-2 px-4 overflow-ellipsis w-full" />
         </div>
         <div className="flex items-center max-sm:justify-center">
           <button className="font-font-1 rounded-sm outline-none border-2 border-l-teal-100 px-4 py-1 h-9 bg-green-500 select-none">search</button>

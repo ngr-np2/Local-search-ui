@@ -13,10 +13,11 @@
 
   <title>Local Search Itahari</title>
   <style>
-    body{
+    body {
       padding: 0;
-      margin:0;
+      margin: 0;
     }
+
     .waviy {
       position: fixed;
       height: 100vh;
@@ -53,6 +54,12 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loading = document.getElementById("loading");
+      loading.style.display = "none";
+    });
+  </script>
 </head>
 
 <body>
@@ -66,12 +73,7 @@
     <div class="load" style="--i:7">g</div>
     <div class="load" style="--i:8">.</div>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const loading = document.getElementById("loading");
-      loading.style.display = "none";
-    });
-  </script>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
