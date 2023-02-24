@@ -37,6 +37,10 @@ const Loading = () => {
     useEffect(() => {
         window.onload = () => setLoading(false);
     }, []);
+    // if loading state is still true after containe is fully loaded that we will maullay change that state of loading to false after 15 second, why? becouse sometime the state is changed but sometime not i don't know why if you have any idea then i will love to hear it
+    setTimeout(() => {
+        setLoading(false)
+    }, 15000);
 
     return (
         <>
