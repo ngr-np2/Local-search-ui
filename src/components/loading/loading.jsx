@@ -34,20 +34,12 @@ const Circle = styled.div`
 const Loading = () => {
     const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     window.onload = () => setLoading(false);
-    // }, []);
-    
     useEffect(() => {
-        const handleLoad = () => setLoading(false);
-
         if (document.readyState === 'complete') {
             setLoading(false);
         } else {
-            window.addEventListener('load', handleLoad);
+            window.onload = () => setLoading(false)
         }
-
-        return () => window.removeEventListener('load', handleLoad);
     }, []);
 
     return (
