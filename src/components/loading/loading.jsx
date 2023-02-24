@@ -14,10 +14,10 @@ const Circle = styled.div`
     box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 44px;
-  height: 44px;
-  margin: 4px;
-  border: 4px solid #34ff01;
+  width: 22px;
+  height: 22px;
+  margin: 2px;
+  border: 2px solid #34ff01;
   border-radius: 50%;
   animation: ${ring} 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #34ff01 transparent transparent transparent;
