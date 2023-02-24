@@ -66,14 +66,13 @@
     <div class="load" style="--i:7">g</div>
     <div class="load" style="--i:8">.</div>
   </div>
-  <div id="root"></div>
-  <!-- Other HTML content -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      var loading = document.getElementById("loading");
+      const loading = document.getElementById("loading");
       loading.style.display = "none";
     });
   </script>
+  <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
