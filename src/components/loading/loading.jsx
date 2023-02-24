@@ -34,14 +34,21 @@ const Circle = styled.div`
 const Loading = () => {
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        window.onload = () => setLoading(false);
-    }, []);
-    // if loading state is still true after containe is fully loaded that we will maullay change that state of loading to false after 15 second, why? becouse sometime the state is changed but sometime not i don't know why if you have any idea then i will love to hear it
+    // useEffect(() => {
+    //     window.onload = () => setLoading(false);
+    // }, []);
     
-    // setTimeout(() => {
-    //     setLoading(false)
-    // }, 15000);
+    useEffect(() => {
+        const handleLoad = () => setLoading(false);
+
+        if (document.readyState === 'complete') {
+            setLoading(false);
+        } else {
+            window.addEventListener('load', handleLoad);
+        }
+
+        return () => window.removeEventListener('load', handleLoad);
+    }, []);
 
     return (
         <>
