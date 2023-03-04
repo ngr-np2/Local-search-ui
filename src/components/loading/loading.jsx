@@ -65,10 +65,10 @@ const Loading = () => {
             {loading &&
                 <div className="fixed mt-9 w-screen text-gray-300 z-50 ">
                     <div className="lds-ring inline-block relative w-20 h-20">
+                {/* //         <Circle />
                 //         <Circle />
                 //         <Circle />
-                //         <Circle />
-                //         <Circle />
+                //         <Circle /> */}
                         <Loader />
 
                     </div>
