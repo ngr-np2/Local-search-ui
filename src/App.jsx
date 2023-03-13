@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Loading />
-      <RouterProvider router={AllRoutes} />;
+      <RouterProvider router={AllRoutes} />
     </>
   )
 }
