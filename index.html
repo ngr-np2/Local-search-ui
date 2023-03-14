@@ -1,81 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Orbitron:wght@400;600;700;900&family=Pridi:wght@300;400;600&family=Rubik+Mono+One&family=Volkhov:ital@0;1&display=swap"
-    rel="stylesheet">
-
-  <title>Local Search Itahari</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
-
-    .waviy {
-      position: fixed;
-      height: 100vh;
-      width: 100vw;
-      color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      align-items: center;
-      z-index: 50;
-      background: rgb(209, 107, 165);
-      background: -moz-linear-gradient(66deg, rgba(209, 107, 165, 1) 0%, rgba(134, 168, 231, 1) 52%, rgba(95, 251, 241, 1) 100%);
-      background: -webkit-linear-gradient(66deg, rgba(209, 107, 165, 1) 0%, rgba(134, 168, 231, 1) 52%, rgba(95, 251, 241, 1) 100%);
-      background: linear-gradient(66deg, rgba(209, 107, 165, 1) 0%, rgba(134, 168, 231, 1) 52%, rgba(95, 251, 241, 1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d16ba5", endColorstr="#5ffbf1", GradientType=1);
-      font-family: 'Orbitron', 'sans-serif';
-    }
-
-    .waviy .load {
-      position: relative;
-      display: inline-block;
-      font-size: 15vmin;
-      color: #fff;
-      text-transform: uppercase;
-      animation: flip 2s infinite;
-      animation-delay: calc(.2s * var(--i))
-    }
-
-    @keyframes flip {
-
-      0%,
-      80% {
-        transform: rotateY(360deg)
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Carter+One&family=Orbitron:wght@400;600;700;900&family=Pridi:wght@300;400;600&family=Rubik+Mono+One&family=Volkhov:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bungee&family=Carter+One&family=Crimson+Text:ital,wght@0,600;0,700;1,400;1,700&family=Lobster&family=Orbitron:wght@400;600;700;900&family=Pridi:wght@300;400;600&family=Rampart+One&family=Rubik+Mono+One&family=Russo+One&family=Shadows+Into+Light&family=Volkhov:ital@0;1&display=swap" rel="stylesheet">
+    <title>Local Search Itahari</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
       }
-    }
-  </style>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const loading = document.getElementById("loading");
-      loading.style.display = "none";
-    });
-  </script>
-</head>
 
-<body>
-  <div class="waviy" id="loading">
-    <div class="load" style="--i:1">L</div>
-    <div class="load" style="--i:2">o</div>
-    <div class="load" style="--i:3">a</div>
-    <div class="load" style="--i:4">d</div>
-    <div class="load" style="--i:5">i</div>
-    <div class="load" style="--i:6">n</div>
-    <div class="load" style="--i:7">g</div>
-    <div class="load" style="--i:8">.</div>
-  </div>
+      .waviy {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+        z-index: 50;
+        background: rgb(209, 107, 165);
+        background: -moz-linear-gradient(
+          66deg,
+          rgba(209, 107, 165, 1) 0%,
+          rgba(134, 168, 231, 1) 52%,
+          rgba(95, 251, 241, 1) 100%
+        );
+        background: -webkit-linear-gradient(
+          66deg,
+          rgba(209, 107, 165, 1) 0%,
+          rgba(134, 168, 231, 1) 52%,
+          rgba(95, 251, 241, 1) 100%
+        );
+        background: linear-gradient(
+          66deg,
+          rgba(209, 107, 165, 1) 0%,
+          rgba(134, 168, 231, 1) 52%,
+          rgba(95, 251, 241, 1) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d16ba5", endColorstr="#5ffbf1", GradientType=1);
+        font-family: "Orbitron", "sans-serif";
+      }
 
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+      .waviy .load {
+        position: relative;
+        display: inline-block;
+        font-size: 15vmin;
+        color: #fff;
+        text-transform: uppercase;
+        animation: flip 2s infinite;
+        animation-delay: calc(0.2s * var(--i));
+      }
 
+      @keyframes flip {
+        0%,
+        80% {
+          transform: rotateY(360deg);
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+        loading.style.visibility = "hiddne";
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="waviy" id="loading">
+      <div class="load" style="--i: 1">L</div>
+      <div class="load" style="--i: 2">o</div>
+      <div class="load" style="--i: 3">a</div>
+      <div class="load" style="--i: 4">d</div>
+      <div class="load" style="--i: 5">i</div>
+      <div class="load" style="--i: 6">n</div>
+      <div class="load" style="--i: 7">g</div>
+      <div class="load" style="--i: 8">.</div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

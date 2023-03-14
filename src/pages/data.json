@@ -1,0 +1,23 @@
+{
+    "cities": [
+      {
+        "name": "Mumbai",
+        "areas": ["Andheri", "Bandra", "Colaba"],
+        "zones": {
+          "Andheri": ["Zone A", "Zone B", "Zone C"],
+          "Bandra": ["Zone D", "Zone E"],
+          "Colaba": ["Zone F", "Zone G", "Zone H"]
+        }
+      },
+      {
+        "name": "Delhi",
+        "areas": ["Connaught Place", "Greater Kailash", "Nehru Place"],
+        "zones": {
+          "Connaught Place": ["Zone I", "Zone J", "Zone K"],
+          "Greater Kailash": ["Zone L", "Zone M"],
+          "Nehru Place": ["Zone N", "Zone O", "Zone P"]
+        }
+      }
+    ]
+  }
+  
