@@ -4,7 +4,7 @@ import Print from "../../assets/icons/print.png";
 import SocailMedia from "../../components/socialMedia/SocailMedia";
 const GlfDetails = () => {
   return (
-    <div className="sm:flex-1 sd:flex-[0.7] m-auto sm:ml-6 sm:px-8 text-left">
+    <div className="sm:flex-1 sd:flex-[0.7] m-auto sm:px-8 text-left">
       <div className="mt-24 mx-2 px-3">
         <p className="font-font-8">
           <b className="font-font-4">Looking for </b>a way to reach more
@@ -15,7 +15,7 @@ const GlfDetails = () => {
           Get your free listing <b>TODAY</b>, just by filling in this form.
         </p>
       </div>
-      <div className="bg-[#1e2128ce] mx-2 px-6 pb-5">
+      <div className="bg-[#1e2128ce] rounded-lg mx-2 px-6 pb-5">
         <div className="mt-24 mb-9 text-3xl font-bold font-font-8">
           <p className="pt-7">List your company for free</p>
         </div>
