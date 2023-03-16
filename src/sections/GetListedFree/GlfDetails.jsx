@@ -15,7 +15,7 @@ const GlfDetails = () => {
           Get your free listing <b>TODAY</b>, just by filling in this form.
         </p>
       </div>
-      <div className="bg-[#1e2128ce] rounded-lg mx-2 px-6 pb-5">
+      <div className="bg-[#181a20cf] rounded-lg mx-2 px-6 pb-5">
         <div className="mt-24 mb-9 text-3xl font-bold font-font-8">
           <p className="pt-7">List your company for free</p>
         </div>
