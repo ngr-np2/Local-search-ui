@@ -1,10 +1,16 @@
+import { useState } from "react";
 import GlfDetails from "../sections/GetListedFree/GlfDetails";
 const GetListedFree = () => {
+  const [classification, setClassification] = useState("CLASSIFICATION");
+
+  const handleClassificationChange = (event) => {
+    setClassification(event.target.value);
+  };
   return (
     <div className=" bg-[#0d1116]">
       <div className="max-w-screen-xl m-auto flex max-sm:flex-wrap-reverse bg-[#141a21]">
         <GlfDetails />
-        <div className="sm:flex-1 leading-loose sm:pl-2 sm:pr-8 mt-14 max-sm:px-2 max-sm:mx-auto max-sm:text-lg text-3xl font-f-bold-cyber">
+        <div className="sm:flex-1 leading-loose sm:pl-2 sm:pr-8 mt-14 max-sm:px-2 max-sm:mx-auto max-sm:text-base text-3xl font-f-bold-cyber">
           <div className="">
             <p>NOT ON LOCAL SEARCH YET?</p>
             <p>CREATE YOUR FREE BUSINESS PROFILE PAGE</p>
@@ -14,7 +20,7 @@ const GetListedFree = () => {
               <div className="font-font-6 text-sm tracking-widest text-start ">
                 Business Information
               </div>
-              <form action="post" className="mt-14 px-5">
+              <form action="post" className="mt-14 px-5 ease-in duration-200">
                 <div className="flex flex-col gap-10 font-font-6">
                   <div className="m-auto flex justify-center w-full gap-10 max-lg:flex-wrap">
                     <div className="w-full">
@@ -23,7 +29,7 @@ const GetListedFree = () => {
                         type="text"
                         name="businessName"
                         id="businessName"
-                        className="w-full text-lg ease-in duration-300  outline-none bg-transparent border-b-[1px] focus:border-[#48B348] py-2"
+                        className="w-full text-base ease-in duration-200  outline-none bg-transparent border-b-[1px] focus:border-[#48B348] py-2  border-[#6c7274]"
                         placeholder="Business Name ✳️"
                       />
                     </div>
@@ -33,7 +39,7 @@ const GetListedFree = () => {
                         type="text"
                         name="businessName"
                         id="businessName"
-                        className="w-full text-lg ease-in duration-300  outline-none bg-transparent capitalize border-b-[1px] focus:border-[#48B348] py-2"
+                        className="w-full text-base ease-in duration-200  outline-none bg-transparent capitalize border-b-[1px] focus:border-[#48B348] py-2  border-[#6c7274]"
                         placeholder="Business Address ✳️"
                       />
                     </div>
@@ -42,41 +48,57 @@ const GetListedFree = () => {
                     <div className="w-full">
                       <select
                         name="city"
-                        className="bg-[#1c1d27] w-full outline-none p-3 h-11 border-b-[1px] focus:border-[#48B348] border-[1px] border-[#363b3d]"
+                        className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-11 border-b-[1px] focus:border-[#48B348] border-[1px] border-[#363b3d]"
                       >
                         <option value="">City ✳️</option>
                         <option value="itahari">Itahari</option>
                       </select>
                     </div>
-                    <div className="w-full">
+                    <div className="ease-in duration-200 w-full">
                       <select
                         name="ward"
-                        className="bg-[#1c1d27] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
+                        className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
                       >
                         <option value="">Ward ✳️</option>
                         <option value="1">1</option>
                       </select>
                     </div>
                   </div>
-                  <div className="m-auto text-sm w-full flex justify-center gap-10 text-gray-400 max-lg:flex-wrap">
-                    <div className="w-full">
+                  <div className="ease-in duration-200 m-auto text-sm w-full flex justify-center gap-10 text-gray-400 max-lg:flex-wrap">
+                    <div className="ease-in duration-200 w-full">
                       <select
                         name="tol"
-                        className="bg-[#1c1d27] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
+                        className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
                       >
-                        <option value="">Tol ✳️</option>
+                        <option value="tol">Tol ✳️</option>
                         <option value="manakamana">manakamana</option>
                       </select>
                     </div>
-                    <div className="w-full">
+                    <div className="ease-in duration-200 w-full">
                       <select
-                        name="tol"
-                        className="bg-[#1c1d27] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
+                        name="classifications"
+                        value={classification}
+                        onChange={handleClassificationChange}
+                        className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-11 border-b-[1px] rounded-sm focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[1px] border-[#363b3d]"
                       >
-                        <option value="">Tol ✳️</option>
-                        <option value="manakamana">manakamana</option>
+                        <option value="CLASSIFICATION" disabled>
+                          Select Classification ✳️
+                        </option>
+                        <option value="manakamana">Food and Beverage</option>
+                        <option value="other">Other</option>
                       </select>
                     </div>
+                    {classification === "other" && (
+                      <div className="m-auto flex justify-center w-full gap-10 max-lg:flex-wrap">
+                        <div className="w-full">
+                          <input
+                            type="text"
+                            placeholder="Enter other classification ✳️"
+                            className="ease-in text-base duration-200 bg-transparent w-full outline-none h-11 border-b-[1px] focus:border-[#48B348] focus-visible:border-[#48B348] active:border-[#48B348] border-[#6c7274]"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </form>
