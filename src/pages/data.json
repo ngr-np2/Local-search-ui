@@ -1,21 +1,21 @@
 {
     "cities": [
       {
-        "name": "Mumbai",
-        "areas": ["Andheri", "Bandra", "Colaba"],
-        "zones": {
-          "Andheri": ["Zone A", "Zone B", "Zone C"],
-          "Bandra": ["Zone D", "Zone E"],
-          "Colaba": ["Zone F", "Zone G", "Zone H"]
+        "name": "Itahari",
+        "wards": ["8", "9", "10"],
+        "tolORmargas": {
+          "10": ["Fulbari tol", "Zone G", "Zone H"],
+          "9": ["Manakamana marga", "Zone B", "Zone C"],
+          "8": ["Bojpuray tol", "Zone E"]
         }
       },
       {
-        "name": "Delhi",
-        "areas": ["Connaught Place", "Greater Kailash", "Nehru Place"],
-        "zones": {
-          "Connaught Place": ["Zone I", "Zone J", "Zone K"],
-          "Greater Kailash": ["Zone L", "Zone M"],
-          "Nehru Place": ["Zone N", "Zone O", "Zone P"]
+        "name": "Dharan",
+        "wards": ["1", "2", "3"],
+        "tolORmargas": {
+          "1": ["Zone I", "Zone J", "Zone K"],
+          "2": ["Zone L", "Zone M"],
+          "3": ["Zone N", "Zone O", "Zone P"]
         }
       }
     ]

@@ -4,61 +4,40 @@ import data from "../../pages/data.json";
 const Form = () => {
   const [classification, setClassification] = useState("CLASSIFICATION");
   const [city, setCity] = useState("");
-  const [area, setArea] = useState("");
-  const [zone, setZone] = useState("");
-
+  const [ward, setWard] = useState("");
+  const [tolORmarga, setTolORmarga] = useState("");
+  
   const handleCityChange = (e) => {
     setCity(e.target.value);
-    setArea("");
-    setZone("");
+    setWard("");
+    setTolORmarga("");
   };
-
-  const handleAreaChange = (e) => {
-    setArea(e.target.value);
-    setZone("");
+  
+  const handleWardChange = (e) => {
+    setWard(e.target.value);
+    setTolORmarga("");
   };
-  console.log(city, area, zone);
-  const selectedCity = data.cities.find((cityObj) => cityObj.name === city);
-  let areaOptions = selectedCity
-    ? selectedCity.areas.map((area) => (
-        <option key={area} value={area}>
-          {area}
-        </option>
-      ))
-    : [
-        <option key="default" value="">
-          Select City First
-        </option>,
-      ];
-
-  if (!city) {
-    areaOptions = [
-      <option key="default" value="">
-        Select City First
-      </option>,
-    ];
-  }
-
-  const selectedArea = selectedCity ? selectedCity.zones[area] : null;
-  let zoneOptions = selectedArea
-    ? selectedArea.map((zone) => (
-        <option key={zone} value={zone}>
-          {zone}
-        </option>
-      ))
-    : [
-        <option key="default" value="">
-          Select Area First
-        </option>,
-      ];
-
-  if (!area) {
-    zoneOptions = [
-      <option key="default" value="">
-        Select Area First
-      </option>,
-    ];
-  }
+  
+  const selectedCity = data.cities.find(cityObj => cityObj.name === city);
+  const wardOptions = !city
+    ? [<option key="default" value="">Select City First</option>]
+    : selectedCity
+      ? selectedCity.wards.map(ward => (
+          <option key={ward} value={ward}>{ward}</option>
+        ))
+      : [];
+  
+  const selectedWard = selectedCity?.tolORmargas[ward];
+  const tolORmargaOptions = !ward
+    ? [<option key="default" value="">Select Ward First</option>]
+    : selectedWard
+      ? selectedWard.map(tolORmarga => (
+          <option key={tolORmarga} value={tolORmarga}>{tolORmarga}</option>
+        ))
+      : [];
+  
+  console.log(city, ward, tolORmarga);
+  
   const handleClassificationChange = (event) => {
     setClassification(event.target.value);
   };
@@ -131,13 +110,13 @@ const Form = () => {
             <select
               name="ward"
               id="ward"
-              alue={area}
-              onChange={handleAreaChange}
+              alue={ward}
+              onChange={handleWardChange}
               className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-12 border-b-[1px] rounded-sm border-[1px]
                         border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
             >
               <option value="">select ward ✳️</option>
-              {areaOptions}
+              {wardOptions}
             </select>
           </div>
         </div>
@@ -152,8 +131,8 @@ const Form = () => {
             <select
               name="tol"
               id="tol"
-              value={zone}
-              onChange={(e) => setZone(e.target.value)}
+              value={tolORmarga}
+              onChange={(e) => setTolORmarga(e.target.value)}
               className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none
               p-3 h-12 border-b-[1px] rounded-sm border-[1px] border-gray-300
               appearance-none dark:text-white dark:border-gray-600
@@ -161,7 +140,7 @@ const Form = () => {
               focus:border-blue-600"
             >
               <option value="tol">select tol or marga ✳️</option>
-              {zoneOptions}
+              {tolORmargaOptions}
             </select>
           </div>
           <div className="ease-in duration-200 w-full">
