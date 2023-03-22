@@ -1,23 +1,22 @@
 {
-    "cities": [
-      {
-        "name": "Itahari",
-        "wards": ["8", "9", "10"],
-        "tolORmargas": {
-          "10": ["Fulbari tol", "Zone G", "Zone H"],
-          "9": ["Manakamana marga", "Zone B", "Zone C"],
-          "8": ["Bojpuray tol", "Zone E"]
-        }
-      },
-      {
-        "name": "Dharan",
-        "wards": ["1", "2", "3"],
-        "tolORmargas": {
-          "1": ["Zone I", "Zone J", "Zone K"],
-          "2": ["Zone L", "Zone M"],
-          "3": ["Zone N", "Zone O", "Zone P"]
-        }
+  "cities": [
+    {
+      "name": "Itahari",
+      "wards": ["8", "9", "10"],
+      "tolORmargas": {
+        "10": ["Fulbari tol", "Zone G", "Zone H"],
+        "9": ["Manakamana marga", "Zone B", "Zone C"],
+        "8": ["Bojpuray tol", "Zone E"]
       }
-    ]
-  }
-  
+    },
+    {
+      "name": "Dharan",
+      "wards": ["1", "2", "3"],
+      "tolORmargas": {
+        "1": ["Zone I", "Zone J", "Zone K"],
+        "2": ["Zone L", "Zone M"],
+        "3": ["Zone N", "Zone O", "Zone P"]
+      }
+    }
+  ]
+}
