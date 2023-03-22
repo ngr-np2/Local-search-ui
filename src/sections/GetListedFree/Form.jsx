@@ -6,38 +6,50 @@ const Form = () => {
   const [city, setCity] = useState("");
   const [ward, setWard] = useState("");
   const [tolORmarga, setTolORmarga] = useState("");
-  
+
   const handleCityChange = (e) => {
     setCity(e.target.value);
     setWard("");
     setTolORmarga("");
   };
-  
+
   const handleWardChange = (e) => {
     setWard(e.target.value);
     setTolORmarga("");
   };
-  
-  const selectedCity = data.cities.find(cityObj => cityObj.name === city);
+
+  const selectedCity = data.cities.find((cityObj) => cityObj.name === city);
   const wardOptions = !city
-    ? [<option key="default" value="">Select City First</option>]
+    ? [
+        <option key="default" value="">
+          Select City First
+        </option>,
+      ]
     : selectedCity
-      ? selectedCity.wards.map(ward => (
-          <option key={ward} value={ward}>{ward}</option>
-        ))
-      : [];
-  
+    ? selectedCity.wards.map((ward) => (
+        <option key={ward} value={ward}>
+          {ward}
+        </option>
+      ))
+    : [];
+
   const selectedWard = selectedCity?.tolORmargas[ward];
   const tolORmargaOptions = !ward
-    ? [<option key="default" value="">Select Ward First</option>]
+    ? [
+        <option key="default" value="">
+          Select Ward First
+        </option>,
+      ]
     : selectedWard
-      ? selectedWard.map(tolORmarga => (
-          <option key={tolORmarga} value={tolORmarga}>{tolORmarga}</option>
-        ))
-      : [];
-  
+    ? selectedWard.map((tolORmarga) => (
+        <option key={tolORmarga} value={tolORmarga}>
+          {tolORmarga}
+        </option>
+      ))
+    : [];
+
   console.log(city, ward, tolORmarga);
-  
+
   const handleClassificationChange = (event) => {
     setClassification(event.target.value);
   };
@@ -183,6 +195,45 @@ const Form = () => {
             </div>
           </div>
         )}
+        {/* post box and business numbe */}
+        <div className="ease-in duration-200 m-auto text-sm w-full flex items-end justify-center gap-10 text-gray-400 max-lg:flex-wrap">
+          <div className="w-full relative z-0 group">
+            <input
+              required
+              type="text"
+              name="postbox"
+              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="postbox"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-0 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Post Box No.
+            </label>
+          </div>
+          <div className="ease-in duration-200 w-full group">
+            <label
+              htmlFor="classifications"
+              className="block mb-2 text-left text-sm font-medium text-gray-900 dark:text-white peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+            >
+              Year of Establishment
+            </label>
+            <select
+              name="classifications"
+              id="classifications"
+              value={classification}
+              onChange={handleClassificationChange}
+              className="ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 border-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+            >
+              <option value="CLASSIFICATION" disabled>
+                select Year in AD ✳️
+              </option>
+              <option value="manakamana">Food and Beverage</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
       </div>
     </form>
   );
