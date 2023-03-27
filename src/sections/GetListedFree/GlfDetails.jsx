@@ -20,9 +20,9 @@ const GlfDetails = () => {
         </div>
         <div className="bg-[#181a20cf] rounded-lg px-2 pb-5">
           <div className="mt-24 mb-9 text-3xl font-bold font-font-8">
-            <p className="pt-7 text-stone-200">List your company for free</p>
+            <p className="pt-7 px-3 text-stone-200">List your company for free</p>
           </div>
-          <div className="m-3 mt-5 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-6 py-8 rounded-md">
+          <div className="m-5 mt-5 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-8 py-8 rounded-md">
             <div className="max-w-xs">
               <img src={Grow} alt="grow" className="w-9 max-w-xs" />
             </div>
@@ -36,7 +36,7 @@ const GlfDetails = () => {
               </p>
             </div>
           </div>
-          <div className="m-3 mt-10 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-6 py-8 rounded-md">
+          <div className="m-5 mt-10 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-8 py-8 rounded-md">
             <div className="max-w-xs">
               <img src={Top} alt="Top" className="w-9 max-w-xs" />
             </div>
@@ -50,7 +50,7 @@ const GlfDetails = () => {
               </p>
             </div>
           </div>
-          <div className="m-3 mt-10 flex max-lg:flex-wrap gap-2 bg-[#1b1e27cf] px-6 py-8 rounded-md">
+          <div className="m-5 mt-10 flex max-lg:flex-wrap gap-2 bg-[#1b1e27cf] px-8 py-8 rounded-md">
             <div className="max-w-xs">
               <img src={Print} alt="Print" className="w-9 max-w-xs" />
             </div>

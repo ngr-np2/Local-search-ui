@@ -11,7 +11,7 @@ const Form = () => {
   const [ward, setWard] = useState("");
   const [tolORmarga, setTolORmarga] = useState("");
   const [website, setWebsite] = useState(false)
-  const [url, setUrl] = useState('')
+  const [WebsiteUrl, setWebsiteUrl] = useState('')
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
@@ -54,7 +54,6 @@ const Form = () => {
       ))
       : [];
 
-  console.log(city, ward, tolORmarga);
 
   const handleClassificationChange = (event) => {
     setClassification(event.target.value);
@@ -67,6 +66,78 @@ const Form = () => {
 
   const startingGregorianYearAdjusted = currentGregorianYear - nepaliYearDiff - (currentNepaliYear - startingGregorianYear);
 
+  const [facebookLink, setFacebookLink] = useState('');
+  const [instagramLink, setInstagramLink] = useState('');
+  const [twitterLink, setTwitterLink] = useState('');
+
+
+
+  const handleFacebookLinkChange = (e) => {
+    const input = e.target.value.trim().slice(0, 20);
+    if (input.startsWith('http') && input.includes('facebook.com/')) {
+      const username = input.split('facebook.com/')[1];
+      setFacebookLink(username);
+    } else if (input.includes('facebook.com/')) {
+      const username = input.split('facebook.com/')[1];
+      setFacebookLink(username);
+    } else if (input.includes('https://facebook.com/')) {
+      const username = input.split('https://facebook.com/')[1];
+      setFacebookLink(username);
+    } else {
+      setFacebookLink(input);
+    }
+  };
+
+  const handleInstagramLinkChange = (e) => {
+    const input = e.target.value.trim().slice(0, 20);
+    if (input.startsWith('http') && input.includes('instagram.com/')) {
+      const username = input.split('instagram.com/')[1];
+      setInstagramLink(username);
+    } else if (input.includes('instagram.com/')) {
+      const username = input.split('instagram.com/')[1];
+      setInstagramLink(username);
+    } else if (input.includes('https://instagram.com/')) {
+      const username = input.split('https://instagram.com/')[1];
+      setInstagramLink(username);
+    } else {
+      setInstagramLink(input);
+    }
+  };
+
+  const handleTwitterLinkChange = (e) => {
+    const input = e.target.value.trim().slice(0, 20);
+    if (input.startsWith('http') && input.includes('twitter.com/')) {
+      const username = input.split('twitter.com/')[1];
+      setTwitterLink(username);
+    } else if (input.includes('twitter.com/')) {
+      const username = input.split('twitter.com/')[1];
+      setTwitterLink(username);
+    } else if (input.includes('https://twitter.com/')) {
+      const username = input.split('https://twitter.com/')[1];
+      setTwitterLink(username);
+    } else {
+      setTwitterLink(input);
+    }
+  };
+  const [openFrom, setOpenFrom] = useState("");
+  const [openTill, setOpenTill] = useState('')
+
+  const times = Array.from({ length: 24 * 2 }, (_, i) => {
+    const hour = Math.floor(i / 2);
+    const minute = i % 2 === 0 ? "00" : "30";
+    const suffix = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 === 0 ? 12 : hour % 12;
+    const time = `${hour12.toString().padStart(2, '0')}:${minute} ${suffix}`;
+    return time;
+  });
+
+  const hangleOpenTimeChange = (e) => {
+    setOpenFrom(e.target.value);
+  }
+  const hangleCloseTimeChange = (e) => {
+    setOpenTill(e.target.value)
+  }
+  const [hours, setHours] = useState(false)
 
   return (
     <form action="post" className="px-5 mt-14 duration-200 ease-in">
@@ -282,21 +353,23 @@ const Form = () => {
           <div className="relative z-0 w-full group">
             <input
               type="url"
-              name="Website"
+              name="ur"
               disabled={website}
-              className={` ${website ? 'cursor-not-allowed' : 'curser-text'} block py-2.5 px-0 w-full overflow-ellipsis text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer`}
+              value={website ? '' : WebsiteUrl}
+              onChange={(e) => setWebsiteUrl(e.target.value)}
+              className={` block py-2.5 px-0 w-full overflow-ellipsis text-sm text-gray-200 bg-transparent border-0 border-b-2  appearance-none dark:text-white  dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${website ? 'cursor-not-allowed border-gray-700' : 'curser-text border-gray-600'}`}
               placeholder=" "
             />
             <label
               htmlFor="Website"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-0 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              className={`peer-focus:font-medium absolute text-sm duration-300 transform -translate-y-6 scale-75  left-0 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 ${website ? 'text-gray-600' : 'text-gray-400'}`}>
               Website
             </label>
           </div>
         </div>
         <div title="we do not have a website. CheckBox" className="flex gap-4 items-center m-auto w-full duration-200 ease-in cursor-pointer max-lg:flex-wrap">
           {
-            !website ? <CheckBoxOutlineBlankIcon onClick={() => setWebsite(!website)} /> :
+            !website ? <CheckBoxOutlineBlankIcon onClick={() => (setWebsite(!website), setWebsiteUrl(''))} /> :
               <CheckBox onClick={() => setWebsite(!website)} />
           } <p className="p-0 m-0 text-base font-font-8" onClick={() => setWebsite(!website)} >
             We do not have a website
@@ -309,12 +382,14 @@ const Form = () => {
               required
               type="text"
               name="instagram"
-              className="overflow-ellipsis block py-2.5 pl-6 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              value={instagramLink}
+              onChange={handleInstagramLinkChange}
+              className="overflow-ellipsis block ml-6 py-2.5 pl-[2px] w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
             <label
               htmlFor="instagram"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-6 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Instagram
             </label>
@@ -325,12 +400,14 @@ const Form = () => {
               required
               type="text"
               name="twitter"
-              className="overflow-ellipsis block py-2.5 pl-6 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              value={twitterLink}
+              onChange={handleTwitterLinkChange}
+              className="overflow-ellipsis block ml-6 py-2.5 pl-[2px] w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
             <label
               htmlFor="twitter"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-6 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Twitter
             </label>
@@ -344,15 +421,81 @@ const Form = () => {
               required
               type="text"
               name="facebook"
-              className="overflow-ellipsis block py-2.5 pl-6 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              value={facebookLink}
+              onChange={handleFacebookLinkChange}
+              className="overflow-ellipsis block ml-6 py-2.5 pl-[2px] w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
             />
             <label
               htmlFor="facebook"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75  left-6 top-3 -z-10 origin-[0] peer-focus:left-6 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Facebook
             </label>
+          </div>
+        </div>
+        <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
+          <div title="Opening Hours" className="relative w-full duration-200 ease-in group">
+            <label
+              htmlFor="openingHours"
+              className="block mb-2 text-sm font-medium text-left text-gray-900 dark:text-white peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+            >
+              Opening Hours
+            </label>
+            <div title="open 24 hours a day, seven day a week. CheckBox" className="flex gap-2 justify-center items-center m-auto w-full duration-200 ease-in cursor-pointer max-lg:flex-wrap">
+              {
+                !hours ? <CheckBoxOutlineBlankIcon onClick={() => (setHours(!hours), setWebsiteUrl(''))} /> :
+                  <CheckBox onClick={() => setHours(!hours)} />
+              } <p className="p-0 m-0 text-base font-font-8" onClick={() => setWebsite(!website)} >
+                24/7
+              </p>
+            </div>
+          </div>
+          <div title="Opening time" className="relative w-full duration-200 ease-in group">
+            <label
+              htmlFor="openingHours"
+              className="block mb-2 text-sm font-medium text-left text-gray-900 dark:text-white peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+            >
+              From
+            </label>
+            <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+            <select
+              name="openingHours"
+              value={openFrom}
+              onChange={hangleOpenTimeChange}
+              className="cursor-pointer   ease-in duration-200 bg-[#1a1f2d] w-full outline-none pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+            >
+              <option value="openingHours" disabled>
+                Opening Time
+              </option>
+              {times.map(time => (
+                <option key={time} value={time}>{time}</option>
+              ))}
+            </select>
+          </div>
+          <div title="closing time" className="relative w-full duration-200 ease-in group">
+            <label
+              htmlFor="openTill"
+              className="block mb-2 text-sm font-medium text-left text-gray-900 dark:text-white peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+            >
+              To
+            </label>
+            <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+            <select
+              name="openTill"
+              value={openTill}
+              onChange={hangleCloseTimeChange}
+              defaultValue={"OPENTILL"}
+              className="cursor-pointer ease-in duration-200 bg-[#1a1f2d] w-full outline-none pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+            >
+              <option value="OPENTILL" disabled>
+                Closing Time
+              </option>
+              {times.map(time => (
+                <option key={time} value={time}>{time}</option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
