@@ -4,6 +4,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CheckBox from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import NameAndAddress from "../../components/getListedFree/input/NameAndAddress";
+import FullAddress from "../../components/getListedFree/select/FullAddress";
+import ClassificationComp from "../../components/getListedFree/select/Classification";
 const Form = () => {
   const [classification, setClassification] = useState("CLASSIFICATION");
   const [establishIn, setEstablishIn] = useState('establishIn')
@@ -142,7 +145,7 @@ const Form = () => {
   return (
     <form action="post" className="px-5 mt-14 duration-200 ease-in">
       <div className="flex flex-col gap-10 font-font-6">
-        <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
+        {/* <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
           <div title="business name" className="relative z-0 w-full group">
             <input
               required
@@ -290,8 +293,10 @@ const Form = () => {
               </label>
             </div>
           </div>
-        )}
-        {/* post box and business numbe */}
+        )} */}
+        <NameAndAddress />
+        <FullAddress />
+        <ClassificationComp />
         <div className="flex gap-10 justify-center items-end m-auto w-full text-sm text-gray-400 duration-200 ease-in max-lg:flex-wrap">
           <div title="Post Box No" className="relative z-0 w-full group">
             <input
