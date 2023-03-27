@@ -8,8 +8,8 @@ const GlfDetails = () => {
 
   return (
       <div className="sm:flex-1 sd:flex-[0.7] m-auto sm:px-8 text-left">
-        <div className="mt-24 mx-2 px-3">
-          <p className="font-font-8 text-gray-400">
+        <div className="px-3 mx-2 mt-24">
+          <p className="text-gray-400 font-font-8">
             <b className="font-font-4 text-stone-100">Looking for </b>a way to reach more
             customers? Look no further! You can get your business listed on
             Local Search Online Directory, Local Search Apps for FREE!
@@ -24,10 +24,10 @@ const GlfDetails = () => {
           </div>
           <div className="m-3 mt-5 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-6 py-8 rounded-md">
             <div className="max-w-xs">
-              <img src={Grow} alt="grow" className="max-w-xs w-9" />
+              <img src={Grow} alt="grow" className="w-9 max-w-xs" />
             </div>
             <div className="f-1">
-              <p className="font-extrabold text-lg tracking-widest mb-2 text-stone-200 ">
+              <p className="mb-2 text-lg font-extrabold tracking-widest text-stone-200">
                 Grow Your Business Fast
               </p>
               <p className="text-gray-400">
@@ -38,10 +38,10 @@ const GlfDetails = () => {
           </div>
           <div className="m-3 mt-10 flex max-lg:flex-wrap gap-2  bg-[#1b1e27cf] px-6 py-8 rounded-md">
             <div className="max-w-xs">
-              <img src={Top} alt="Top" className="max-w-xs w-9" />
+              <img src={Top} alt="Top" className="w-9 max-w-xs" />
             </div>
             <div className="f-1">
-              <p className="font-extrabold text-lg tracking-widest mb-2 text-stone-200">
+              <p className="mb-2 text-lg font-extrabold tracking-widest text-stone-200">
                 Get the top position
               </p>
               <p className="text-gray-400">
@@ -52,10 +52,10 @@ const GlfDetails = () => {
           </div>
           <div className="m-3 mt-10 flex max-lg:flex-wrap gap-2 bg-[#1b1e27cf] px-6 py-8 rounded-md">
             <div className="max-w-xs">
-              <img src={Print} alt="Print" className="max-w-xs w-9" />
+              <img src={Print} alt="Print" className="w-9 max-w-xs" />
             </div>
             <div className="f-1">
-              <p className="font-extrabold text-lg tracking-widest mb-2 text-stone-200">
+              <p className="mb-2 text-lg font-extrabold tracking-widest text-stone-200">
                 Develop Brand Image
               </p>
               <p className="text-gray-400">
