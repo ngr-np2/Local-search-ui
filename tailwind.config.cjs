@@ -23,23 +23,38 @@ module.exports = {
       "f-hanwriting-cursive": ["Shadows Into Light", "cursive"],
     },
     keyframes: {
+      // shake: {
+      //   "10% , 90%": {
+      //     transform: "translate3d(0, -1px, 0)",
+      //   },
+
+      //   "20%, 80%": {
+      //     transform: "translate3d(0, 2px, 0)",
+      //   },
+
+      //   "30%, 50%, 70%": {
+      //     transform: "translate3d(0, -4px, 0)",
+      //   },
+
+      //   "40%, 60%": {
+      //     transform: "translate3d(0, 4px, 0)",
+      //   },
+      // },
       shake: {
-        "10% , 90%": {
-          transform: "translate3d(0, -1px, 0)",
-        },
+        "0%": { transform: "scale(1,1)    translateY(0)" },
 
-        "20%, 80%": {
-          transform: "translate3d(0, 2px, 0)",
-        },
+        "20%": { transform: "scale(1.1,.9) translateY(0)" },
 
-        "30%, 50%, 70%": {
-          transform: "translate3d(0, -4px, 0)",
-        },
+        "40%": { transform: "scale(.9,1.1) translateY(-10px)" },
 
-        "40%, 60%": {
-          transform: "translate3d(0, 4px, 0)",
-        },
-      },
+        "60%": { transform: "scale(1,1)    translateY(0)" },
+
+        "87%": { transform: "scale(1,1)    translateY(-2px)" },
+
+        "94%": { transform: "scale(1,1)    translateY(0)" },
+
+        "100%": { transform: "scale(1,1)    translateY(0)" },
+      }
     },
     animation: {
       "button-shake": "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
