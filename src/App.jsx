@@ -1,12 +1,12 @@
 import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import { AllRoutes } from './Routes'
-import Loading from './components/loading/loading'
+import LoadingCircle from './components/loading/loadingCircle'
 
 function App() {
   return (
     <>
-      <Loading />
+      <LoadingCircle />
       <RouterProvider router={AllRoutes} />
     </>
   )
