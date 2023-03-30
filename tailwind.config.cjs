@@ -23,24 +23,24 @@ module.exports = {
       "f-hanwriting-cursive": ["Shadows Into Light", "cursive"],
     },
     keyframes: {
-      // shake: {
-      //   "10% , 90%": {
-      //     transform: "translate3d(0, -1px, 0)",
-      //   },
-
-      //   "20%, 80%": {
-      //     transform: "translate3d(0, 2px, 0)",
-      //   },
-
-      //   "30%, 50%, 70%": {
-      //     transform: "translate3d(0, -4px, 0)",
-      //   },
-
-      //   "40%, 60%": {
-      //     transform: "translate3d(0, 4px, 0)",
-      //   },
-      // },
       shake: {
+        "10% , 90%": {
+          transform: "translate3d(0, -1px, 0)",
+        },
+
+        "20%, 80%": {
+          transform: "translate3d(0, 2px, 0)",
+        },
+
+        "30%, 50%, 70%": {
+          transform: "translate3d(0, -4px, 0)",
+        },
+
+        "40%, 60%": {
+          transform: "translate3d(0, 4px, 0)",
+        },
+      },
+      bounce: {
         "0%": { transform: "scale(1,1)    translateY(0)" },
 
         "20%": { transform: "scale(1.1,.9) translateY(0)" },
@@ -54,10 +54,20 @@ module.exports = {
         "94%": { transform: "scale(1,1)    translateY(0)" },
 
         "100%": { transform: "scale(1,1)    translateY(0)" },
-      }
+      },
+      spin: {
+        'from': {
+          transform: 'rotate(0deg)',
+        },
+        'to': {
+          transform: 'rotate(360deg)'
+        }
+      },
     },
     animation: {
-      "button-shake": "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
+      "loading-circle": "spin 1s linear infinite",
+      "bounce": "bounce 0.82s cubic-bezier(.36,.07,.19,.97) both",
+      "shake": "shake 1s"
     },
   },
   plugins: [],
