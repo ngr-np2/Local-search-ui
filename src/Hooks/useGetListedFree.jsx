@@ -2,16 +2,52 @@ import { useState } from "react";
 import data from "../pages/data.json";
 
 const useGetListedFree = () => {
-    const [classification, setClassification] = useState("CLASSIFICATION");
-    const [establishIn, setEstablishIn] = useState('establishIn')
+    const [businessName, setBusinessName] = useState('')
+    const [businessAddress, setBusinessAddress] = useState('')
+
     const [city, setCity] = useState("");
     const [ward, setWard] = useState("");
     const [tolORmarga, setTolORmarga] = useState("");
+
+    const [classification, setClassification] = useState("");
+    const [otheClassification, setotherClassification] = useState('')
+
+    const [postalCode, setPostalCode] = useState('')
+
+    const [establishIn, setEstablishIn] = useState('')
+
     const [website, setWebsite] = useState(false)
     const [WebsiteUrl, setWebsiteUrl] = useState('')
-    const [hours, setHours] = useState(false)
+
+    const [facebookLink, setFacebookLink] = useState('');
+    const [instagramLink, setInstagramLink] = useState('');
+    const [twitterLink, setTwitterLink] = useState('');
+
+    const [openAllDayAndWeek, setOpenAllDayAndWeek] = useState(false)
     const [openFrom, setOpenFrom] = useState("");
     const [openTill, setOpenTill] = useState('')
+
+    const [DayOffFrom, setDayOffFrom] = useState('')
+    const [DayOffTill, setDayOffTill] = useState()
+
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [mobileNum, setMobileNum] = useState('')
+    const [email, setEmail] = useState('')
+    const [role, setRole] = useState('')
+    const [message, setMessage] = useState('')
+
+    const [agree, setAgree] = useState(false)
+    const [errorMsg, setErrorMsg] = useState('')
+
+    const handleBusinessName = (e) => {
+        setBusinessName(e.target.value.slice(0, 20))
+
+    }
+    const handleBusinessAddress = (e) => {
+        setBusinessAddress(e.target.value.slice(0, 20))
+    }
+
     const handleCityChange = (e) => {
         setCity(e.target.value);
         setWard("");
@@ -54,70 +90,54 @@ const useGetListedFree = () => {
             : [];
 
 
-    const handleClassificationChange = (event) => {
-        setClassification(event.target.value);
+    const handleClassificationChange = (e) => {
+        setClassification(e.target.value);
     };
+    const handleOtherClassification = (e) => {
+        setotherClassification(e.target.value)
+    }
 
     const nepaliYearDiff = 56;
-    const currentGregorianYear = new Date().getFullYear();
+    const currentGregorianYear = new Date().getFullYear()
     const currentNepaliYear = data.NewYear;
-    const startingGregorianYear = 2000;
+    const startingYear = 1969;
 
-    const startingGregorianYearAdjusted = currentGregorianYear - nepaliYearDiff - (currentNepaliYear - startingGregorianYear);
-
-
-    const [facebookLink, setFacebookLink] = useState('');
-    const [instagramLink, setInstagramLink] = useState('');
-    const [twitterLink, setTwitterLink] = useState('');
+    const startingGregorianYearAdjusted = currentGregorianYear - (currentNepaliYear - (startingYear + nepaliYearDiff))
 
 
+
+    const handleWebSiteUrl = (e) => {
+        setWebsiteUrl(e.target.value)
+    }
+
+    const handleLinkChange = (e, setter, platform) => {
+        const input = e.target.value.trim().slice(0, 45);
+        const url = `${platform}.com/`;
+
+        if (input.startsWith('http') && input.includes(url)) {
+            const username = input.split(url)[1];
+            setter(username);
+        } else if (input.includes(url)) {
+            const username = input.split(url)[1];
+            setter(username);
+        } else if (input.includes(`https://${url}`)) {
+            const username = input.split(`https://${url}`)[1];
+            setter(username);
+        } else {
+            setter(input);
+        }
+    };
 
     const handleFacebookLinkChange = (e) => {
-        const input = e.target.value.trim().slice(0, 20);
-        if (input.startsWith('http') && input.includes('facebook.com/')) {
-            const username = input.split('facebook.com/')[1];
-            setFacebookLink(username);
-        } else if (input.includes('facebook.com/')) {
-            const username = input.split('facebook.com/')[1];
-            setFacebookLink(username);
-        } else if (input.includes('https://facebook.com/')) {
-            const username = input.split('https://facebook.com/')[1];
-            setFacebookLink(username);
-        } else {
-            setFacebookLink(input);
-        }
+        handleLinkChange(e, setFacebookLink, 'facebook');
     };
 
     const handleInstagramLinkChange = (e) => {
-        const input = e.target.value.trim().slice(0, 20);
-        if (input.startsWith('http') && input.includes('instagram.com/')) {
-            const username = input.split('instagram.com/')[1];
-            setInstagramLink(username);
-        } else if (input.includes('instagram.com/')) {
-            const username = input.split('instagram.com/')[1];
-            setInstagramLink(username);
-        } else if (input.includes('https://instagram.com/')) {
-            const username = input.split('https://instagram.com/')[1];
-            setInstagramLink(username);
-        } else {
-            setInstagramLink(input);
-        }
+        handleLinkChange(e, setInstagramLink, 'instagram');
     };
 
     const handleTwitterLinkChange = (e) => {
-        const input = e.target.value.trim().slice(0, 20);
-        if (input.startsWith('http') && input.includes('twitter.com/')) {
-            const username = input.split('twitter.com/')[1];
-            setTwitterLink(username);
-        } else if (input.includes('twitter.com/')) {
-            const username = input.split('twitter.com/')[1];
-            setTwitterLink(username);
-        } else if (input.includes('https://twitter.com/')) {
-            const username = input.split('https://twitter.com/')[1];
-            setTwitterLink(username);
-        } else {
-            setTwitterLink(input);
-        }
+        handleLinkChange(e, setTwitterLink, 'twitter');
     };
 
 
@@ -130,15 +150,50 @@ const useGetListedFree = () => {
         return time;
     });
 
-    const hangleOpenTimeChange = (e) => {
+    const handleOpenTimeChange = (e) => {
         setOpenFrom(e.target.value);
     }
-    const hangleCloseTimeChange = (e) => {
+    const handleCloseTimeChange = (e) => {
         setOpenTill(e.target.value)
     }
-    return { classification, setClassification, establishIn, setEstablishIn, city, setCity, ward, setWard, tolORmarga, setTolORmarga, website, setWebsite, WebsiteUrl, setWebsiteUrl, hours, setHours, openFrom, setOpenFrom, openTill, setOpenTill, handleCityChange, handleWardChange, wardOptions, tolORmargaOptions, handleClassificationChange }
+    const handleFromDayOffChange = (e) => {
+        setDayOffFrom(e.target.value)
+    }
+    const handleToDayOffChange = (e) => {
+        setDayOffTill(e.target.value)
+    }
+
+    const handleContactInfo = (value, type) => {
+        if (type === 'firstname') {
+            setFirstName(value)
+        } else if (type === 'lastname') {
+            setLastName(value)
+        } else if (type === 'mobilenum') {
+            setMobileNum(value)
+        } else if (type === 'email') {
+            setEmail(value)
+        }
+        else if (type === "role") {
+            setRole(value)
+        }
+        else if (type === 'message') {
+            setMessage(value)
+        }
+    }
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        setErrorMsg("success")
+    }
+
+    console.log(businessName, businessAddress, classification, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
+    return {
+        businessName, setBusinessName, businessAddress, setBusinessAddress, classification, setClassification, establishIn, setEstablishIn, city, setCity, ward, setWard, tolORmarga, setTolORmarga, website, setWebsite, WebsiteUrl, setWebsiteUrl, openAllDayAndWeek, setOpenAllDayAndWeek, openFrom, setOpenFrom, openTill, setOpenTill, handleBusinessName, handleBusinessAddress, handleCityChange, handleWardChange, wardOptions, tolORmargaOptions, handleClassificationChange, times, handleOpenTimeChange, handleCloseTimeChange, facebookLink, setFacebookLink,
+        instagramLink, setInstagramLink,
+        twitterLink, setTwitterLink, handleFacebookLinkChange, otheClassification, handleOtherClassification, handleTwitterLinkChange, handleInstagramLinkChange, currentNepaliYear, startingGregorianYearAdjusted, handleWebSiteUrl,
+        DayOffFrom, DayOffTill, setDayOffFrom, setDayOffTill, handleFromDayOffChange, handleToDayOffChange, handleContactInfo, firstName, lastName, mobileNum, email,
+        role, agree, setAgree, handleSubmit, errorMsg, postalCode, setPostalCode
+    }
+
 }
 export default useGetListedFree
-
-
-// completed to handleClassificationcahange

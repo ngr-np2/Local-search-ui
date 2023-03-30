@@ -1,4 +1,7 @@
+import useGetListedFree from "../../../Hooks/useGetListedFree"
+
 const NameAndAddress = () => {
+    const { businessName, handleBusinessName, businessAddress, handleBusinessAddress } = useGetListedFree()
     return (
         <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
             <div title="business name" className="relative z-0 w-full group">
@@ -6,6 +9,8 @@ const NameAndAddress = () => {
                     required
                     type="text"
                     name="businessName"
+                    value={businessName}
+                    onChange={handleBusinessName}
                     className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                 />
@@ -21,6 +26,8 @@ const NameAndAddress = () => {
                     required
                     type="text"
                     name="businessAddress"
+                    value={businessAddress}
+                    onChange={handleBusinessAddress}
                     className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                 />

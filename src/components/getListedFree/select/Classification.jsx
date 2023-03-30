@@ -2,7 +2,7 @@ import useGetListedFree from "../../../Hooks/useGetListedFree"
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const ClassificationComp = () => {
-    const { classification, setClassification,handleClassificationChange  } = useGetListedFree()
+    const { classification, otheClassification, handleOtherClassification, handleClassificationChange } = useGetListedFree()
     return (
         <>
             <div className="flex gap-10 justify-center m-auto w-full text-sm text-gray-400 duration-200 ease-in max-lg:flex-wrap">
@@ -17,24 +17,26 @@ const ClassificationComp = () => {
                     <select
                         name="classifications"
                         id="classifications"
-                        value={classification}
+                        defaultValue={'CLASSIFICATION'}
                         onChange={handleClassificationChange}
                         className=" cursor-pointer pr-7 ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
                     >
                         <option value="CLASSIFICATION" disabled>
                             select classification ✳️
                         </option>
-                        <option value="manakamana">Food and Beverage</option>
-                        <option value="other">Other</option>
+                        <option value="food and beverage">Food and Beverage</option>
+                        <option value="0">Other</option>
                     </select>
                 </div>
             </div>
-            {classification === "other" && (
+            {classification === "0" && (
                 <div title="other classification" className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
                     <div className="relative z-0 w-full group">
                         <input
                             type="text"
                             name="classificationOther"
+                            value={otheClassification}
+                            onChange={handleOtherClassification}
                             className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
                         />
