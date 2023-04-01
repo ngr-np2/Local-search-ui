@@ -1,0 +1,65 @@
+[
+    {
+      "name": "Texas",
+      "cities": [
+        {
+          "name": "Austin",
+          "areas": [
+            {
+              "name": "Downtown",
+              "streets": ["1st Street", "2nd Street", "3rd Street"]
+            },
+            {
+              "name": "South Austin",
+              "streets": ["South 1st Street", "South 2nd Street", "South 3rd Street"]
+            }
+          ]
+        },
+        {
+          "name": "Houston",
+          "areas": [
+            {
+              "name": "Downtown",
+              "streets": ["Main Street", "Smith Street", "Texas Avenue"]
+            },
+            {
+              "name": "Montrose",
+              "streets": ["Westheimer Road", "Richmond Avenue", "Montrose Boulevard"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "California",
+      "cities": [
+        {
+          "name": "Los Angeles",
+          "areas": [
+            {
+              "name": "Hollywood",
+              "streets": ["Hollywood Boulevard", "Sunset Boulevard", "Melrose Avenue"]
+            },
+            {
+              "name": "Downtown",
+              "streets": ["Broadway", "Spring Street", "Main Street"]
+            }
+          ]
+        },
+        {
+          "name": "San Francisco",
+          "areas": [
+            {
+              "name": "Chinatown",
+              "streets": ["Grant Avenue", "Stockton Street", "Jackson Street"]
+            },
+            {
+              "name": "Fisherman's Wharf",
+              "streets": ["Jefferson Street", "Beach Street", "Taylor Street"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

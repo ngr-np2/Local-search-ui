@@ -1,28 +1,28 @@
-import NameAndAddress from "../../components/getListedFree/input/NameAndAddress";
-import FullAddress from "../../components/getListedFree/select/FullAddress";
-import ClassificationComp from "../../components/getListedFree/select/Classification";
-import PostBoxNum from "../../components/getListedFree/input/PostBoxNum";
+import BusinessNameAndEmail from "../../components/getListedFree/input/BusinessNameAndEmail";
+import BusinessFullAddress from "../../components/getListedFree/select/BusinessFullAddress";
+import BusinessClassificationComp from "../../components/getListedFree/select/BusinessClassification";
+import BusinessPostBoxNum from "../../components/getListedFree/input/BusinessPostBoxNum";
 import BusinessPhoneNumber from "../../components/getListedFree/input/BusinessPhoneNumber";
 import BusinessWebsite from "../../components/getListedFree/input/BusinessWebsite";
 import BusinessSocialLink from "../../components/getListedFree/input/BusinessSocialLink";
-import YearOfEstablish from "../../components/getListedFree/select/YearOfEstablish";
+import BusinessYearOfEstablish from "../../components/getListedFree/select/BusinessYearOfEstablish";
 import BusinessOpeningHours from "../../components/getListedFree/select/BusinessOpeningHours";
 import ContactInformation from "../../components/getListedFree/input/ContactInformation";
-import CheckBox from "@mui/icons-material/CheckBox";
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+
 import useGetListedFree from "../../Hooks/useGetListedFree";
+import Agrement from "../../components/getListedFree/checkBox/Agrement";
 const Form = () => {
-  const { agree, setAgree, handleSubmit, errorMsg } = useGetListedFree()
+  const { handleSubmit, errorMsg } = useGetListedFree()
   return (
     <form onSubmit={handleSubmit} className="px-5 mt-14 duration-200 ease-in">
       <div className="flex flex-col gap-10 font-font-6">
-        <NameAndAddress />
-        <FullAddress />
-        <ClassificationComp />
+        <BusinessNameAndEmail />
+        <BusinessFullAddress />
+        <BusinessClassificationComp />
 
         <div className="flex gap-10 justify-center items-end m-auto w-full text-sm text-gray-400 duration-200 ease-in max-lg:flex-wrap">
-          <PostBoxNum />
-          <YearOfEstablish />
+          <BusinessPostBoxNum />
+          <BusinessYearOfEstablish />
         </div>
 
         <BusinessPhoneNumber />
@@ -30,15 +30,7 @@ const Form = () => {
         <BusinessSocialLink />
         <BusinessOpeningHours />
         <ContactInformation />
-        <div className="flex gap-4 items-center m-auto w-full duration-200 ease-in  max-lg:flex-wrap">
-          {
-            !agree ? <CheckBoxOutlineBlankIcon className="cursor-pointer" onClick={() => setAgree(!agree)} /> :
-              <CheckBox className="cursor-pointer" onClick={() => setAgree(!agree)} />
-          }
-          <p className="p-0 m-0 text-base font-font-8 cursor-pointer" onClick={() => setAgree(!agree)} >
-            I agree to the Terms & Conditions and Privacy Policy
-          </p>
-        </div>
+        <Agrement />
         <p className="text-base text-red-500">{errorMsg}</p>
         <div className="flex gap-4  justify-end mt-2 w-full duration-200 ease-in cursor-pointer max-lg:flex-wrap">
           <button type="submit" className="relative rounded px-3 text-base py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 hover:ring-offset-[#151924] transition-all ease-out duration-300">
