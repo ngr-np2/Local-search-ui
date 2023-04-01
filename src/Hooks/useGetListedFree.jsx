@@ -1,15 +1,16 @@
 import { useState } from "react";
-import data from "../pages/data.json";
+import {provinces, NewYear} from "../assets/data.json";
 
 const useGetListedFree = () => {
     const [businessName, setBusinessName] = useState('')
-    const [businessAddress, setBusinessAddress] = useState('')
+    const [businessEmail, setBusinessEmail] = useState('')
 
+    const [province, setProvince] = useState('')
     const [city, setCity] = useState("");
     const [ward, setWard] = useState("");
     const [tolORmarga, setTolORmarga] = useState("");
 
-    const [classification, setClassification] = useState("");
+    const [classification, setClassification] = useState(null);
     const [otheClassification, setotherClassification] = useState('')
 
     const [postalCode, setPostalCode] = useState('')
@@ -44,8 +45,16 @@ const useGetListedFree = () => {
         setBusinessName(e.target.value.slice(0, 20))
 
     }
-    const handleBusinessAddress = (e) => {
-        setBusinessAddress(e.target.value.slice(0, 20))
+    const handleBusinessEmail = (e) => {
+        setBusinessEmail(e.target.value.slice(0, 20))
+    }
+
+    const handleProvinceChange = (e) => {
+        setProvince(e.target.value)
+        setCity();
+        setWard("");
+        setTolORmarga("");
+
     }
 
     const handleCityChange = (e) => {
@@ -58,31 +67,52 @@ const useGetListedFree = () => {
         setWard(e.target.value);
         setTolORmarga("");
     };
+    const selectedProvinceObj = provinces?.find((provinces) => provinces.name === province);
 
-    const selectedCity = data.cities.find((cityObj) => cityObj.name === city);
-    const wardOptions = !city
+    const selectedCityObj = selectedProvinceObj?.cities?.find(cityObj => cityObj.name === city)
+    const citysOptions = !province
+        ? [
+            <option key="default" value="">
+                Select Province First
+            </option>,
+        ]
+        : selectedProvinceObj
+            ? selectedProvinceObj.cities.map((city) => (
+                <option key={city.name} value={city.name}>
+                    {city.name}
+                </option>
+            ))
+            : [];
+    // console.log(selectedCityObj?.wards.map(ward => ward.num))
+    // const selectedWardObj = selectedCityObj?.wards?.find((wardObj) => wardObj.num === ward);
+
+    const selectedWardObj = selectedCityObj?.wards?.find((wardObj) => String(wardObj.num) === String(ward));
+    const wardsOptions = !city
         ? [
             <option key="default" value="">
                 Select City First
             </option>,
         ]
-        : selectedCity
-            ? selectedCity.wards.map((ward) => (
-                <option key={ward} value={ward}>
-                    {ward}
+        : selectedCityObj
+            ? selectedCityObj.wards.map((ward) => (
+                <option key={ward.num} value={ward.num}>
+                    {ward.num}
                 </option>
             ))
             : [];
 
-    const selectedWard = selectedCity?.tolORmargas[ward];
-    const tolORmargaOptions = !ward
+    const tolORmargaObj = selectedWardObj?.tolORmargas;
+    // console.log(tolORmargaObj)
+    // console.log(tolORmarga)
+    // console.log(ward)
+    const tolORmargasOptions = !ward
         ? [
             <option key="default" value="">
                 Select Ward First
             </option>,
         ]
-        : selectedWard
-            ? selectedWard.map((tolORmarga) => (
+        : tolORmargaObj
+            ? tolORmargaObj.map((tolORmarga) => (
                 <option key={tolORmarga} value={tolORmarga}>
                     {tolORmarga}
                 </option>
@@ -90,16 +120,16 @@ const useGetListedFree = () => {
             : [];
 
 
-    const handleClassificationChange = (e) => {
-        setClassification(e.target.value);
-    };
-    const handleOtherClassification = (e) => {
-        setotherClassification(e.target.value)
-    }
+    // const handleClassificationChange = (e) => {
+    //     setClassification(e.target.value);
+    // };
+    // const handleOtherClassification = (e) => {
+    //     setotherClassification(e.target.value)
+    // }
 
     const nepaliYearDiff = 56;
     const currentGregorianYear = new Date().getFullYear()
-    const currentNepaliYear = data.NewYear;
+    const currentNepaliYear = NewYear;
     const startingYear = 1969;
 
     const startingGregorianYearAdjusted = currentGregorianYear - (currentNepaliYear - (startingYear + nepaliYearDiff))
@@ -186,13 +216,14 @@ const useGetListedFree = () => {
         setErrorMsg("success")
     }
 
-    console.log(businessName, businessAddress, classification, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
+    // console.log(businessName, businessEmail, classification, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
     return {
-        businessName, setBusinessName, businessAddress, setBusinessAddress, classification, setClassification, establishIn, setEstablishIn, city, setCity, ward, setWard, tolORmarga, setTolORmarga, website, setWebsite, WebsiteUrl, setWebsiteUrl, openAllDayAndWeek, setOpenAllDayAndWeek, openFrom, setOpenFrom, openTill, setOpenTill, handleBusinessName, handleBusinessAddress, handleCityChange, handleWardChange, wardOptions, tolORmargaOptions, handleClassificationChange, times, handleOpenTimeChange, handleCloseTimeChange, facebookLink, setFacebookLink,
+        handleProvinceChange, province, citysOptions,
+        businessName, setBusinessName, businessEmail, setBusinessEmail, classification, setClassification, establishIn, setEstablishIn, city, setCity, ward, setWard, tolORmarga, setTolORmarga, website, setWebsite, WebsiteUrl, setWebsiteUrl, openAllDayAndWeek, setOpenAllDayAndWeek, openFrom, setOpenFrom, openTill, setOpenTill, handleBusinessName, handleBusinessEmail, handleCityChange, handleWardChange, wardsOptions, tolORmargasOptions, times, handleOpenTimeChange, handleCloseTimeChange, facebookLink, setFacebookLink,
         instagramLink, setInstagramLink,
-        twitterLink, setTwitterLink, handleFacebookLinkChange, otheClassification, handleOtherClassification, handleTwitterLinkChange, handleInstagramLinkChange, currentNepaliYear, startingGregorianYearAdjusted, handleWebSiteUrl,
+        twitterLink, setTwitterLink, handleFacebookLinkChange, otheClassification, handleTwitterLinkChange, handleInstagramLinkChange, currentNepaliYear, startingGregorianYearAdjusted, handleWebSiteUrl,
         DayOffFrom, DayOffTill, setDayOffFrom, setDayOffTill, handleFromDayOffChange, handleToDayOffChange, handleContactInfo, firstName, lastName, mobileNum, email,
-        role, agree, setAgree, handleSubmit, errorMsg, postalCode, setPostalCode
+        role, agree, setAgree, handleSubmit, errorMsg, postalCode, setPostalCode, setotherClassification
     }
 
 }
