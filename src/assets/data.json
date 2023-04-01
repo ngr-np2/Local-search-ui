@@ -1,0 +1,99 @@
+{
+  "provinces":[  
+	{    
+	   "name": "Koshi",    
+	   "cities": [
+	     { 
+		    "name": "Itahari",        
+		    "wards": [
+		      {"num": 8, "tolORmargas": ["Fulbari tol", "Zone G", "Zone H"]},
+          {"num": 9, "tolORmargas": ["Manakamana marga", "Zone B", "Zone C"]},
+          {"num": 10, "tolORmargas": ["Bojpuray tol", "Zone E"]}
+        ]
+      },
+      {
+        "name": "Biratnagar",
+        "wards": [
+          {"num": 1, "tolORmargas": ["Zone A", "Zone B", "Zone C"]},
+          {"num": 2, "tolORmargas": ["Zone D", "Zone E"]},
+          {"num": 3, "tolORmargas": ["Zone F", "Zone G", "Zone H"]}
+        ]
+      },
+      {
+        "name": "Dharan",
+        "wards": [
+          {"num": 4, "tolORmargas": ["Zone I", "Zone J", "Zone K"]},
+          {"num": 5, "tolORmargas": ["Zone L", "Zone M"]},
+          {"num": 6, "tolORmargas": ["Zone N", "Zone O", "Zone P"]}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Madesh",
+    "cities": [
+      {
+        "name": "Janakpur",
+        "wards": [
+          {"num": 7, "tolORmargas": ["Zone Q", "Zone R", "Zone S"]},
+          {"num": 8, "tolORmargas": ["Zone T", "Zone U"]},
+          {"num": 9, "tolORmargas": ["Zone V", "Zone W", "Zone X"]}
+        ]
+      },
+      {
+        "name": "Birgunj",
+        "wards": [
+          {"num": 10, "tolORmargas": ["Zone Y", "Zone Z", "Zone AA"]},
+          {"num": 11, "tolORmargas": ["Zone BB", "Zone CC"]},
+          {"num": 12, "tolORmargas": ["Zone DD", "Zone EE", "Zone FF"]}
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bagmati",
+    "cities": [
+      {
+        "name": "Kathmandu",
+        "wards": [
+          {"num": 1, "tolORmargas": ["Thamel", "Lainchaur", "Kamalpokhari"]},
+          {"num": 2, "tolORmargas": ["Durbarmarg", "Bagbazaar", "Newroad"]},
+          {"num": 3, "tolORmargas": ["Putalisadak", "Bhotahiti"]},
+          {"num": 4, "tolORmargas": ["Tundikhel", "Khulla Manch", "Tripureshwor"]},
+          {"num": 5, "tolORmargas": ["Nayabazaar", "Anamnagar", "Singhadurbar"]},
+          {"num": 6, "tolORmargas": ["Swoyambhu", "Kalimati"]},
+          {"num": 7, "tolORmargas": ["Kirtipur", "Chovar"]},
+          {"num": 8, "tolORmargas": ["Chabahil", "Jorpati"]},
+          {"num": 9, "tolORmargas": ["Boudha", "Gokarna"]},
+          {"num": 10, "tolORmargas": ["Satdobato", "Lalitpur"]},
+          {"num": 11, "tolORmargas": ["Sanepa", "Jawalakhel", "Pulchowk"]},
+          {"num": 12, "tolORmargas": ["Patan", "Lagankhel", "Jhamsikhel"]}
+        ]
+      },
+      {
+        "name": "Bhaktapur",
+        "wards": [
+          {"num": 1, "tolORmargas": ["Suryabinayak", "Kamalbinayak"]},
+          {"num": 2, "tolORmargas": ["Bhaktapur Durbar Square", "Dadhikot"]},
+          {"num": 3, "tolORmargas": ["Bode", "Nagarkot"]},
+          {"num": 4, "tolORmargas": ["Changunarayan", "Jhaukhel"]},
+          {"num": 5, "tolORmargas": ["Nagadesh", "Duwakot"]},
+          {"num": 6, "tolORmargas": ["Kausaltar", "Kharipati"]},
+          {"num": 7, "tolORmargas": ["Madhyapur Thimi", "Sallaghari"]}
+        ]
+      },
+      {
+        "name": "Lalitpur",
+        "wards": [
+          {"num": 1, "tolORmargas": ["Mahalaxmi", "Imadol"]},
+          {"num": 2, "tolORmargas": ["Bharatpur", "Nakhipot"]},
+          {"num": 3, "tolORmargas": ["Gwarko", "Dhapakhel"]},
+          {"num": 4, "tolORmargas": ["Pulchowk", "Kupondole"]},
+          {"num": 5, "tolORmargas": ["Lagankhel", "Jawalakhel"]}
+        ]
+      }
+    ]
+  }
+],
+"NewYear":"2079"
+}
