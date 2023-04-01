@@ -27,7 +27,7 @@ const ContactInformation = () => {
                         id='firstName'
                         value={firstName}
                         onChange={(e) => handleContactInfo(e.target.value, 'firstname')}
-                        className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        className="overflow-ellipsis outline-none  block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
                     <label
@@ -44,7 +44,7 @@ const ContactInformation = () => {
                         name="lastName"
                         value={lastName}
                         onChange={(e) => handleContactInfo(e.target.value, 'lastname')}
-                        className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        className="overflow-ellipsis outline-none  block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
                     <label
@@ -63,7 +63,7 @@ const ContactInformation = () => {
                         name="mobilenumber"
                         value={mobileNum}
                         onChange={(e) => handleContactInfo(e.target.value, 'mobilenum')}
-                        className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        className="overflow-ellipsis outline-none  block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
                     <label
@@ -75,12 +75,11 @@ const ContactInformation = () => {
                 </div>
                 <div title="email" className="relative z-0 w-full group">
                     <input
-                        required
                         type="email"
                         name="email"
                         value={email}
                         onChange={(e) => handleContactInfo(e.target.value, 'email')}
-                        className="ovee block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        className="overflow-ellipsis outline-none  focus:invalid:border-red-500 block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
                     <label
@@ -99,12 +98,13 @@ const ContactInformation = () => {
                 >
                     Job Title
                 </label>
-                <KeyboardArrowDownIcon className="absolute right-2 top-[56%] text-gray-200" />
+
+
                 <select
                     name="role"
                     defaultValue={'role'}
                     onChange={(e) => handleContactInfo(e.target.value, 'role')}
-                    className="cursor-pointer ease-in pr-7 duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 border-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-gray-100 text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+                    className="block cursor-pointer ease-in pr-7 duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 border-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-gray-100 text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
                 >
                     <option value="role" disabled>
                         select your Role ✳️
@@ -115,6 +115,9 @@ const ContactInformation = () => {
                     <option value="BM">Branch Manager</option>
                     <option value="0">Other</option>
                 </select>
+                <div className="pointer-events-none absolute right-0 flex items-center px-2 text-gray-400 top-11">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                </div>
             </div>
             <fieldset className="max-w-2xl mt-4 text-white  rounded-sm border-[1px]  border-gray-300 dark:text-white text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 text-start pl-4">
 

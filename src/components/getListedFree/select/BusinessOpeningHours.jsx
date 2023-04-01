@@ -2,7 +2,7 @@ import useGetListedFree from "../../../Hooks/useGetListedFree"
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import CheckBox from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import BusinessDayOff from "./BusinessDayOff";
+import DropDownArrowSvg from "../../buttons/DropDownArrowSvg";
 
 const BusinessOpeningHours = () => {
     const { handleFromDayOffChange, handleToDayOffChange, openAllDayAndWeek, setOpenAllDayAndWeek, times, setOpenFrom, setOpenTill, setDayOffFrom, setDayOffTill, handleOpenTimeChange, handleCloseTimeChange } = useGetListedFree()
@@ -45,7 +45,7 @@ const BusinessOpeningHours = () => {
                     >
                         From
                     </label>
-                    <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    <DropDownArrowSvg />
                     <select
                         disabled={openAllDayAndWeek}
                         name="openingHours"
@@ -76,7 +76,7 @@ const BusinessOpeningHours = () => {
                     >
                         To
                     </label>
-                    <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    <DropDownArrowSvg />
                     <select
                         name="openTill"
                         disabled={openAllDayAndWeek}
@@ -118,7 +118,7 @@ const BusinessOpeningHours = () => {
                     >
                         From
                     </label>
-                    <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    <DropDownArrowSvg />
                     <select
                         disabled={openAllDayAndWeek}
                         name="openingHours"
@@ -151,7 +151,7 @@ const BusinessOpeningHours = () => {
                     >
                         To
                     </label>
-                    <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    <DropDownArrowSvg />
                     <select
                         name="dayofftill"
                         id="dayofftill"
