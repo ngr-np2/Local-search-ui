@@ -1,20 +1,43 @@
 import useGetListedFree from "../../../Hooks/useGetListedFree"
+import {useState, useEffect} from 'react'
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 // import { Combobox } from "@headlessui/react";
-import { classifications } from '../../../assets/classificationData.json'
+// import { classifications } from '../../../assets/classificationData.json'
 import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 
 
 const BusinessClassification = () => {
-    const { classification, setClassification } = useGetListedFree()
-    const data = classifications?.map((item) => ({ label: item.lable, value: item.value }));
-    // console.log(classification)
+    const [loading, setLoading] = useState(false);
+    const { classification, setClassification } = useGetListedFree();
+    const [classificationData, setClassificationData] = useState();
+    
     const handleClassificationChange = (selectedOptions) => {
         setClassification(selectedOptions);
-        // console.log(selectedOptions)
     };
+    // console.log(classificationData)
+  const handleInputFocus = () => {
+        if(!classificationData){
+            setLoading(true);
+            fetch('/classificationData.json')
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data)
+                const datas = data.classifications?.map(item => ({ label: item.label, value: item.value }));
+                setClassificationData(datas);
+                setLoading(false);
+                // console.log(classificationsarray)
+            })
+            .catch(error => {
+                console.error('Error fetching classification data:', error);
+                setLoading(false);
+            });
+        }
+    };
+
+
+
     // console.log(classification?.map(option => option.value));
     return (
         <>
@@ -26,20 +49,7 @@ const BusinessClassification = () => {
                     >
                         Business Classification
                     </label>
-                    {/* <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
-                    <select
-                        name="classifications"
-                        id="classifications"
-                        defaultValue={'CLASSIFICATION'}
-                        onChange={handleClassificationChange}
-                        className=" cursor-pointer pr-7 ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
-                    >
-                        <option value="CLASSIFICATION" disabled>
-                            select classification ✳️
-                        </option>
-                        <option value="food and beverage">Food and Beverage</option>
-                        <option value="0">Other</option>
-                    </select> */}
+                    
 
                     <CreatableSelect
                         value={classification}
@@ -73,8 +83,26 @@ const BusinessClassification = () => {
                                 neutral80: "#e8e6e3", // selected text color
                             },
                         })}
+                        isLoading={loading}
                         onChange={handleClassificationChange}
-                        isMulti options={data} />
+                        onFocus={handleInputFocus}
+                        isMulti options={classificationData} />
+
+
+                        {/* <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    <select
+                        name="classifications"
+                        id="classifications"
+                        defaultValue={'CLASSIFICATION'}
+                        onChange={handleClassificationChange}
+                        className=" cursor-pointer pr-7 ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+                    >
+                        <option value="CLASSIFICATION" disabled>
+                            select classification ✳️
+                        </option>
+                        <option value="food and beverage">Food and Beverage</option>
+                        <option value="0">Other</option>
+                    </select> */}
                 </div>
             </div>
             {/* {classification === "0" && (

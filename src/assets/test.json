@@ -1,65 +1,129 @@
-[
+[{
+  "cities": [
     {
-      "name": "Texas",
+      "name": "Itahari",
+      "wards": [
+        "8",
+        "9",
+        "10"
+      ],
+      "tolORmargas": {
+        "10": [
+          "Fulbari tol",
+          "Zone G",
+          "Zone H"
+        ],
+        "9": [
+          "Manakamana marga",
+          "Zone B",
+          "Zone C"
+        ],
+        "8": [
+          "Bojpuray tol",
+          "Zone E"
+        ]
+      }
+    },
+    {
+      "name": "Dharan",
+      "wards": [
+        "1",
+        "2",
+        "3"
+      ],
+      "tolORmargas": {
+        "1": [
+          "Zone I",
+          "Zone J",
+          "Zone K"
+        ],
+        "2": [
+          "Zone L",
+          "Zone M"
+        ],
+        "3": [
+          "Zone N",
+          "Zone O",
+          "Zone P"
+        ]
+      }
+    }
+  ]
+},{
+  "NewYear": "2079"
+},
+{
+  "provinces": [
+    {
+      "name": "Koshi",
       "cities": [
         {
-          "name": "Austin",
-          "areas": [
-            {
-              "name": "Downtown",
-              "streets": ["1st Street", "2nd Street", "3rd Street"]
-            },
-            {
-              "name": "South Austin",
-              "streets": ["South 1st Street", "South 2nd Street", "South 3rd Street"]
-            }
-          ]
+          "name": "Itahari",
+          "wards": [
+            "8",
+            "9",
+            "10"
+          ],
+          "tolORmargas": {
+            "10": [
+              "Fulbari tol",
+              "Zone G",
+              "Zone H"
+            ],
+            "9": [
+              "Manakamana marga",
+              "Zone B",
+              "Zone C"
+            ],
+            "8": [
+              "Bojpuray tol",
+              "Zone E"
+            ]
+          }
         },
         {
-          "name": "Houston",
-          "areas": [
-            {
-              "name": "Downtown",
-              "streets": ["Main Street", "Smith Street", "Texas Avenue"]
-            },
-            {
-              "name": "Montrose",
-              "streets": ["Westheimer Road", "Richmond Avenue", "Montrose Boulevard"]
-            }
-          ]
+          "name": "Biratnagar",
+          "wards": ["1", "2", "3"],
+          "tolORMargas": {
+            "1": ["Zone A", "Zone B", "Zone C"],
+            "2": ["Zone D", "Zone E"],
+            "3": ["Zone F", "Zone G", "Zone H"]
+          }
+        },
+        {
+          "name": "Dharan",
+          "wards": ["4", "5", "6"],
+          "tolORMargas": {
+            "4": ["Zone I", "Zone J", "Zone K"],
+            "5": ["Zone L", "Zone M"],
+            "6": ["Zone N", "Zone O", "Zone P"]
+          }
         }
       ]
     },
     {
-      "name": "California",
+      "name": "Province 2",
       "cities": [
         {
-          "name": "Los Angeles",
-          "areas": [
-            {
-              "name": "Hollywood",
-              "streets": ["Hollywood Boulevard", "Sunset Boulevard", "Melrose Avenue"]
-            },
-            {
-              "name": "Downtown",
-              "streets": ["Broadway", "Spring Street", "Main Street"]
-            }
-          ]
+          "name": "Janakpur",
+          "wards": ["7", "8", "9"],
+          "tolORMargas": {
+            "7": ["Zone Q", "Zone R", "Zone S"],
+            "8": ["Zone T", "Zone U"],
+            "9": ["Zone V", "Zone W", "Zone X"]
+          }
         },
         {
-          "name": "San Francisco",
-          "areas": [
-            {
-              "name": "Chinatown",
-              "streets": ["Grant Avenue", "Stockton Street", "Jackson Street"]
-            },
-            {
-              "name": "Fisherman's Wharf",
-              "streets": ["Jefferson Street", "Beach Street", "Taylor Street"]
-            }
-          ]
+          "name": "Birgunj",
+          "wards": ["10", "11", "12"],
+          "tolORMargas": {
+            "10": ["Zone Y", "Zone Z", "Zone AA"],
+            "11": ["Zone BB", "Zone CC"],
+            "12": ["Zone DD", "Zone EE", "Zone FF"]
+          }
         }
       ]
     }
   ]
-  
+}
+]
