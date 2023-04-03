@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 export const AllRoutes = createBrowserRouter([
     { path: '/', element: <Home /> },
     { path: '/getlistedfree', element: <GetListedFree /> }
-])
+]) 
 
 // import { lazy, Suspense } from "react";
 // import { createBrowserRouter, Link } from "react-router-dom";
