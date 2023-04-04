@@ -16,7 +16,7 @@ const Mid = () => {
           <input type="search" autoComplete="off" placeholder="In which tole or ward?" name="search" id="search" className="bg-gray-200 rounded-md text-gray-900 outline-none py-2 px-4 overflow-ellipsis w-full" />
         </div>
         <div className="flex items-center max-sm:justify-center">
-          <button className="font-font-1 rounded-sm outline-none border-2 border-l-teal-100 px-4 py-1 h-9 bg-green-500 select-none">search</button>
+          <button className="font-font-1 rounded-sm outline-none border-2 border-l-teal-100 px-4 py-1 h-9 text-white bg-green-500 select-none">search</button>
         </div>
       </form>
     </div>

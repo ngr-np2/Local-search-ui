@@ -1,5 +1,5 @@
+import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
 import useGetListedFree from "../../../Hooks/useGetListedFree"
-import CheckBox from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 
 const BusinessWebsite = () => {
@@ -27,7 +27,7 @@ const BusinessWebsite = () => {
             <div title="we do not have a website. CheckBox" className="flex gap-4 items-center m-auto w-full duration-200 ease-in cursor-pointer max-lg:flex-wrap">
                 {
                     !website ? <CheckBoxOutlineBlankIcon onClick={() => (setWebsite(!website), setWebsiteUrl(''))} /> :
-                        <CheckBox onClick={() => setWebsite(!website)} />
+                        <CheckBoxOutlined onClick={() => setWebsite(!website)} className={website && "text-blue-600"}/>
                 } <p className="p-0 m-0 text-base font-font-8" onClick={() => setWebsite(!website)} >
                     We do not have a website
                 </p>

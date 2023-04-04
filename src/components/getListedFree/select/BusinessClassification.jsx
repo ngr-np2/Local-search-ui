@@ -1,5 +1,5 @@
 import useGetListedFree from "../../../Hooks/useGetListedFree"
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 // import { Combobox } from "@headlessui/react";
 // import { classifications } from '../../../assets/classificationData.json'
@@ -12,27 +12,27 @@ const BusinessClassification = () => {
     const [loading, setLoading] = useState(false);
     const { classification, setClassification } = useGetListedFree();
     const [classificationData, setClassificationData] = useState();
-    
+
     const handleClassificationChange = (selectedOptions) => {
         setClassification(selectedOptions);
     };
     // console.log(classificationData)
-  const handleInputFocus = () => {
-        if(!classificationData){
+    const handleInputFocus = () => {
+        if (!classificationData) {
             setLoading(true);
             fetch('/classificationData.json')
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data)
-                const datas = data.classifications?.map(item => ({ label: item.label, value: item.value }));
-                setClassificationData(datas);
-                setLoading(false);
-                // console.log(classificationsarray)
-            })
-            .catch(error => {
-                console.error('Error fetching classification data:', error);
-                setLoading(false);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data)
+                    const datas = data.classifications?.map(item => ({ label: item.label, value: item.value }));
+                    setClassificationData(datas);
+                    setLoading(false);
+                    // console.log(classificationsarray)
+                })
+                .catch(error => {
+                    console.error('Error fetching classification data:', error);
+                    setLoading(false);
+                });
         }
     };
 
@@ -42,19 +42,15 @@ const BusinessClassification = () => {
     return (
         <>
             <div className="flex gap-10 justify-center m-auto w-full text-sm text-gray-400 duration-200 ease-in max-lg:flex-wrap">
-                <div title="Business Classification" className="relative w-full duration-200 ease-in">
-                    <label
-                        htmlFor="classifications"
-                        className="block mb-2 text-sm font-medium text-left text-gray-900 dark:text-white"
-                    >
-                        Business Classification
-                    </label>
-                    
+                <div title="Business Classification" className="flex relative flex-col-reverse w-full duration-200 ease-in group">
+
+
 
                     <CreatableSelect
                         value={classification}
+                        classNamePrefix="peer"
                         className=" cursor-pointer  ease-in duration-200 text-start 
-                        bg-[#1a1f2d] bg-red-300!important border-[1px]  border-gray-300!important Z-11 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600
+                        bg-[#1a1f2d] bg-red-300!important border-[1px] peer  border-gray-300!important Z-11 text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600
                         "
                         styles={{
                             control: (baseStyles, state) => ({
@@ -89,7 +85,7 @@ const BusinessClassification = () => {
                         isMulti options={classificationData} />
 
 
-                        {/* <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
+                    {/* <KeyboardArrowDownIcon className="absolute right-2 top-2/4 text-gray-200" />
                     <select
                         name="classifications"
                         id="classifications"
@@ -103,6 +99,12 @@ const BusinessClassification = () => {
                         <option value="food and beverage">Food and Beverage</option>
                         <option value="0">Other</option>
                     </select> */}
+                    <label
+                        htmlFor="classifications"
+                        className="block mb-2 text-sm font-medium text-left text-gray-500 peer-focus:text-blue-600"
+                    >
+                        Business Classification
+                    </label>
                 </div>
             </div>
             {/* {classification === "0" && (
