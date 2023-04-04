@@ -6,25 +6,25 @@
 	     { 
 		    "name": "Itahari",        
 		    "wards": [
-		      {"num": 8, "tolORmargas": ["Fulbari tol", "Zone G", "Zone H"]},
-          {"num": 9, "tolORmargas": ["Manakamana marga", "Zone B", "Zone C"]},
-          {"num": 10, "tolORmargas": ["Bojpuray tol", "Zone E"]}
+		      {"num": 8, "tolORmargas": ["Fulbari tol", "Tol G", "Marga H"]},
+          {"num": 9, "tolORmargas": ["Manakamana marga", "tol B", "Marga C"]},
+          {"num": 10, "tolORmargas": ["Bojpuray tol", "tol E"]}
         ]
       },
       {
         "name": "Biratnagar",
         "wards": [
-          {"num": 1, "tolORmargas": ["Zone A", "Zone B", "Zone C"]},
-          {"num": 2, "tolORmargas": ["Zone D", "Zone E"]},
-          {"num": 3, "tolORmargas": ["Zone F", "Zone G", "Zone H"]}
+          {"num": 1, "tolORmargas": ["tol A", "tol B", "Marga C"]},
+          {"num": 2, "tolORmargas": ["tol D", "tol E"]},
+          {"num": 3, "tolORmargas": ["Marga F", "Tol G", "Tol H"]}
         ]
       },
       {
         "name": "Dharan",
         "wards": [
-          {"num": 4, "tolORmargas": ["Zone I", "Zone J", "Zone K"]},
-          {"num": 5, "tolORmargas": ["Zone L", "Zone M"]},
-          {"num": 6, "tolORmargas": ["Zone N", "Zone O", "Zone P"]}
+          {"num": 4, "tolORmargas": ["Tol I", "Tol J", "Tol K"]},
+          {"num": 5, "tolORmargas": ["Tol L", "Tol M"]},
+          {"num": 6, "tolORmargas": ["Tol N", "Marga O", "Tol P"]}
         ]
       }
     ]
@@ -35,17 +35,17 @@
       {
         "name": "Janakpur",
         "wards": [
-          {"num": 7, "tolORmargas": ["Zone Q", "Zone R", "Zone S"]},
-          {"num": 8, "tolORmargas": ["Zone T", "Zone U"]},
-          {"num": 9, "tolORmargas": ["Zone V", "Zone W", "Zone X"]}
+          {"num": 7, "tolORmargas": ["Tol Q", "Tol R", "Tol S"]},
+          {"num": 8, "tolORmargas": ["Tol T", "Tol U"]},
+          {"num": 9, "tolORmargas": ["Marga V", "Tol W", "Tol X"]}
         ]
       },
       {
         "name": "Birgunj",
         "wards": [
-          {"num": 10, "tolORmargas": ["Zone Y", "Zone Z", "Zone AA"]},
-          {"num": 11, "tolORmargas": ["Zone BB", "Zone CC"]},
-          {"num": 12, "tolORmargas": ["Zone DD", "Zone EE", "Zone FF"]}
+          {"num": 10, "tolORmargas": ["Tol Y", "Tol Z", "Tol AA"]},
+          {"num": 11, "tolORmargas": ["Tol BB", "Marga CC"]},
+          {"num": 12, "tolORmargas": ["Marga DD", "Tol EE", "Tol FF"]}
         ]
       }
     ]
