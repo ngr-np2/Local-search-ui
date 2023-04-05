@@ -1,11 +1,15 @@
 import Hero from "../sections/home/Hero";
-import Card from "../sections/home/PopularCatg";
+import PopularBusinessSection from "../sections/home/PopularBusinessSection";
+import PopularCatgSection from "../sections/home/PopularCatgSection";
+import PopularKeywordsSection from "../sections/home/PopularKeywordsSection";
 
 const Home = () => {
     return (
         <div className="mb-16">
-            <Hero/>
-            <Card/>
+            <Hero />
+            <PopularCatgSection />
+            <PopularKeywordsSection />
+            <PopularBusinessSection />
         </div>
     )
 }

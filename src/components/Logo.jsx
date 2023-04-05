@@ -14,7 +14,7 @@ animation: ${textclip} 10.9s linear infinite;
 const Logo = () => {
     return (
         <Link to="/">
-            <LSI className="text-white inline-block uppercase font-font-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-[length:200%_auto] bg-clip-text fill-transparent select-none">
+            <LSI className="text-white inline-block uppercase font-font-1 bg-gradient-to-r from-blue-500 via-purple-500 to-red-600 bg-[length:200%_auto] bg-clip-text fill-transparent select-none">
                 Local Search Nepal
             </LSI>
         </Link>

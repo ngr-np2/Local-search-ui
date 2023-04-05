@@ -1,10 +1,10 @@
 import { useState } from "react";
-import {provinces, NewYear} from "../assets/data.json";
+import { provinces, NewYear } from "../assets/data.json";
 
 const useGetListedFree = () => {
     const [businessName, setBusinessName] = useState('')
     const [businessEmail, setBusinessEmail] = useState('')
-
+    const [businessFullAddress, setBusinessFullAddress] = useState()
     const [province, setProvince] = useState('')
     const [city, setCity] = useState("");
     const [ward, setWard] = useState("");
@@ -47,6 +47,9 @@ const useGetListedFree = () => {
     }
     const handleBusinessEmail = (e) => {
         setBusinessEmail(e.target.value.slice(0, 20))
+    }
+    const handleBusinesFullAddress = (e) => {
+        setBusinessFullAddress(e.target.value)
     }
 
     const handleProvinceChange = (e) => {
@@ -218,6 +221,7 @@ const useGetListedFree = () => {
 
     // console.log(businessName, businessEmail, classification, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
     return {
+        handleBusinesFullAddress, businessFullAddress,
         handleProvinceChange, province, citysOptions,
         businessName, setBusinessName, businessEmail, setBusinessEmail, classification, setClassification, establishIn, setEstablishIn, city, setCity, ward, setWard, tolORmarga, setTolORmarga, website, setWebsite, WebsiteUrl, setWebsiteUrl, openAllDayAndWeek, setOpenAllDayAndWeek, openFrom, setOpenFrom, openTill, setOpenTill, handleBusinessName, handleBusinessEmail, handleCityChange, handleWardChange, wardsOptions, tolORmargasOptions, times, handleOpenTimeChange, handleCloseTimeChange, facebookLink, setFacebookLink,
         instagramLink, setInstagramLink,

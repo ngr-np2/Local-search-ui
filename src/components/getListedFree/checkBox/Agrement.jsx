@@ -12,7 +12,7 @@ const Agrement = () => {
                     <CheckBoxOutlined onClick={() => setAgree(!agree)} className={`${agree && "text-blue-600"} cursor-pointer`} />
             }
             <p className="p-0 m-0 text-base text-start font-font-8 cursor-pointer" onClick={() => setAgree(!agree)} >
-                I agree to the Terms & Conditions and Privacy Policy
+                I agree to the Terms &amp; Conditions and Privacy Policy
             </p>
         </div>
     )

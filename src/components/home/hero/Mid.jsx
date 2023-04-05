@@ -3,7 +3,7 @@ import { RiSearchLine } from "react-icons/ri"
 const Mid = () => {
   return (
     <div className="py-4 px-8 mb-24 grid place-content-center   mx-auto max-w-7xl w-11/12 backdrop-blur-[2px]">
-      <p className="text-gray-100 text-5xl my-5 font-font-3 font-bold select-none">Search. Find. Connect!</p>
+      <p className="text-gray-100 text-5xl my-5 font-font-3 font-bold select-none">Search . Find . Connect!</p>
       <div>
         <p className="text-gray-200 text-2xl my-8 font-font-6 font-extralight max-sm:hidden">Connect with businesses in Itahari by phone, address, website, email, maps, ratings, reviews and much more</p>
       </div>

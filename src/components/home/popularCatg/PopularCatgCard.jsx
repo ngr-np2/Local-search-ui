@@ -37,7 +37,7 @@ const PopularCatgCard = () => {
             {datas.map((data, idx) => (
                 <div
                     key={idx}
-                    className="relative max-w-xs bg-red-50 dark:bg-stone-900 rounded-lg shadow-md cursor-pointer group hover:shadow-lg"
+                    className="relative max-w-xs bg-stone-100 rounded-lg shadow-md cursor-pointer group hover:shadow-lg"
                 >
                     <div className="overflow-hidden h-56">
                         {!imageLoaded && <img src="/ITAHARI.jpeg"
@@ -53,13 +53,14 @@ const PopularCatgCard = () => {
                         />
                     </div>
                     <div
-                        className={`overflow-x-hidden -top-8 relative z-10 p-4 m-auto w-64 text-xl font-semibold   text-white overflow-ellipsis duration-500 ease-in-out bg-[#047a3c] group-hover:w-56 group-hover:text-gray-200 group-hover:bg-slate-900`}>
+                        title={data.name}
+                        className={` -top-8 relative z-10 p-4 m-auto w-64 text-xl font-semibold   text-white overflow-ellipsis duration-500 ease-in-out bg-[#047a3c] group-hover:w-56 group-hover:text-gray-200 group-hover:bg-gray-900`}>
                         <p className="overflow-hidden whitespace-nowrap text-ellipsis">
                             {data.name}
                         </p>
                     </div>
-                    <button
-                        className="px-4 py-2 mb-8 text-xs bg-green-50 text-stone-900 rounded-full shadow-md duration-500 ease-in-out group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
+                    <button title={`View Alll ${data.total} Business in this ${data.name} Category`}
+                        className="px-6 py-2 mb-8 text-xs bg-gray-50 text-stone-900 rounded-full shadow-md duration-500 ease-in-out group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
                         show All ({data.total})
                     </button>
                 </div>
