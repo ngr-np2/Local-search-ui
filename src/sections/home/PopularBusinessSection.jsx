@@ -1,69 +1,21 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import PopularBuninessComp from '../../components/home/PopularBuninessComp';
 const PopularBusinessSection = () => {
-  const [imageLoaded, setImageLoaded] = useState(false)
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  const handleImageError = () => {
-    console.log(`Failed to load image: ${src}`);
-  };
-  const datas = [
-    {
-      name: "Restaurant",
-      imgUrl: "https://plus.unsplash.com/premium_photo-1670333291529-f836a7c1accb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      total: 250
-    },
-    {
-      name: "Banks",
-      imgUrl: "https://plus.unsplash.com/premium_photo-1670333291529-f836a7c1accb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      total: 250
-    },
-    {
-      name: "Park",
-      imgUrl: "https://plus.unsplash.com/premium_photo-1670333291529-f836a7c1accb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      total: 250
-    },
-    {
-      name: "Service Center Service Center Service Center Service Center ",
-      imgUrl: "https://plus.unsplash.com/premium_photo-1670333291529-f836a7c1accb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      total: 250
-    }
-  ];
   return (
     <>
-      <div className="flex flex-wrap gap-9 justify-center items-center px-8 mt-16">
-        {
-          datas.map((data, idx) => (
+      <section className='mt-16 bg-slate-50'>
+        <div className="pt-8 mx-4 mb-9">
+          <p className="my-7 text-5xl leading-[60px] capitalize font-font-2 text-zinc-900">Trending Business</p>
+          <p className="my-4 text-base font-font-6 text-zinc-900">Explore trending businesses across NEPAl</p>
+        </div>
+        <div className='flex flex-wrap grid-cols-2 grid-rows-2 gap-3 justify-evenly place-items-center px-8 pb-8 m-auto w-full max-w-screen-xl xl:grid'>
+          <PopularBuninessComp />
+          <PopularBuninessComp />
+          <PopularBuninessComp />
+          <PopularBuninessComp />
+        </div>
+      </section>
 
-            <div key={idx}
-              className="relative max-w-xs rounded-lg shadow-md cursor-pointer bg-stone-100 group hover:shadow-lg"
-            >
-              <div className="overflow-hidden h-56">
-                {!imageLoaded && <img src="/ITAHARI.jpeg"
-                  className="mx-auto transition-all duration-500 ease-in-out group-hover:scale-105"
-                  alt="Placeholder" />}
-
-                <img
-                  onLoad={handleImageLoad}
-                  onError={handleImageError}
-                  src={data.imgUrl}
-                  alt="random"
-                  className={`object-cover mx-auto w-64 max-w-sm h-96 bg-cover transition-all duration-500 ease-in-out group-hover:scale-105`}
-                />
-                <div
-                  title={data.name}
-                  className={`absolute bottom-0 text-start z-10 p-4 m-auto w-64 text-xl font-semibold    overflow-ellipsis duration-500 ease-in-out text-white bg-[#2629271f]  group-hover:text-gray-200 group-hover:bg-[#2629271f]`}>
-                  <p className="overflow-hidden whitespace-nowrap text-ellipsis">
-                    {data.name}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
     </>
   )
 }
