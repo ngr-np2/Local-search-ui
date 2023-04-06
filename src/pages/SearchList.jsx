@@ -3,7 +3,9 @@ import ListSection from '../sections/Lists/ListSection'
 
 const ListsPage = () => {
   return (
-    <ListSection />
+    <div className='mt-8'>
+      <ListSection />
+    </div>
   )
 }
 

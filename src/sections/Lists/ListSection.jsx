@@ -11,11 +11,10 @@ const ListSection = () => {
                     <ListComp />
                 </div>
 
-                <sidebar className="sm:flex-[0.5] sm:ml-12 bg-gray-400">
+                <aside className="sm:flex-[0.5] sm:ml-12 bg-gray-400">
                     sidebar
-                </sidebar>
+                </aside>
             </div>
-
         </section>
     )
 }
