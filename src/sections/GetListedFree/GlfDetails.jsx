@@ -20,7 +20,7 @@ const GlfDetails = () => {
       </div>
       <div className="bg-[#181a20cf] sticky top-8 rounded-lg px-2 pb-5">
         <div className="mt-24 mb-9 text-3xl font-bold font-font-8">
-          <p className="pt-7 px-3 text-stone-200">List your company for free</p>
+          <p className="px-3 pt-7 text-stone-200">List your company for free</p>
         </div>
         <div className="m-5 mt-5 flex max-lg:flex-wrap gap-2 ease-in-out hover:-skew-y-2  duration-500   bg-[#1b1e27cf] px-8 py-8 rounded-md">
           <div className="max-w-xs">
@@ -32,8 +32,8 @@ const GlfDetails = () => {
             </p>
             <p className="text-gray-400">
               Imagine you have made your presence online through first local
-              search in <span class="before:block before:absolute hover:-skew-y-12  before:-inset-1 m-1  before:-skew-y-3 before:bg-green-600 relative inline-block">
-                <span class="relative cursor-pointer text-white">Nepal</span>
+              search in <span className="inline-block relative m-1 before:block before:absolute hover:-skew-y-12 before:-inset-1 before:-skew-y-3 before:bg-green-600">
+                <span className="relative text-white cursor-pointer">Nepal</span>
               </span>
             </p>
           </div>

@@ -10,7 +10,7 @@ const TrendingBuninessComp = () => {
                     <img
                         alt="Speaker"
                         src="/ITAHARI.jpeg"
-                        className="object-cover w-24 rounded-lg h-19"
+                        className="object-cover w-24 rounded-lg duration-150 h-19 hover:scale-105"
                     />
                 </Link>
 

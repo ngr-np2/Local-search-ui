@@ -18,7 +18,7 @@ const BusinessFullAddress = () => {
                         className="cursor-pointer peer ease-in duration-200 bg-[#1a1f2d] w-full outline-none p-3 h-12 border-b-[1px] border-[1px]
                         border-gray-300 appearance-none text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
                     >
-                        <option value="">select city ✳️</option>
+                        <option value="">select province ✳️</option>
                         {provinces.map((province) => (
                             <option key={province.name} value={province.name}>
                                 {province.name}
