@@ -37,7 +37,7 @@ const PopularCatgCard = () => {
             {datas.map((data, idx) => (
                 <div
                     key={idx}
-                    className="relative max-w-xs bg-stone-100 rounded-lg shadow-md cursor-pointer group hover:shadow-lg"
+                    className="relative max-w-xs rounded-lg shadow-md cursor-pointer bg-stone-100 group hover:shadow-lg"
                 >
                     <div className="overflow-hidden h-56">
                         {!imageLoaded && <img src="/ITAHARI.jpeg"
@@ -49,7 +49,7 @@ const PopularCatgCard = () => {
                             onError={handleImageError}
                             src={data.imgUrl}
                             alt="random"
-                            className={`mx-auto transition-all h-96 max-w-sm w-64 bg-cover object-cover duration-500 ease-in-out group-hover:scale-105`}
+                            className={`object-cover mx-auto w-64 max-w-sm h-96 bg-cover transition-all duration-500 ease-in-out group-hover:scale-105`}
                         />
                     </div>
                     <div
@@ -60,8 +60,8 @@ const PopularCatgCard = () => {
                         </p>
                     </div>
                     <button title={`View Alll ${data.total} Business in this ${data.name} Category`}
-                        className="px-6 py-3 mb-6 text-xs bg-gray-50 text-stone-900 rounded-full shadow-md duration-500 ease-in-out group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
-                        show All ({data.total})
+                        className="px-6 py-3 mb-6 text-xs bg-gray-50 rounded-full shadow-md duration-500 ease-in-out text-stone-900 group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
+                        show All &#40;{data.total}&#41;
                     </button>
                 </div>
             ))}

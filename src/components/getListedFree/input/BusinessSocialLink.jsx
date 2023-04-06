@@ -1,4 +1,3 @@
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import useGetListedFree from '../../../Hooks/useGetListedFree';
 
 const BusinessSocialLink = () => {
@@ -7,7 +6,9 @@ const BusinessSocialLink = () => {
         <>
             <div className="flex gap-10 justify-center m-auto mt-10 w-full max-lg:flex-wrap">
                 <div title="enter instagram username only" className="relative z-0 w-full group">
-                    <AlternateEmailIcon className="absolute top-[0.9rem] -left-1" fontSize="small" />
+                    <div className="absolute text-[1.5rem] -left-1" fontSize="small">
+                        &#64;
+                    </div>
                     <input
                         required
                         type="text"
@@ -25,7 +26,9 @@ const BusinessSocialLink = () => {
                     </label>
                 </div>
                 <div title="Twitter username only" className="relative z-0 w-full group">
-                    <AlternateEmailIcon className="absolute top-[0.9rem] -left-1" fontSize="small" />
+                    <div className="absolute text-[1.5rem] -left-1" fontSize="small">
+                        &#64;
+                    </div>
                     <input
                         required
                         type="text"
@@ -45,7 +48,9 @@ const BusinessSocialLink = () => {
             </div>
             <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
                 <div title="facebook id username only" className="relative z-0 w-full group">
-                    <AlternateEmailIcon className="absolute top-[0.9rem] -left-1" fontSize="small" />
+                    <div className="absolute text-[1.5rem] -left-1" fontSize="small">
+                        &#64;
+                    </div>
 
                     <input
                         required
