@@ -5,7 +5,7 @@ const PopularKeywordsSection = () => {
     return (
 
         <section className="bg-stone-200">
-            <div className='py-8'>
+            <div className='px-2 pt-8 pb-4'>
                 <p className='my-7 text-5xl capitalize font-font-2 text-zinc-900'>Top KeyWords</p>
             </div>
             <div className="mx-auto w-full max-w-screen-xl">

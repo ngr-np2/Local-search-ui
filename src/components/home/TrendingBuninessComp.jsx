@@ -2,7 +2,7 @@ import React from 'react'
 import ShareIcon from '@mui/icons-material/Share';
 import { Link } from 'react-router-dom';
 
-const PopularBuninessComp = () => {
+const TrendingBuninessComp = () => {
     return (
         <div className="justify-center items-center bg-white rounded-xl border-2 border-gray-100">
             <div className="flex max-sm:flex-col gap-4 max-w-[500px] items-start p-4 sm:p-6 lg:p-8">
@@ -29,16 +29,16 @@ const PopularBuninessComp = () => {
             </div>
 
 
-            <div className="flex justify-end">
+            <div className="flex justify-end shadow-sm cursor-pointer">
                 <strong
-                    className="-mr-[2px] -mb-[2px] inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                    className="hover:scale-105 hover:shadow-xl inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
                 >
-                    <ShareIcon />
-                    <span className="text-[10px] font-medium sm:text-xs">Solved!</span>
+                    <ShareIcon  fontSize='small'/>
+                    <span className="text-[10px] font-medium sm:text-xs">Share</span>
                 </strong>
             </div>
         </div>
     )
 }
 
-export default PopularBuninessComp
+export default TrendingBuninessComp

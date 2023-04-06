@@ -60,7 +60,7 @@ const PopularCatgCard = () => {
                         </p>
                     </div>
                     <button title={`View Alll ${data.total} Business in this ${data.name} Category`}
-                        className="px-6 py-2 mb-8 text-xs bg-gray-50 text-stone-900 rounded-full shadow-md duration-500 ease-in-out group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
+                        className="px-6 py-3 mb-6 text-xs bg-gray-50 text-stone-900 rounded-full shadow-md duration-500 ease-in-out group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white">
                         show All ({data.total})
                     </button>
                 </div>

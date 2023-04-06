@@ -1,7 +1,7 @@
 import Footer from "../sections/Footer";
 import AdvertiseWithUs from "../sections/home/AdvertiseWithUs";
 import Hero from "../sections/home/Hero";
-import PopularBusinessSection from "../sections/home/PopularBusinessSection";
+import TrendingBusinessSection from "../sections/home/TrendingBusinessSection";
 import PopularCatgSection from "../sections/home/PopularCatgSection";
 import PopularKeywordsSection from "../sections/home/PopularKeywordsSection";
 
@@ -12,7 +12,7 @@ const Home = () => {
             <PopularCatgSection />
             <PopularKeywordsSection />
             <AdvertiseWithUs />
-            <PopularBusinessSection />
+            <TrendingBusinessSection />
             <Footer />
         </main>
     )

@@ -29,10 +29,10 @@ const AdvertiseWithUs = () => {
     ];
     return (
         <section>
-            <div className='py-8 mx-5'>
+            <div className='pt-8 pb-4 mx-5'>
                 <p className='my-7 leading-[60px] text-5xl capitalize font-font-2 text-zinc-900'>Advertise with Us</p>
             </div>
-            <div className="flex flex-wrap gap-9 justify-center items-center px-8 rounded-sm">
+            <div className="flex flex-wrap gap-9 justify-center items-center px-8 py-4 rounded-sm">
                 {
                     datas.map((data, idx) => (
 
@@ -55,8 +55,8 @@ const AdvertiseWithUs = () => {
                                 <div
                                     title={data.name}
                                     className={`absolute bottom-0 overflow-hidden rounded-lg text-start z-10 p-4 m-auto w-64 text-xl font-semibold    overflow-ellipsis duration-500 ease-in-out text-white bg-[#2629271f]  group-hover:text-gray-100 group-hover:bg-[#21242231]`}>
-                                    <span className="absolute right-0 -mt-5 w-8 h-32 bg-white opacity-20 transition-all duration-1000 transform rotate-12 translate-x-12 group-focus-visible:-translate-x-40 group-hover:-translate-x-40 group-active:translate-x-40 ease"></span>
-                                    <p className="overflow-hidden whitespace-nowrap rounded-lg text-ellipsis">
+                                    <span className="absolute right-0 -mt-5 w-8 h-32 bg-white opacity-20 transition-all duration-1000 transform rotate-12 translate-x-12 group-focus-visible:-translate-x-40 group-hover:-translate-x-52 group-active:translate-x-40 ease"></span>
+                                    <p className="overflow-hidden text-2xl whitespace-nowrap rounded-lg duration-1000 ease-in-out group-hover:pl-6 font-font-7 text-ellipsis">
                                         {data.name}
                                     </p>
                                 </div>
