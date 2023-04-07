@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import ShareIcon from '@mui/icons-material/Share';
 import Star from '@mui/icons-material/Star';
+import { parse, isBefore, isAfter, differenceInMinutes, addDays } from 'date-fns';
+
 const ListComp = () => {
     const data = {
 
@@ -20,9 +22,10 @@ const ListComp = () => {
         ,
 
         time: {
-            from: "09:00",
-            to: "50:00"
+            from: "09:00 am",
+            to: "05:00 pm"
         },
+        days: [1, 2, 3, 4, 6],
         info: {
             num: "9812345678",
             site: "https://vrittechnologies.com/",
@@ -30,16 +33,37 @@ const ListComp = () => {
             loc: "https://goo.gl/maps/NBVQKYFpene4nfQt9"
         }
     }
-    const date = new Date()
-    const day = date.getDay()
-    const hour = date.getHours()
-    const min = date.getTime()
-    console.log(min)
 
 
+    const openingTime = parse(data.time.from, 'hh:mm a', new Date());
+    let closingTime = parse(data.time.to, 'hh:mm a', new Date());
 
+    if (isBefore(closingTime, openingTime)) {
+        closingTime = addDays(closingTime, 1);
+    }
+
+    const now = new Date();
+
+    const currentDay = now.getDay();
+    const isValidDay = data.days.includes(currentDay);
+
+    let status;
+    let timeRemaining;
+    if (isValidDay && isAfter(now, openingTime) && isBefore(now, closingTime)) {
+        status = 'open';
+        timeRemaining = differenceInMinutes(closingTime, now);
+    } else {
+        status = 'closed';
+        timeRemaining = differenceInMinutes(openingTime, now);
+    }
+    const hoursRemaining = Math.floor(timeRemaining / 60);
+    const minutesRemaining = timeRemaining % 60;
+    console.log(hoursRemaining, minutesRemaining)
     return (
         <div className="justify-center items-center bg-white rounded-xl border-2 border-gray-100">
+
+            <p>Shop is currently {status}.</p>
+
             <div className="flex gap-4 items-start p-4 max-sm:flex-col sm:p-6 lg:p-8">
                 <Link to="#" className="block shrink-0">
                     <img
