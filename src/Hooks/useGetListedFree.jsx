@@ -176,7 +176,7 @@ const useGetListedFree = () => {
 
     const times = Array.from({ length: 24 * 2 }, (_, i) => {
         const hour = Math.floor(i / 2);
-        const minute = i % 2 === 0 ? "" : "30";
+        const minute = i % 2 === 0 ? "00" : "30";
         const suffix = hour >= 12 ? "PM" : "AM";
         const hour12 = hour % 12 === 0 ? 12 : hour % 12;
         const time = `${hour12.toString().padStart(2, '0')}:${minute} ${suffix}`;
