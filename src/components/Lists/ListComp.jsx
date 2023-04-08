@@ -4,6 +4,7 @@ import { parse, isBefore, addMinutes, differenceInMinutes } from 'date-fns';
 import FacebookRounded from '@mui/icons-material/FacebookRounded';
 import Twitter from '@mui/icons-material/Twitter';
 import Instagram from '@mui/icons-material/Instagram';
+import { WiTime1, WiTime2, WiTime3, WiTime4, WiTime5, WiTime6, WiTime7, WiTime8, WiTime9, WiTime10, WiTime11, WiTime12 } from "react-icons/wi";
 
 
 const ListComp = () => {
@@ -46,6 +47,7 @@ const ListComp = () => {
     let minutesToOpen;
     let minToClose;
 
+
     if (data.days.includes(currentDay)) {
         if (isBefore(now, openingTime)) {
             minutesToOpen = differenceInMinutes(openingTime, now);
@@ -60,12 +62,34 @@ const ListComp = () => {
             timeRemaining = differenceInMinutes(addMinutes(openingTime, 1440), now); // add 24 hours to openingTime
         }
     }
-    const hoursRemaining = Math.floor(timeRemaining / 60);
-    const minutesRemaining = timeRemaining % 60;
-    console.log("clo", minToClose)
-    console.log("opn", minutesToOpen)
-    console.log('rem', hoursRemaining, ":", minutesRemaining)
-    console.log(status)
+    const fromHour = parseInt(data.time.from.split(":")[0]);
+    const toHour = parseInt(data.time.to.split(":")[0]);
+
+    const iconMap = {
+        1: WiTime1,
+        2: WiTime2,
+        3: WiTime3,
+        4: WiTime4,
+        5: WiTime5,
+        6: WiTime6,
+        7: WiTime7,
+        8: WiTime8,
+        9: WiTime9,
+        10: WiTime10,
+        11: WiTime11,
+        12: WiTime12,
+    };
+
+    const FromIcon = iconMap[fromHour % 12 || 12];
+    const ToIcon = iconMap[toHour % 12 || 12];
+    // const hoursRemaining = Math.floor(timeRemaining / 60);
+    // const minutesRemaining = timeRemaining % 60;
+
+    // console.log("clo", minToClose)
+    // console.log("opn", minutesToOpen)
+    // console.log('rem', hoursRemaining, ":", minutesRemaining)
+    // console.log(status)
+    // console.log(fromHour)
     const timeClass = 'px-2 py-[2px] text-white rounded-md tracking-widest'
     return (
         <div className="pt-8 bg-white rounded-xl border-2 border-gray-100">
@@ -79,7 +103,7 @@ const ListComp = () => {
                 </Link>
                 <div className='flex flex-wrap w-full'>
                     <div className='flex-[2]'>
-                        <div className="flex gap-1 mb-1 font-medium text-start sm:text-lg">
+                        <div className="flex gap-1 mb-1 font-medium text-gray-700 text-start sm:text-lg">
                             <Link to="#" className="mr-4 hover:underline">
                                 <h3 className='text-2xl font-bold text-gray-600 font-font-8'>{data.name}</h3>
                             </Link>
@@ -104,14 +128,16 @@ const ListComp = () => {
                                 <div
                                     className='pt-4 w-full cursor-pointer'>
                                     <div className='flex flex-wrap'>
-                                        <div className='mx-3 w-40 text-start'> 🕔 From:
+                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'>
+                                            <FromIcon className={`${status === "open" && "text-green-500"}`} /> 
+                                            From:
                                             <b className={`${status === "open" ? "text-green-500" : "text-gray-600"}`}>
-                                                &nbsp; {data.time.from}
+                                                &nbsp;{data.time.from}
                                             </b>
                                         </div>
-                                        <div className='mx-3 w-40 text-start'>🕔 To:
+                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'><ToIcon className={`${status === "closed" && "text-red-500"}`} /> To:
                                             <b className={`${status === "closed" ? "text-red-500" : "text-gray-600"}`}>
-                                                &nbsp; {data.time.to}
+                                                &nbsp;{data.time.to}
                                             </b>
                                         </div>
                                     </div>
@@ -145,12 +171,12 @@ const ListComp = () => {
                 </strong><strong
                     className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
                 >
-                    <Instagram fontSize='small' sx={{ color: "#FD1D1D" }} />
-                    <span className="text-[10px] font-medium sm:text-xs">Share</span>
+                    <Instagram fontSize='small' sx={{ color: "#da1b1b", background: 'white' }} className='rounded-md' />
+                    <span className="text-[10px]  font-medium sm:text-xs">Share</span>
                 </strong><strong
                     className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
                 >
-                    <Twitter fontSize='small' sx={{ color: '#1DA1F2' }} />
+                    <Twitter fontSize='small' sx={{ color: '#1DA1F2', background: "white" }} className='rounded-lg' />
                     <span className="text-[10px] font-medium sm:text-xs">Share</span>
                 </strong>
             </div>
