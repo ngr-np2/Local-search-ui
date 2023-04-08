@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import ShareIcon from '@mui/icons-material/Share';
 import Star from '@mui/icons-material/Star';
-import { parse, isBefore, isAfter, differenceInMinutes, addDays } from 'date-fns';
+import { parse, isBefore, addMinutes, differenceInMinutes, addDays } from 'date-fns';
 
 const ListComp = () => {
     const data = {
@@ -22,10 +21,10 @@ const ListComp = () => {
         ,
 
         time: {
-            from: "09:00 am",
-            to: "05:00 pm"
+            from: "09:12 am",
+            to: "09:15 am"
         },
-        days: [1, 2, 3, 4, 6],
+        days: [1, 2, 3, 6, 4],
         info: {
             num: "9812345678",
             site: "https://vrittechnologies.com/",
@@ -36,33 +35,53 @@ const ListComp = () => {
 
 
     const openingTime = parse(data.time.from, 'hh:mm a', new Date());
-    let closingTime = parse(data.time.to, 'hh:mm a', new Date());
-
-    if (isBefore(closingTime, openingTime)) {
-        closingTime = addDays(closingTime, 1);
-    }
-
+    const closingTime = parse(data.time.to, 'hh:mm a', new Date());
     const now = new Date();
 
     const currentDay = now.getDay();
-    const isValidDay = data.days.includes(currentDay);
-
-    let status;
-    let timeRemaining;
-    if (isValidDay && isAfter(now, openingTime) && isBefore(now, closingTime)) {
-        status = 'open';
-        timeRemaining = differenceInMinutes(closingTime, now);
-    } else {
-        status = 'closed';
-        timeRemaining = differenceInMinutes(openingTime, now);
+    let status = 'closed';
+    let timeRemaining = null;
+    let minutesToOpen
+    if (data.days.includes(currentDay)) {
+        if (isBefore(now, openingTime)) {
+            minutesToOpen = differenceInMinutes(openingTime, now);
+            console.log(minutesToOpen)
+            if (minutesToOpen < 30) {
+                status = `opening_soon`;
+                timeRemaining = minutesToOpen
+            } else {
+                status = 'closed';
+                timeRemaining = minutesToOpen;
+            }
+        } else if (isBefore(now, closingTime)) {
+            status = 'open';
+        } else {
+            status = 'closed';
+            timeRemaining = differenceInMinutes(addDays(openingTime, 1), now);
+        }
     }
     const hoursRemaining = Math.floor(timeRemaining / 60);
     const minutesRemaining = timeRemaining % 60;
-    console.log(hoursRemaining, minutesRemaining)
     return (
         <div className="justify-center items-center bg-white rounded-xl border-2 border-gray-100">
 
-            <p>Shop is currently {status}.</p>
+            <div>
+                {status === 'open' && <p>{data.name} is currently open.</p>}
+                {status === 'closed' && timeRemaining !== undefined && (
+                    <p>{data.name} is currently closed. It will open in {hoursRemaining} hour.</p>
+                )}
+                {
+                    status === 'opening_soon' && (
+                        <p>{data.name} openign soon</p>
+                    )
+                }
+                {status === 'closed' && timeRemaining === undefined && (
+                    <p>{data.name} is currently closed.</p>
+                )}
+                {status === `opening soon in ${hoursRemaining} hour` && (
+                    <p>{status}ss</p>
+                )}
+            </div>
 
             <div className="flex gap-4 items-start p-4 max-sm:flex-col sm:p-6 lg:p-8">
                 <Link to="#" className="block shrink-0">
