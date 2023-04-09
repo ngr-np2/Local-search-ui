@@ -5,8 +5,9 @@ import FacebookRounded from '@mui/icons-material/FacebookRounded';
 import Twitter from '@mui/icons-material/Twitter';
 import Instagram from '@mui/icons-material/Instagram';
 import { WiTime1, WiTime2, WiTime3, WiTime4, WiTime5, WiTime6, WiTime7, WiTime8, WiTime9, WiTime10, WiTime11, WiTime12 } from "react-icons/wi";
-
-
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import LanguageIcon from '@mui/icons-material/Language';
+import EmailIcon from '@mui/icons-material/Email';
 const ListComp = () => {
     const data = {
 
@@ -46,6 +47,7 @@ const ListComp = () => {
     let timeRemaining = null;
     let minutesToOpen;
     let minToClose;
+    // console.log(currentDay)
 
 
     if (data.days.includes(currentDay)) {
@@ -61,6 +63,8 @@ const ListComp = () => {
             status = 'closed';
             timeRemaining = differenceInMinutes(addMinutes(openingTime, 1440), now); // add 24 hours to openingTime
         }
+    } else {
+        status = 'closed_today'
     }
     const fromHour = parseInt(data.time.from.split(":")[0]);
     const toHour = parseInt(data.time.to.split(":")[0]);
@@ -92,7 +96,7 @@ const ListComp = () => {
     // console.log(fromHour)
     const timeClass = 'px-2 py-[2px] text-white rounded-md tracking-widest'
     return (
-        <div className="pt-8 bg-white rounded-xl border-2 border-gray-100">
+        <div className="pt-8 pb-5 bg-white rounded-xl border-2 border-gray-100">
             <div className="flex relative gap-4 items-start px-4 pt-4 pb-0 max-sm:flex-col sm:px-6 lg:px-8">
                 <Link to="#" className="block shrink-0">
                     <img
@@ -129,14 +133,14 @@ const ListComp = () => {
                                     className='pt-4 w-full cursor-pointer'>
                                     <div className='flex flex-wrap'>
                                         <div className='flex gap-1 items-center mx-3 w-40 text-start'>
-                                            <FromIcon className={`${status === "open" && "text-green-500"}`} /> 
+                                            <FromIcon className={`${status === "open" && "text-green-500"}`} />
                                             From:
                                             <b className={`${status === "open" ? "text-green-500" : "text-gray-600"}`}>
                                                 &nbsp;{data.time.from}
                                             </b>
                                         </div>
-                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'><ToIcon className={`${status === "closed" && "text-red-500"}`} /> To:
-                                            <b className={`${status === "closed" ? "text-red-500" : "text-gray-600"}`}>
+                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'><ToIcon className={`${status === "closed" || "closed_today" && "text-red-500"}`} /> To:
+                                            <b className={`${status === "closed" || "closed_today" ? "text-red-500" : "text-gray-600"}`}>
                                                 &nbsp;{data.time.to}
                                             </b>
                                         </div>
@@ -148,9 +152,9 @@ const ListComp = () => {
                     </div>
                 </div>
                 <div className='absolute right-3 -top-5 text-gray-900'>
-                    {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>open</p>}
+                    {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>Open Now</p>}
                     {status === 'closed' && (
-                        <p className={`bg-red-500 ${timeClass}`}>currently closed</p>
+                        <p className={`bg-red-500 ${timeClass}`}>Currently Closed</p>
                     )}
                     {status === 'opening_soon' && (
                         <p className={`bg-green-700 ${timeClass}`}>Openign Soon</p>
@@ -158,11 +162,32 @@ const ListComp = () => {
                     {status === 'closing_soon' && (
                         <p className={`bg-red-700 ${timeClass}`}>Closeing Soon</p>
                     )}
+                    {status === 'closed_today' && (
+                        <p className={`bg-red-500 ${timeClass}`}>Closed today</p>
+                    )}
                 </div>
             </div>
 
 
             <div className="flex flex-wrap gap-3 justify-start px-6 pt-3 pb-5 shadow-sm cursor-pointer">
+                <strong
+                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                >
+                    <LocalPhoneIcon fontSize='small' />
+                    <span className="text-[10px] font-medium sm:text-xs">Calll Us</span>
+                </strong><strong
+                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                >
+                    <LanguageIcon fontSize='small' />
+                    <span className="text-[10px]  font-medium sm:text-xs">Website</span>
+                </strong><strong
+                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                >
+                    <EmailIcon fontSize='small' />
+                    <span className="text-[10px] font-medium sm:text-xs">Share</span>
+                </strong>
+            </div>
+            {/* <div className="flex flex-wrap gap-3 justify-start px-6 pt-3 pb-5 shadow-sm cursor-pointer">
                 <strong
                     className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
                 >
@@ -179,7 +204,7 @@ const ListComp = () => {
                     <Twitter fontSize='small' sx={{ color: '#1DA1F2', background: "white" }} className='rounded-lg' />
                     <span className="text-[10px] font-medium sm:text-xs">Share</span>
                 </strong>
-            </div>
+            </div> */}
         </div>
     )
 }
