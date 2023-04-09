@@ -29,7 +29,7 @@ const ListComp = () => {
             from: "09:00 am",
             to: "05:00 pm"
         },
-        days: [0, 2, 3, 6, 4],
+        days: [1, 2, 3, 6, 4],
         info: {
             num: "9812345678",
             site: "https://vrittechnologies.com/",
@@ -143,8 +143,8 @@ const ListComp = () => {
                                                 &nbsp;{data.time.from}
                                             </b>
                                         </div>
-                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'><ToIcon className={`${status === "closed" || "closed_today" && "text-red-500"}`} /> To:
-                                            <b className={`${status === "closed" || "closed_today" ? "text-red-500" : "text-gray-600"}`}>
+                                        <div className='flex gap-1 items-center mx-3 w-40 text-start'><ToIcon className={`${status === "closed" || status === "closed_today" ? "text-red-500" : "text-neutral-900"}`} /> To:
+                                            <b className={`${status === "closed" || status === "closed_today" ? "text-red-500" : "text-gray-600"}`}>
                                                 &nbsp;{data.time.to}
                                             </b>
                                         </div>
