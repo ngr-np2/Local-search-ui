@@ -13,7 +13,7 @@ const ListComp = () => {
 
         name: "Vrit tech"
         ,
-        location: "pargati nagar road, sheenagar marga, ward/tol 8, kathmandu, Bagamati province"
+        location: "pragati nagar road, sheenagar marga, ward/tol 8, kathmandu, Bagmati province"
         ,
 
         catg: ["software company", "Training Institute", "Recruiting Agencies"]
@@ -29,7 +29,7 @@ const ListComp = () => {
             from: "09:00 am",
             to: "05:00 pm"
         },
-        days: [1, 2, 3, 6, 4],
+        days: [0, 2, 3, 6, 4],
         info: {
             num: "9812345678",
             site: "https://vrittechnologies.com/",
@@ -96,7 +96,7 @@ const ListComp = () => {
     // console.log('rem', hoursRemaining, ":", minutesRemaining)
     // console.log(status)
     // console.log(fromHour)
-    const timeClass = "px-2 py-[2px] text-white rounded-md tracking-widest before:content-[''] before:absolute before:top-0 before:bg-blue-500 after:flex after:bg-blue-300"
+    const timeClass = "px-[0.4rem] pb-[0.1rem] pt-1 text-white rounded-md tracking-widest text-xs font-font-11"
     const bottonStyle = `hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white`
     const bottonTextStyle = `text-[10px] max-sm:hidden font-medium sm:text-xs font-font-11`
     return (
@@ -155,26 +155,27 @@ const ListComp = () => {
                         </div>
                     </div>
                 </div>
-                <div className='absolute right-9 top-10 text-gray-900'>
-                    <div class="relative h-8">
+                <div className='absolute right-9 text-gray-900 top-15 max-sm:top-10'>
+                    <div class="relative z-10 h-8">
                         {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>Open Now</p>}
                         {status === 'closed' && (
-                            <p className={`bg-red-500 ${timeClass}`}>Currently Closed</p>
+                            <p style={{ paddingLeft: "11px", paddingRight: "11px" }} className={`bg-red-500 ${timeClass}`}>Closed</p>
                         )}
                         {status === 'opening_soon' && (
-                            <p className={`bg-green-700 ${timeClass}`}>Openign Soon</p>
+                            <p className={`bg-green-700 text-[9px] ${timeClass}`}>Openign Soon</p>
                         )}
                         {status === 'closing_soon' && (
-                            <p className={`bg-red-700 ${timeClass}`}>Closeing Soon</p>
+                            <p className={`bg-red-700 text-[9px] ${timeClass}`}>Closeing Soon</p>
                         )}
                         {status === 'closed_today' && (
-                            <p className={`bg-red-500 ${timeClass}`}>Closed today</p>
+                            <p className={`bg-red-500 text-[9px] ${timeClass}`}>Closed today</p>
                         )}
-                        <div class="absolute bottom-0 -top-6 left-2/3 w-1 h-9 bg-gray-500 transform -translate-x-1/2"></div>
-                        <div class="absolute bottom-0 -top-6 left-1/3 w-1 h-9 bg-gray-500 transform -translate-x-1/2"></div>
-                        <span class="absolute -top-6 left-2/3 w-3 h-3 bg-black rounded-full transform rotate-45 -translate-x-1/2 -translate-y-1/2"></span>
-                        <span class="absolute -top-6 left-1/3 w-3 h-3 bg-black rounded-full transform -translate-x-1/2 -translate-y-1/2 rotate-135"></span>
-                        <span class="absolute bottom-3 left-1/2 w-3 h-3 bg-black rounded-full transform rotate-45 -translate-x-1/2 -translate-y-full"></span>
+
+                        <div style={{ transform: 'rotate(-45deg)' }} class="-z-10 absolute bottom-0 -top-7 left-2/3 w-[3px] h-9 bg-gray-500 transform -translate-x-1/2"></div>
+                        <div style={{ transform: 'rotate(45deg)' }} class="-z-10 absolute bottom-0 -top-7 left-1/3 w-[3px] h-9 bg-gray-500 transform -translate-x-1/2"></div>
+                        <span class="absolute top-0 left-3/4 w-1 h-1 bg-black rounded-full transform translate-x-1 translate-y-[0.10rem]"></span>
+                        <span class="absolute top-0 left-1/4 w-1 h-1 bg-black rounded-full transform -translate-x-[0.29rem] translate-y-[0.10rem]"></span>
+                        <span class="absolute -top-[1.1rem] left-1/2 w-3 h-3 bg-black rounded-full transform -translate-x-1/3 -translate-y-full"></span>
                     </div>
                 </div>
 
