@@ -66,6 +66,10 @@ const ListComp = () => {
     } else {
         status = 'closed_today'
     }
+    // const hoursRemaining = Math.floor(timeRemaining / 60);
+    // const minutesRemaining = timeRemaining % 60;
+
+
     const fromHour = parseInt(data.time.from.split(":")[0]);
     const toHour = parseInt(data.time.to.split(":")[0]);
 
@@ -86,15 +90,15 @@ const ListComp = () => {
 
     const FromIcon = iconMap[fromHour % 12 || 12];
     const ToIcon = iconMap[toHour % 12 || 12];
-    // const hoursRemaining = Math.floor(timeRemaining / 60);
-    // const minutesRemaining = timeRemaining % 60;
 
     // console.log("clo", minToClose)
     // console.log("opn", minutesToOpen)
     // console.log('rem', hoursRemaining, ":", minutesRemaining)
     // console.log(status)
     // console.log(fromHour)
-    const timeClass = 'px-2 py-[2px] text-white rounded-md tracking-widest'
+    const timeClass = "px-2 py-[2px] text-white rounded-md tracking-widest before:content-[''] before:absolute before:top-0 before:bg-blue-500 after:flex after:bg-blue-300"
+    const bottonStyle = `hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white`
+    const bottonTextStyle = `text-[10px] max-sm:hidden font-medium sm:text-xs font-font-11`
     return (
         <div className="pt-8 pb-5 bg-white rounded-xl border-2 border-gray-100">
             <div className="flex relative gap-4 items-start px-4 pt-4 pb-0 max-sm:flex-col sm:px-6 lg:px-8">
@@ -151,40 +155,50 @@ const ListComp = () => {
                         </div>
                     </div>
                 </div>
-                <div className='absolute right-3 -top-5 text-gray-900'>
-                    {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>Open Now</p>}
-                    {status === 'closed' && (
-                        <p className={`bg-red-500 ${timeClass}`}>Currently Closed</p>
-                    )}
-                    {status === 'opening_soon' && (
-                        <p className={`bg-green-700 ${timeClass}`}>Openign Soon</p>
-                    )}
-                    {status === 'closing_soon' && (
-                        <p className={`bg-red-700 ${timeClass}`}>Closeing Soon</p>
-                    )}
-                    {status === 'closed_today' && (
-                        <p className={`bg-red-500 ${timeClass}`}>Closed today</p>
-                    )}
+                <div className='absolute right-9 top-10 text-gray-900'>
+                    <div class="relative h-8">
+                        {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>Open Now</p>}
+                        {status === 'closed' && (
+                            <p className={`bg-red-500 ${timeClass}`}>Currently Closed</p>
+                        )}
+                        {status === 'opening_soon' && (
+                            <p className={`bg-green-700 ${timeClass}`}>Openign Soon</p>
+                        )}
+                        {status === 'closing_soon' && (
+                            <p className={`bg-red-700 ${timeClass}`}>Closeing Soon</p>
+                        )}
+                        {status === 'closed_today' && (
+                            <p className={`bg-red-500 ${timeClass}`}>Closed today</p>
+                        )}
+                        <div class="absolute bottom-0 -top-6 left-2/3 w-1 h-9 bg-gray-500 transform -translate-x-1/2"></div>
+                        <div class="absolute bottom-0 -top-6 left-1/3 w-1 h-9 bg-gray-500 transform -translate-x-1/2"></div>
+                        <span class="absolute -top-6 left-2/3 w-3 h-3 bg-black rounded-full transform rotate-45 -translate-x-1/2 -translate-y-1/2"></span>
+                        <span class="absolute -top-6 left-1/3 w-3 h-3 bg-black rounded-full transform -translate-x-1/2 -translate-y-1/2 rotate-135"></span>
+                        <span class="absolute bottom-3 left-1/2 w-3 h-3 bg-black rounded-full transform rotate-45 -translate-x-1/2 -translate-y-full"></span>
+                    </div>
                 </div>
+
+
             </div>
 
 
             <div className="flex flex-wrap gap-3 justify-start px-6 pt-3 pb-5 shadow-sm cursor-pointer">
                 <strong
-                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                    className={bottonStyle}
                 >
                     <LocalPhoneIcon fontSize='small' />
-                    <span className="text-[10px] font-medium sm:text-xs">Calll Us</span>
+                    <span className={bottonTextStyle}>Calll Us</span>
                 </strong><strong
-                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                    className={bottonStyle}
                 >
                     <LanguageIcon fontSize='small' />
-                    <span className="text-[10px]  font-medium sm:text-xs">Website</span>
-                </strong><strong
-                    className="hover:shadow-xl shadow-lg hover:gap-2 duration-100 inline-flex items-center gap-1 rounded-tl-xl rounded-br-xl bg-green-600 py-1.5 px-3 text-white"
+                    <span className={bottonTextStyle}>Website</span>
+                </strong>
+                <strong
+                    className={bottonStyle}
                 >
                     <EmailIcon fontSize='small' />
-                    <span className="text-[10px] font-medium sm:text-xs">Share</span>
+                    <span className={bottonTextStyle}>Email Us</span>
                 </strong>
             </div>
             {/* <div className="flex flex-wrap gap-3 justify-start px-6 pt-3 pb-5 shadow-sm cursor-pointer">
