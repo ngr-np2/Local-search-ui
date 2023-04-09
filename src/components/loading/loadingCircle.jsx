@@ -34,7 +34,7 @@ const LoadingCircle = () => {
   return (
     <>
       {loading &&
-        <div className="fixed z-50 mt-9 w-screen text-gray-300">
+        <div className="fixed text-center z-50 mt-9 w-screen text-gray-300">
           <div className="inline-block relative w-20 h-20 lds-ring">
             <Loader />
 

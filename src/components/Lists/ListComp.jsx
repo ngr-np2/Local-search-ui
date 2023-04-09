@@ -8,88 +8,64 @@ import { WiTime1, WiTime2, WiTime3, WiTime4, WiTime5, WiTime6, WiTime7, WiTime8,
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import LanguageIcon from '@mui/icons-material/Language';
 import EmailIcon from '@mui/icons-material/Email';
+import useTimeSchedule from '../../Hooks/useTimeSchedule';
+import datas from '../../assets/data.json'
 const ListComp = () => {
-    const data = {
+    const data = datas.details[0]
+    // console.log('1',data.time)
+    const {status,FromIcon, ToIcon } = useTimeSchedule()
 
-        name: "Vrit tech"
-        ,
-        location: "pragati nagar road, sheenagar marga, ward/tol 8, kathmandu, Bagmati province"
-        ,
-
-        catg: ["software company", "Training Institute", "Recruiting Agencies"]
-        ,
-
-        keyWord: ["software development", "UI/UX designing", "SEO", "Web", "development"]
-        ,
-
-        rating: "4.5"
-        ,
-
-        time: {
-            from: "09:00 am",
-            to: "05:00 pm"
-        },
-        days: [1, 2, 3, 6, 4],
-        info: {
-            num: "9812345678",
-            site: "https://vrittechnologies.com/",
-            mail: "info@vrittechnologies.com",
-            loc: "https://goo.gl/maps/NBVQKYFpene4nfQt9"
-        }
-    }
+    // const openingTime = parse(data.time.from, 'hh:mm a', new Date());
+    // const closingTime = parse(data.time.to, 'hh:mm a', new Date());
+    // const now = new Date();
+    // const currentDay = now.getDay();
+    // let status = 'closed';
+    // let timeRemaining = null;
+    // let minutesToOpen;
+    // let minToClose;
+    // // console.log(currentDay)
 
 
-    const openingTime = parse(data.time.from, 'hh:mm a', new Date());
-    const closingTime = parse(data.time.to, 'hh:mm a', new Date());
-    const now = new Date();
-    const currentDay = now.getDay();
-    let status = 'closed';
-    let timeRemaining = null;
-    let minutesToOpen;
-    let minToClose;
-    // console.log(currentDay)
+    // if (data.days.includes(currentDay)) {
+    //     if (isBefore(now, openingTime)) {
+    //         minutesToOpen = differenceInMinutes(openingTime, now);
+    //         status = minutesToOpen <= 15 ? `opening_soon` : 'closed';
+    //         timeRemaining = minutesToOpen;
+    //     } else if (isBefore(now, closingTime)) {
+    //         minToClose = differenceInMinutes(closingTime, now);
+    //         status = minToClose <= 15 ? 'closing_soon' : 'open';
+    //         timeRemaining = minToClose;
+    //     } else {
+    //         status = 'closed';
+    //         timeRemaining = differenceInMinutes(addMinutes(openingTime, 1440), now); // add 24 hours to openingTime
+    //     }
+    // } else {
+    //     status = 'closed_today'
+    // }
+    // // const hoursRemaining = Math.floor(timeRemaining / 60);
+    // // const minutesRemaining = timeRemaining % 60;
 
 
-    if (data.days.includes(currentDay)) {
-        if (isBefore(now, openingTime)) {
-            minutesToOpen = differenceInMinutes(openingTime, now);
-            status = minutesToOpen <= 15 ? `opening_soon` : 'closed';
-            timeRemaining = minutesToOpen;
-        } else if (isBefore(now, closingTime)) {
-            minToClose = differenceInMinutes(closingTime, now);
-            status = minToClose <= 15 ? 'closing_soon' : 'open';
-            timeRemaining = minToClose;
-        } else {
-            status = 'closed';
-            timeRemaining = differenceInMinutes(addMinutes(openingTime, 1440), now); // add 24 hours to openingTime
-        }
-    } else {
-        status = 'closed_today'
-    }
-    // const hoursRemaining = Math.floor(timeRemaining / 60);
-    // const minutesRemaining = timeRemaining % 60;
+    // const fromHour = parseInt(data.time.from.split(":")[0]);
+    // const toHour = parseInt(data.time.to.split(":")[0]);
 
+    // const iconMap = {
+    //     1: WiTime1,
+    //     2: WiTime2,
+    //     3: WiTime3,
+    //     4: WiTime4,
+    //     5: WiTime5,
+    //     6: WiTime6,
+    //     7: WiTime7,
+    //     8: WiTime8,
+    //     9: WiTime9,
+    //     10: WiTime10,
+    //     11: WiTime11,
+    //     12: WiTime12,
+    // };
 
-    const fromHour = parseInt(data.time.from.split(":")[0]);
-    const toHour = parseInt(data.time.to.split(":")[0]);
-
-    const iconMap = {
-        1: WiTime1,
-        2: WiTime2,
-        3: WiTime3,
-        4: WiTime4,
-        5: WiTime5,
-        6: WiTime6,
-        7: WiTime7,
-        8: WiTime8,
-        9: WiTime9,
-        10: WiTime10,
-        11: WiTime11,
-        12: WiTime12,
-    };
-
-    const FromIcon = iconMap[fromHour % 12 || 12];
-    const ToIcon = iconMap[toHour % 12 || 12];
+    // const FromIcon = iconMap[fromHour % 12 || 12];
+    // const ToIcon = iconMap[toHour % 12 || 12];
 
     // console.log("clo", minToClose)
     // console.log("opn", minutesToOpen)
@@ -118,7 +94,7 @@ const ListComp = () => {
                             <Star className='text-green-600 hover:text-green-500' />
                             <div className='items-center text-gray-500 font-font-11'>{data.rating}</div>
                         </div>
-                        <p className="text-lg text-gray-800 text-start">
+                        <p className="text-lg text-gray-600 text-start font-font-4">
                             {data.location}
                         </p>
                         <div className='flex flex-wrap justify-end items-center'>
@@ -156,7 +132,7 @@ const ListComp = () => {
                     </div>
                 </div>
                 <div className='absolute right-9 text-gray-900 top-15 max-sm:top-10'>
-                    <div class="relative z-10 h-8">
+                    <div className="relative z-10 h-8">
                         {status === 'open' && <p className={`bg-green-500 ${timeClass}`}>Open Now</p>}
                         {status === 'closed' && (
                             <p style={{ paddingLeft: "11px", paddingRight: "11px" }} className={`bg-red-500 ${timeClass}`}>Closed</p>
@@ -171,11 +147,11 @@ const ListComp = () => {
                             <p className={`bg-red-500 text-[9px] ${timeClass}`}>Closed today</p>
                         )}
 
-                        <div style={{ transform: 'rotate(-45deg)' }} class="-z-10 absolute bottom-0 -top-7 left-2/3 w-[3px] h-9 bg-gray-500 transform -translate-x-1/2"></div>
-                        <div style={{ transform: 'rotate(45deg)' }} class="-z-10 absolute bottom-0 -top-7 left-1/3 w-[3px] h-9 bg-gray-500 transform -translate-x-1/2"></div>
-                        <span class="absolute top-0 left-3/4 w-1 h-1 bg-black rounded-full transform translate-x-1 translate-y-[0.10rem]"></span>
-                        <span class="absolute top-0 left-1/4 w-1 h-1 bg-black rounded-full transform -translate-x-[0.29rem] translate-y-[0.10rem]"></span>
-                        <span class="absolute -top-[1.1rem] left-1/2 w-3 h-3 bg-black rounded-full transform -translate-x-1/3 -translate-y-full"></span>
+                        <div style={{ transform: 'rotate(-45deg)' }} className="-z-10 absolute bottom-0 -top-7 left-[63%] w-[3px] h-9 bg-yellow-300 transform -translate-x-1/2"></div>
+                        <div style={{ transform: 'rotate(45deg)' }} className="-z-10 absolute bottom-0 -top-7 left-[33%] w-[3px] h-9 bg-yellow-300 transform -translate-x-1/2"></div>
+                        <span className="absolute top-0 left-[73%] w-1 h-1 bg-purple-600 rounded-full transform translate-x-1 translate-y-[0.10rem]"></span>
+                        <span className="absolute top-0 left-[23.6%] w-1 h-1 bg-purple-600 rounded-full transform -translate-x-[0.29rem] translate-y-[0.10rem]"></span>
+                        <span className="absolute -top-[1.1rem] left-1/2 w-3 h-3 bg-black rounded-full transform -translate-x-2/4 -translate-y-full"></span>
                     </div>
                 </div>
 
