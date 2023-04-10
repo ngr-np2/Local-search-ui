@@ -72,6 +72,11 @@ module.exports = {
       "bounce": "bounce 0.82s cubic-bezier(.36,.07,.19,.97) both",
       "shake": "shake 1s"
     },
+    // screens: {
+    //   'moblg': "475px",
+    //   "mobmd": "375px",
+    //   "mobsm": '325px',
+    // },
   },
   plugins: [],
 };

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const PopularKeywordsSection = () => {
     return (
 
-        <section className="bg-slate-100">
+        <section className="bg-slate-100 text-center">
             <div className='px-2 pt-8 pb-4'>
                 <p className='my-7 text-5xl capitalize font-font-2 text-zinc-900'>Top KeyWords</p>
             </div>

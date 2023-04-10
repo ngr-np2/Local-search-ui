@@ -6,7 +6,7 @@ const AreYouLost = () => {
     return (
         <div className='flex  justify-center items-center h-screen'>
             <div className="text-gray-800 max-w-lg w-11/12 rounded-xl bg-[#fff7]  shadow-lg p-8 ">
-                <p className='font-font-2 max:text-3xl text-3xl '>
+                <p className='text-center font-font-2 max:text-3xl text-3xl '>
                     Are you Lost?
                 </p>
                 <div className='mt-10 '>

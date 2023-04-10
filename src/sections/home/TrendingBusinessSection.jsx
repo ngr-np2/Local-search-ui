@@ -4,7 +4,7 @@ const TrendingBusinessSection = () => {
   return (
     <>
       <section className='mt-16 bg-slate-100'>
-        <div className="pt-8 mx-4 mb-9">
+        <div className="pt-8 mx-4 mb-9 text-center">
           <p className="my-7 text-5xl leading-[60px] capitalize font-font-2 text-zinc-900">Trending Business</p>
           <p className="my-4 text-base font-font-6 text-zinc-900">Explore trending businesses across NEPAl</p>
         </div>

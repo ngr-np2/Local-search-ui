@@ -37,7 +37,7 @@ const PopularCatgCard = () => {
             {datas.map((data, idx) => (
                 <div
                     key={idx}
-                    className="relative max-w-xs rounded-lg shadow-md cursor-pointer bg-stone-100 group hover:shadow-lg"
+                    className="relative text-center max-w-xs rounded-lg shadow-md cursor-pointer bg-stone-100 group hover:shadow-lg"
                 >
                     <div className="overflow-hidden h-56">
                         {!imageLoaded && <img src="/ITAHARI.jpeg"

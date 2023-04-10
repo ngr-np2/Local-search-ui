@@ -3,6 +3,7 @@ import datas from '../assets/data.json'
 import { WiTime1, WiTime2, WiTime3, WiTime4, WiTime5, WiTime6, WiTime7, WiTime8, WiTime9, WiTime10, WiTime11, WiTime12 } from "react-icons/wi";
 
 const useTimeSchedule = () => {
+    console.log('---')
     const data = datas.details[0]
     const openingTime = parse(data.time.from, 'hh:mm a', new Date());
     let closingTime = parse(data.time.to, 'hh:mm a', new Date());
@@ -36,7 +37,7 @@ const useTimeSchedule = () => {
             }
         } else {
             // Check if the shop will open on the next day
-            const nextOpenDay = data.days.find((day) => day > currentDay);
+            const nextOpenDay = data.days.find((day) => day < currentDay);
             if (nextOpenDay !== undefined) {
                 const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
                 const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
@@ -54,8 +55,7 @@ const useTimeSchedule = () => {
         }
     } else {
         // Check if the shop will open today
-        const nextOpenDay = data.days.find((day) => day > currentDay || day < currentDay);
-        console.log('next day', nextOpenDay)
+        const nextOpenDay = data.days.find((day) => day > currentDay);
         if (nextOpenDay !== undefined) {
             const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
             const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
@@ -73,8 +73,10 @@ const useTimeSchedule = () => {
     }
     const hoursRemaining = Math.floor(timeRemaining / 60);
     const minutesRemaining = timeRemaining % 60;
+    // console.log('hour',hoursRemaining)
+    // console.log(minutesRemaining)
 
-
+    // show time icon according to opening and closingtime
     const fromHour = parseInt(data.time.from.split(":")[0]);
     const toHour = parseInt(data.time.to.split(":")[0]);
 
@@ -95,6 +97,7 @@ const useTimeSchedule = () => {
 
     const FromIcon = iconMap[fromHour % 12 || 12];
     const ToIcon = iconMap[toHour % 12 || 12];
+    
     // console.log('-----')
     // console.log("clo", minToClose)
     // console.log("opn", minutesToOpen)

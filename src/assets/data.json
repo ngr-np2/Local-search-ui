@@ -108,10 +108,10 @@
       "rating": "4.5",
 
       "time": {
-        "from": "07:00 pm",
-        "to": "09:20 pm"
+        "from": "09:00 am",
+        "to": "05:00 pm"
       },
-      "days": [0,1, 2, 3, 4, 5],
+      "days": [0, 2, 3, 4, 5],
       "info": {
         "num": "9812345678",
         "site": "https://vrittechnologies.com/",

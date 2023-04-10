@@ -29,7 +29,7 @@ const AdvertiseWithUs = () => {
     ];
     return (
         <section>
-            <div className='pt-8 pb-4 mx-5'>
+            <div className='pt-8 pb-4 mx-5 text-center'>
                 <p className='my-7 leading-[60px] text-5xl capitalize font-font-2 text-zinc-900'>Advertise with Us</p>
             </div>
             <div className="flex flex-wrap gap-9 justify-center items-center px-8 py-4 rounded-sm">
