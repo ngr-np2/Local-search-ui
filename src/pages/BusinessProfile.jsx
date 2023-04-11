@@ -4,21 +4,24 @@ import Facebook from "@mui/icons-material/Facebook";
 import Twitter from "@mui/icons-material/Twitter";
 import Instagram from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
-import L from "leaflet";
+import L, { marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import LocationIcon from "../assets/locationIcon.png";
 import Dropdown from "../components/BusinessProfile/Dropdown";
+import datas from "../assets/data.json";
 const BusinessProfile = () => {
-  const [markers, setMarkers] = useState([]);
-  const long = [27.684186890837637, 85.33496008446997];
+  const data = datas.details[0];
 
   useEffect(() => {
     if (!mapid._leaflet_id) {
-      const map = L.map("mapid").setView(long, 45);
+      const map = L.map("mapid").setView(
+        [data.location.lat, data.location.lng],
+        18
+      );
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-        maxZoom: 18,
+          '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> Local Search',
+        maxZoom: 19,
       }).addTo(map);
 
       // Add a marker at the specified coordinates
@@ -27,18 +30,23 @@ const BusinessProfile = () => {
         iconSize: [32, 32], // size of the icon
         iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
       });
-      L.marker(long, { icon: icon }).addTo(map);
 
-      markers.forEach((marker) => {
-        const { lat, lng, title } = marker;
-        L.marker([lat, lng]).addTo(map).bindPopup(title);
-      });
+const title = "Vrit Tech"
+      const marker = L.marker([data.location.lat, data.location.lng], {
+        icon: icon,
+      })
+        .addTo(map)
+        .bindPopup(title, { offset: L.point(0, -15) });
+
+      marker.openPopup();
     }
-  }, [markers]);
+  }, []);
+
   return (
     <>
       <ListComp />
       <div className="mx-4 my-4 mt-8 text-gray-900">
+        
         <div>
           <p className="py-2 text-xl font-f-bold-cyber">
             Additional Information
@@ -81,7 +89,7 @@ const BusinessProfile = () => {
               </div>
             </div>
           </div>
-          <div id="mapid" style={{ height: "400px" }}></div>
+          <div id="mapid" className="h-[30vmin] mt-6"></div>
         </div>
       </div>
     </>

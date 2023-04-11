@@ -95,7 +95,7 @@ const ListComp = () => {
                             <div className='items-center text-gray-500 font-font-11'>{data.rating}</div>
                         </div>
                         <p className="text-lg text-gray-600 text-start font-font-4">
-                            {data.location}
+                            {data.address}
                         </p>
                         <div className='flex flex-wrap justify-end items-center'>
 
