@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import ListComp from "../components/Lists/ListComp";
 import Facebook from "@mui/icons-material/Facebook";
 import Twitter from "@mui/icons-material/Twitter";
@@ -7,12 +6,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import Dropdown from "../components/BusinessProfile/Dropdown";
 import MapView from "../sections/map/MapView";
 const BusinessProfile = () => {
-
   return (
-    <>
+    <section className="max-w-screen-xl m-auto xl:mt-16">
       <ListComp />
-      <div className="mx-4 my-4 mt-8 text-gray-900">
-        
+      <div className="mx-4  my-4 mt-8 text-gray-900">
         <div>
           <p className="py-2 text-xl font-f-bold-cyber">
             Additional Information
@@ -55,10 +52,10 @@ const BusinessProfile = () => {
               </div>
             </div>
           </div>
-          <MapView height={'h-[40vmin]'}/>
         </div>
+        <MapView height={"h-[40vmin] max-sm:h-[100vmin]"} />
       </div>
-    </>
+    </section>
   );
 };
 

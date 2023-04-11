@@ -10,7 +10,7 @@ export const AllRoutes = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/getlistedfree", element: <GetListedFree /> },
   { path: "/search/:id", element: <ListsPage /> },
-  { path: "/profile", element: <BusinessProfile /> },
+  { path: "/profile/:id", element: <BusinessProfile /> },
   // {path: 'test',element: <Map/>},
   { path: "*", element: <AreYouLost /> },
 ]);

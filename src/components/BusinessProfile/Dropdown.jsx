@@ -37,7 +37,7 @@ const Dropdown = () => {
         <div className="w-20">{daysName[currentDay]}</div>:
         {!closedDays.includes(currentDay) ? (
           <>
-            <div className="px-2">{data.time.to}</div> -
+            <div className="px-2">{data.time.from}</div> -
             <div className="px-2">{data.time.to}</div>
           </>
         ) : (

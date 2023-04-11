@@ -134,9 +134,9 @@
 
       "time": {
         "from": "09:00 am",
-        "to": "05:00 pm"
+        "to": "05:26 pm"
       },
-      "days": [0, 2, 3, 4, 5],
+      "days": [0, 2, 3, 5],
       "info": {
         "num": "9812345678",
         "site": "https://vrittechnologies.com/",
