@@ -4,43 +4,9 @@ import Facebook from "@mui/icons-material/Facebook";
 import Twitter from "@mui/icons-material/Twitter";
 import Instagram from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
-import L, { marker } from "leaflet";
-import "leaflet/dist/leaflet.css";
-import LocationIcon from "../assets/locationIcon.png";
 import Dropdown from "../components/BusinessProfile/Dropdown";
-import datas from "../assets/data.json";
+import MapView from "../sections/map/MapView";
 const BusinessProfile = () => {
-  const data = datas.details[0];
-
-  useEffect(() => {
-    if (!mapid._leaflet_id) {
-      const map = L.map("mapid").setView(
-        [data.location.lat, data.location.lng],
-        18
-      );
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> Local Search',
-        maxZoom: 19,
-      }).addTo(map);
-
-      // Add a marker at the specified coordinates
-      const icon = L.icon({
-        iconUrl: LocationIcon,
-        iconSize: [32, 32], // size of the icon
-        iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
-      });
-
-const title = "Vrit Tech"
-      const marker = L.marker([data.location.lat, data.location.lng], {
-        icon: icon,
-      })
-        .addTo(map)
-        .bindPopup(title, { offset: L.point(0, -15) });
-
-      marker.openPopup();
-    }
-  }, []);
 
   return (
     <>
@@ -89,7 +55,7 @@ const title = "Vrit Tech"
               </div>
             </div>
           </div>
-          <div id="mapid" className="h-[30vmin] mt-6"></div>
+          <MapView height={'h-[40vmin]'}/>
         </div>
       </div>
     </>

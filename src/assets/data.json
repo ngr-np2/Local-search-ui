@@ -114,11 +114,10 @@
   "details": [
     {
       "name": "Vrit Technology",
-      "address": "pragatinagar road, sheenagar marga, ward/tol 8, kathmandu, Bagmati province",
+      "address": "pragatinagar Marg, ward 8, kathmandu, Bagmati Pradesh",
       "location": {
         "lat": 27.6840387,
-        "lng": 85.33485,
-        "title": "Vrit Technology, software company"
+        "lng": 85.33485
       },
 
       "catg": ["software company", "Training Institute", "Recruiting Agencies"],
