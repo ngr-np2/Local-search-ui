@@ -113,6 +113,7 @@
   "NewYear": "2079",
   "details": [
     {
+      "_id": "0",
       "name": "Vrit Technology",
       "address": "pragatinagar Marg, ward 8, kathmandu, Bagmati Pradesh",
       "location": {
@@ -141,6 +142,60 @@
         "num": "9812345678",
         "site": "https://vrittechnologies.com/",
         "mail": "info@vrittechnologies.com",
+        "loc": "https://goo.gl/maps/NBVQKYFpene4nfQt9"
+      }
+    },
+    {
+      "_id": "1",
+      "name": "Local Search",
+      "address": "itahari, Bagmati Pradesh",
+      "location": {
+        "lat": 27.6840387,
+        "lng": 85.33485
+      },
+
+      "catg": ["Local business Directory", "Marketing Agencies"],
+
+      "keyWord": ["Local business", "ads", "search"],
+
+      "rating": "4",
+
+      "time": {
+        "from": "11:00 am",
+        "to": "04:00 pm"
+      },
+      "days": [1, 2],
+      "info": {
+        "num": "9812345678",
+        "site": "https://localsearch.com/",
+        "mail": "info@locasearch.com",
+        "loc": "https://goo.gl/maps/NBVQKYFpene4nfQt9"
+      }
+    },
+    {
+      "_id": "2",
+      "name": "Esewa Pvt. Ltd",
+      "address": "lalitPur, Bagmati Pradesh",
+      "location": {
+        "lat": 27.679134204058304,
+        "lng": 85.31654649981421
+      },
+
+      "catg": ["Digital wallet"],
+
+      "keyWord": ["Digital wallit"],
+
+      "rating": "3",
+
+      "time": {
+        "from": "04:00 am",
+        "to": "02:00 pm"
+      },
+      "days": [1, 2, 3, 4, 5],
+      "info": {
+        "num": "9812345678",
+        "site": "https://esewa.com.np/",
+        "mail": "info@esewa.com.np",
         "loc": "https://goo.gl/maps/NBVQKYFpene4nfQt9"
       }
     }

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import datas from "../../assets/data.json";
 import { daysName } from "../../assets/date";
 
-const Dropdown = () => {
-  const data = datas.details[0];
+const Dropdown = ({ data }) => {
   const [show, setShow] = useState(false);
   const currentDay = new Date().getDay();
 
   const openDays = data.days.map((day) => daysName[day]);
-  console.log(daysName[currentDay]);
-  console.log(currentDay);
+  // console.log(daysName[currentDay]);
+  // console.log(currentDay);
 
   const allDays = [0, 1, 2, 3, 4, 5, 6];
   const closedDays = allDays.filter((day) => !data.days.includes(day));
@@ -26,7 +25,7 @@ const Dropdown = () => {
       </li>
     );
   });
-  console.log("is", closedDays.includes(currentDay));
+  // console.log("is", closedDays.includes(currentDay));
   return (
     <div className="relative pt-3 text-gray-700">
       <button

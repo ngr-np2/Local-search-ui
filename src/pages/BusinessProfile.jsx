@@ -5,10 +5,23 @@ import Instagram from "@mui/icons-material/Instagram";
 import EmailIcon from "@mui/icons-material/Email";
 import Dropdown from "../components/BusinessProfile/Dropdown";
 import MapView from "../sections/map/MapView";
+import datas from "../assets/data.json";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 const BusinessProfile = () => {
+  const [data, setData] = useState({});
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  useEffect(() => {
+    const details = datas.details.find((item) => item._id === id);
+    console.log(details.location.lng); // undefine
+    setData(details);
+  }, [id]);
+
   return (
     <section className="max-w-screen-xl m-auto xl:mt-16">
-      <ListComp />
+      {data && <ListComp data={data} />}
       <div className="mx-4  my-4 mt-8 text-gray-900">
         <div>
           <p className="py-2 text-xl font-f-bold-cyber">
@@ -18,7 +31,7 @@ const BusinessProfile = () => {
             <div className="flex-1 mx-4 max-sm:m-0">
               <p className="py-3 font-font-4">Opening hours</p>
               <div className="w-full h-[2px] bg-stone-200" />
-              <Dropdown />
+              {data.days && <Dropdown data={data} />}
             </div>
             <div className="flex-1 mx-4 max-sm:text-center">
               <p className="px-1 py-3 font-font-4">Social Media</p>
@@ -52,8 +65,13 @@ const BusinessProfile = () => {
               </div>
             </div>
           </div>
+          {data.location && (
+            <MapView
+              height={"mt-10 h-[40vmin] max-sm:h-[100vmin]"}
+              data={data}
+            />
+          )}
         </div>
-        <MapView height={"h-[40vmin] max-sm:h-[100vmin]"} />
       </div>
     </section>
   );

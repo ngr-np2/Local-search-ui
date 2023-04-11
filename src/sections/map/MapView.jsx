@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import datas from "../../assets/data.json";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import LocationIcon from "../../assets/locationIcon.png";
-const MapView = ({ height }) => {
-  const data = datas.details[0];
-
+const MapView = ({ height, data }) => {
+  const { catg, address, name } = data;
+  const { lat, lng } = data.location;
   useEffect(() => {
-    if (!mapid._leaflet_id) {
-      const map = L.map("mapid").setView(
-        [data.location.lat, data.location.lng],
-        18
-      );
+    if (!mapid._leaflet_id && name && catg && address && lat && lng) {
+      const map = L.map("mapid").setView([lat, lng], 18);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> Local Search',
@@ -24,9 +20,9 @@ const MapView = ({ height }) => {
         iconSize: [32, 32], // size of the icon
         iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
       });
-      
-      const title = `<div><b>${data.name}</b></div><br><i>${data.catg[0]}</i><br> <small>${data.address}</small>`;
-      const marker = L.marker([data.location.lat, data.location.lng], {
+
+      const title = `<div><b>${name}</b></div><br><i>${catg[0]}</i><br> <small>${address}</small>`;
+      const marker = L.marker([lat, lng], {
         icon: icon,
       })
         .addTo(map)
@@ -37,5 +33,4 @@ const MapView = ({ height }) => {
   }, []);
   return <div id="mapid" className={height}></div>;
 };
-
 export default MapView;
