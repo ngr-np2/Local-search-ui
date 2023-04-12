@@ -1,98 +1,110 @@
 import { Link } from "react-router-dom";
 import Star from "@mui/icons-material/Star";
 
-import { parse, isBefore, differenceInMinutes, addDays } from "date-fns";
 import { useEffect, useState } from "react";
 import OpeningFromAndTo from "./OpeningFromAndTo";
 import SignOfOpeningAndClosing from "./SignOfOpeningAndClosing";
 import Buttons from "./Buttons";
+import calcTime from "./CalcTime";
+
 const ListComp = ({ data }) => {
+  console.log("----")
+  console.log("listComp called");
   const [status, setStatus] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(null);
-  const [now, setNow] = useState(new Date());
-  const [currentDay, setCurrentDay] = useState(now.getDay());
 
-  const calcTime = () => {
-    const openingTime = parse(data?.time?.from, "hh:mm a", new Date());
-    let closingTime = parse(data?.time?.to, "hh:mm a", new Date());
-    const now = new Date();
-    if (isBefore(closingTime, openingTime)) {
-      closingTime = addDays(closingTime, 1);
-    }
-    const currentDay = now.getDay();
-    let minutesToOpen;
-    let minToClose;
-    if (data?.days?.includes(currentDay)) {
-      if (isBefore(now, openingTime)) {
-        minutesToOpen = differenceInMinutes(openingTime, now);
-        if (minutesToOpen < 30) {
-          setStatus(`opening_soon`);
-          setTimeRemaining(minutesToOpen);
-        } else {
-          setStatus("closed");
-          setTimeRemaining(minutesToOpen);
-        }
-      } else if (isBefore(now, closingTime)) {
-        minToClose = differenceInMinutes(closingTime, now);
-        if (minToClose < 30) {
-          setStatus("closing_soon");
-          setTimeRemaining(minToClose);
-        } else {
-          setStatus("open");
-          setTimeRemaining(minToClose);
-        }
-      } else {
-        // Check if the shop will open on the next day
-        const nextOpenDay = data?.days?.find(
-          (day) => day > currentDay || day < currentDay
-        );
-        if (nextOpenDay !== undefined) {
-          const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
-          const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
-          if (minutesToNextOpen < 30) {
-            setStatus(`opening_soon`);
-            setTimeRemaining(minutesToNextOpen);
-            // console.log('1',nextOpenTime)
-          } else {
-            setStatus("closed");
-            setTimeRemaining(minutesToNextOpen);
-          }
-        } else {
-          setStatus("closed");
-          setTimeRemaining(differenceInMinutes)(
-            addDays(openingTime, 7 - currentDay),
-            now
-          );
-        }
-      }
-    } else {
-      // Check if the shop will open today
-      const nextOpenDay = data?.days?.find((day) => day > currentDay);
-      if (nextOpenDay !== undefined) {
-        const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
-        const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
-        if (minutesToNextOpen < 30) {
-          setStatus(`opening_soon`);
-          setTimeRemaining(minutesToNextOpen);
-          // console.log('2',nextOpenTime)
-        } else {
-          setStatus("closed_today");
-          setTimeRemaining(minutesToNextOpen);
-        }
-      } else {
-        setStatus("closed_today");
-        setTimeRemaining(
-          differenceInMinutes(addDays(openingTime, 7 - currentDay), now)
-        );
-      }
-    }
-    // const hoursRemaining = Math.floor(timeRemaining / 60);
-    // const minutesRemaining = timeRemaining % 60;
-  };
   useEffect(() => {
-    calcTime();
-  }, [status, now, data, currentDay]);
-  console.log(data.time);
+    const [status, timeRemaining] = calcTime(data);
+    setStatus(status);
+    setTimeRemaining(timeRemaining);
+  }, []);
+
+  // const [status, setStatus] = useState("");
+  // const [timeRemaining, setTimeRemaining] = useState(null);
+  // const [now, setNow] = useState(new Date());
+  // const [currentDay, setCurrentDay] = useState(now.getDay());
+
+  // const calcTime = () => {
+  //   const openingTime = parse(data?.time?.from, "hh:mm a", new Date());
+  //   let closingTime = parse(data?.time?.to, "hh:mm a", new Date());
+  //   const now = new Date();
+  //   if (isBefore(closingTime, openingTime)) {
+  //     closingTime = addDays(closingTime, 1);
+  //   }
+  //   const currentDay = now.getDay();
+  //   let minutesToOpen;
+  //   let minToClose;
+  //   if (data?.days?.includes(currentDay)) {
+  //     if (isBefore(now, openingTime)) {
+  //       minutesToOpen = differenceInMinutes(openingTime, now);
+  //       if (minutesToOpen < 30) {
+  //         setStatus(`opening_soon`);
+  //         setTimeRemaining(minutesToOpen);
+  //       } else {
+  //         setStatus("closed");
+  //         setTimeRemaining(minutesToOpen);
+  //       }
+  //     } else if (isBefore(now, closingTime)) {
+  //       minToClose = differenceInMinutes(closingTime, now);
+  //       if (minToClose < 30) {
+  //         setStatus("closing_soon");
+  //         setTimeRemaining(minToClose);
+  //       } else {
+  //         setStatus("open");
+  //         setTimeRemaining(minToClose);
+  //       }
+  //     } else {
+  //       // Check if the shop will open on the next day
+  //       const nextOpenDay = data?.days?.find(
+  //         (day) => day > currentDay || day > currentDay
+  //       );
+  //       if (nextOpenDay !== undefined) {
+  //         const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
+  //         const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
+  //         if (minutesToNextOpen < 30) {
+  //           setStatus(`opening_soon`);
+  //           setTimeRemaining(minutesToNextOpen);
+  //           // console.log('1',nextOpenTime)
+  //         } else {
+  //           setStatus("closed");
+  //           setTimeRemaining(minutesToNextOpen);
+  //         }
+  //       } else {
+  //         setStatus("closed");
+  //         setTimeRemaining(differenceInMinutes)(
+  //           addDays(openingTime, 7 - currentDay),
+  //           now
+  //         );
+  //       }
+  //     }
+  //   } else {
+  //     // Check if the shop will open today
+  //     const nextOpenDay = data?.days?.find((day) => day > currentDay);
+  //     if (nextOpenDay !== undefined) {
+  //       const nextOpenTime = addDays(openingTime, nextOpenDay - currentDay);
+  //       const minutesToNextOpen = differenceInMinutes(nextOpenTime, now);
+  //       if (minutesToNextOpen < 30) {
+  //         setStatus(`opening_soon`);
+  //         setTimeRemaining(minutesToNextOpen);
+  //         // console.log('2',nextOpenTime)
+  //       } else {
+  //         setStatus("closed_today");
+  //         setTimeRemaining(minutesToNextOpen);
+  //       }
+  //     } else {
+  //       setStatus("closed_today");
+  //       setTimeRemaining(
+  //         differenceInMinutes(addDays(openingTime, 7 - currentDay), now)
+  //       );
+  //     }
+  //   }
+  //   // const hoursRemaining = Math.floor(timeRemaining / 60);
+  //   // const minutesRemaining = timeRemaining % 60;
+  // };
+  // useEffect(() => {
+  //   calcTime();
+  // }, [status, now, data, currentDay]);
+  // console.log(data.time);
   const dataLength = data && data.catg && data.catg.length;
 
   return (

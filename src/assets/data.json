@@ -135,9 +135,9 @@
 
       "time": {
         "from": "09:00 am",
-        "to": "05:26 pm"
+        "to": "04:39 pm"
       },
-      "days": [0, 2, 3, 5],
+      "days": [1, 2, 3, 5],
       "info": {
         "num": "9812345678",
         "site": "https://vrittechnologies.com/",
@@ -162,9 +162,9 @@
 
       "time": {
         "from": "11:00 am",
-        "to": "04:00 pm"
+        "to": "05:47 am"
       },
-      "days": [1, 2],
+      "days": [0, 2, 4, 6],
       "info": {
         "num": "9812345678",
         "site": "https://localsearch.com/",
@@ -188,10 +188,10 @@
       "rating": "3",
 
       "time": {
-        "from": "04:00 am",
-        "to": "02:00 pm"
+        "from": "04:00 pm",
+        "to": "02:00 am"
       },
-      "days": [1, 2, 3, 4, 5],
+      "days": [1, 3, 4, 5],
       "info": {
         "num": "9812345678",
         "site": "https://esewa.com.np/",

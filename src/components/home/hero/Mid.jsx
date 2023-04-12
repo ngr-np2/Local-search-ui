@@ -22,7 +22,7 @@ const Mid = () => {
     setSearchTerm(e.target.value);
   };
   return (
-    <div className="py-4 relative px-8 mb-24 grid place-content-center   mx-auto max-w-7xl w-11/12 backdrop-blur-[2px]">
+    <div className="py-4 text-center relative px-8 mb-24 grid place-content-center   mx-auto max-w-7xl w-11/12 backdrop-blur-[2px]">
       <p className="my-5 text-5xl font-bold text-gray-100 select-none font-font-3">Search . Find . Connect!</p>
       <div>
         <p className="my-8 text-2xl font-extralight text-gray-200 font-font-6 max-sm:hidden">Connect with businesses in Itahari by phone, address, website, email, maps, ratings, reviews and much more</p>
@@ -41,7 +41,7 @@ const Mid = () => {
         </div>
       </form>
       {message &&
-        <p className="absolute -bottom-1 left-9 py-[2px] px-3 rounded-full text-red-500 font-font-6 bg-[#ffffff7a] shadow-lg text-start"><Info /> {message}</p>
+        <p className="absolute -bottom-1 left-9 py-[2px] px-3 rounded-full bg-red-500 font-font-6 text-slate-100 shadow-lg text-start"><Info /> {message}</p>
       }
     </div>
 

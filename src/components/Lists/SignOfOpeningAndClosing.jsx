@@ -1,6 +1,7 @@
 import React from "react";
 
 const SignOfOpeningAndClosing = ({ status }) => {
+  console.log("Sign of open close is called")
   const timeClass =
     "px-[0.4rem] pb-[0.1rem] pt-1 text-white rounded-md tracking-widest text-xs font-font-11";
   return (

@@ -15,13 +15,13 @@ const BusinessProfile = () => {
   const id = location.pathname.split("/")[2];
   useEffect(() => {
     const details = datas.details.find((item) => item._id === id);
-    console.log(details.location.lng); // undefine
+    // console.log(details.location.lng);
     setData(details);
   }, [id]);
 
   return (
     <section className="max-w-screen-xl m-auto xl:mt-16">
-      {data && <ListComp data={data} />}
+      {data.name && <ListComp data={data} />}
       <div className="mx-4  my-4 mt-8 text-gray-900">
         <div>
           <p className="py-2 text-xl font-f-bold-cyber">
@@ -65,12 +65,15 @@ const BusinessProfile = () => {
               </div>
             </div>
           </div>
-          {data.location && (
+          {data?.location?.lat && data?.location?.lng && (
             <MapView
               height={"mt-10 h-[40vmin] max-sm:h-[100vmin]"}
               data={data}
             />
           )}
+          <div>
+
+          </div>
         </div>
       </div>
     </section>
