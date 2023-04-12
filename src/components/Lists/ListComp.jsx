@@ -108,7 +108,7 @@ const ListComp = ({ data }) => {
   const dataLength = data && data.catg && data.catg.length;
 
   return (
-    <div className="pt-8 pb-5  bg-white rounded-xl max-w-screen-xl mx-auto border-2 border-gray-100">
+    <div className="pt-8 pb-5  bg-white rounded-xl max-w-screen-lg mx-auto border-2 border-gray-100">
       <div className="flex relative gap-4 items-start px-4 pt-4 pb-0 max-sm:flex-col sm:px-6 lg:px-8">
         <Link to="#" className="block shrink-0">
           <img
