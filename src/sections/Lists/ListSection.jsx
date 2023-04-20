@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListComp from "../../components/Lists/ListComp";
 import data from "../../assets/data.json";
+import { useLocation } from "react-router-dom";
+import userRoute from "../../axios/Instance";
 const ListSection = () => {
-  const [datas, setDatas] = useState(data.details);
+  const [datas, setDatas] = useState([]);
+  const location = useLocation();
+  const query = location.pathname.split("/")[2]; 
+  console.log(query)
+  useEffect(() => {
+    searchBusiness()
+  }, [])
+  const searchBusiness = async () => {
+
+    try {
+      const res = await userRoute.get(`business?search=${query}`)
+      console.log("1", res.data.businessProfiles)
+      setDatas(res.data?.businessProfiles)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <section className="bg-slate-100">
       <div className="flex px-4 pt-16 max-w-screen-xl m-auto justify-center max-md:flex-col ">
         <div className="flex flex-col gap-6 sm:flex-1">
           {datas.map((data) => (
-            <ListComp key={data._id} data={data} />
+            <ListComp key={data._id} calc={false} data={data} />
           ))}
         </div>
 

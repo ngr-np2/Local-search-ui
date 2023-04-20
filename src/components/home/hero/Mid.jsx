@@ -10,13 +10,13 @@ const Mid = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!searchTerm) {
-      setMessage("Please enter some keyword words that you are searching for");
-    } else if (searchTerm.length < 3) {
-      setMessage("enter at least 3 letters!");
+  if (!searchTerm) {
+    setMessage("Please enter some keyword words that you are searching for");
+  } else if (searchTerm.length < 3) {
+    setMessage("enter at least 3 letters!");
     } else {
-      navigate(`/search/${searchTerm}`);
-    }
+    navigate(`/search/${searchTerm}`);
+  }
   };
   const handleChange = (e) => {
     setSearchTerm(e.target.value);

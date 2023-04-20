@@ -38,7 +38,7 @@ const timeIcon = (data) => {
 
 const OpeningFromAndTo = ({ data, status }) => {
   const { FromIcon, ToIcon } = timeIcon(data);
-  console.log("openingtimes called");
+  //console.log("openingtimes called");
 
   const fromTimeClass =
     status === "open" || status === "closing_soon"

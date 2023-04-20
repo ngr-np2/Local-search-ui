@@ -11,8 +11,8 @@ const ReviewAndRating = () => {
   const [startValue, setStarValue] = useState(0);
   const [hoverStarValue, setHoverStarValue] = useState(undefined);
 
-  console.log("hov", hoverStarValue);
-  console.log("star", startValue);
+  //console.log("hov", hoverStarValue);
+  //console.log("star", startValue);
   const handleClick = (e, val) => {
     // e.preventDefault();
     setStarValue(val);

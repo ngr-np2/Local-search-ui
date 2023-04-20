@@ -15,7 +15,7 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
-  console.log(email);
+  //console.log(email);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   useEffect(() => {
@@ -32,14 +32,14 @@ const Login = () => {
     try {
       const userData = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...userData, fullName }));
-      console.log(userData);
+      //console.log(userData);
       setEmail("");
       setPassword("");
       navigate(from, {
         replace: true,
       });
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       const resp = err?.data;
       setShowToast(true);
       if (!resp) {

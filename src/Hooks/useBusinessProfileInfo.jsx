@@ -22,7 +22,7 @@ import {
 // import datas from "../assets/data.json";
 
 const useTimeSchedule = ({data}) => {
-    console.log("---");
+    //console.log("---");
     // const data = datas.details[0];
     const openingTime = parse(data.time.from, "hh:mm a", new Date());
     let closingTime = parse(data.time.to, "hh:mm a", new Date());
@@ -64,7 +64,7 @@ const useTimeSchedule = ({data}) => {
                 if (minutesToNextOpen < 30) {
                     status = `opening_soon`;
                     timeRemaining = minutesToNextOpen;
-                    // console.log('1',nextOpenTime)
+                    // //console.log('1',nextOpenTime)
                 } else {
                     status = "closed";
                     timeRemaining = minutesToNextOpen;
@@ -86,7 +86,7 @@ const useTimeSchedule = ({data}) => {
             if (minutesToNextOpen < 30) {
                 status = `opening_soon`;
                 timeRemaining = minutesToNextOpen;
-                // console.log('2',nextOpenTime)
+                // //console.log('2',nextOpenTime)
 
             } else {
                 status = "closed_today";
@@ -102,8 +102,8 @@ const useTimeSchedule = ({data}) => {
     }
     const hoursRemaining = Math.floor(timeRemaining / 60);
     const minutesRemaining = timeRemaining % 60;
-    // console.log('hour',hoursRemaining)
-    // console.log('min',minutesRemaining)
+    // //console.log('hour',hoursRemaining)
+    // //console.log('min',minutesRemaining)
 
     // show time icon according to opening and closingtime
     // const fromHour = parseInt(data.time.from.split(":")[0]);
@@ -127,14 +127,14 @@ const useTimeSchedule = ({data}) => {
     // const FromIcon = iconMap[fromHour % 12 || 12];
     // const ToIcon = iconMap[toHour % 12 || 12];
 
-    // console.log('-----')
-    // console.log("clo", minToClose)
-    // console.log("opn", minutesToOpen)
-    // console.log('rem', hoursRemaining, ":", minutesRemaining)
+    // //console.log('-----')
+    // //console.log("clo", minToClose)
+    // //console.log("opn", minutesToOpen)
+    // //console.log('rem', hoursRemaining, ":", minutesRemaining)
 
-    // console.log(status)
-    // console.log(fromHour)
-    // console.log(toHour)
+    // //console.log(status)
+    // //console.log(fromHour)
+    // //console.log(toHour)
     return { status, timeRemaining };
 };
 

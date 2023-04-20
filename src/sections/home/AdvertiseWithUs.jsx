@@ -7,7 +7,7 @@ const AdvertiseWithUs = () => {
     };
 
     const handleImageError = () => {
-        console.log(`Failed to load image: ${src}`);
+        //console.log(`Failed to load image: ${src}`);
     };
     const datas = [
         {

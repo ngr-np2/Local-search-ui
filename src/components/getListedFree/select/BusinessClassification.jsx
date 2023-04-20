@@ -12,7 +12,7 @@ const BusinessClassification = () => {
     const [loading, setLoading] = useState(false);
     const { catg, setcatg } = useGetListedFree();
     const [classificationData, setClassificationData] = useState();
-    console.log(catg)
+    //console.log(catg)
     const fetchCatg = async()=>{
         try {
             const res = await fetch('https')
@@ -24,18 +24,18 @@ const BusinessClassification = () => {
     const handleClassificationChange = (selectedOptions) => {
         setcatg(selectedOptions);
     };
-    // console.log(classificationData)
+    // //console.log(classificationData)
     const handleInputFocus = () => {
         if (!classificationData) {
             setLoading(true);
             fetch('/classificationData.json')
                 .then(response => response.json())
                 .then(data => {
-                    // console.log(data)
+                    // //console.log(data)
                     const datas = data.classifications?.map(item => ({ label: item.label, value: item.value }));
                     setClassificationData(datas);
                     setLoading(false);
-                    // console.log(classificationsarray)
+                    // //console.log(classificationsarray)
                 })
                 .catch(error => {
                     console.error('Error fetching classification data:', error);
@@ -46,7 +46,7 @@ const BusinessClassification = () => {
 
 
 
-    // console.log(classification?.map(option => option.value));
+    // //console.log(classification?.map(option => option.value));
     return (
         <>
             <div className="flex gap-10 justify-center m-auto w-full text-sm text-gray-400 duration-200 ease-in max-lg:flex-wrap">

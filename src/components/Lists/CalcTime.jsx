@@ -72,7 +72,7 @@ const calcTime = (data) => {
     if (minutesToNextOpen < 30) {
       status = `opening_soon`;
       timeRemaining = minutesToNextOpen;
-      console.log(minutesToNextOpen);
+      //console.log(minutesToNextOpen);
     } else {
       status = "closed_today";
       timeRemaining = minutesToNextOpen;

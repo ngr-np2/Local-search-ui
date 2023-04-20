@@ -87,7 +87,7 @@ const useGetListedFree = () => {
         </option>
       ))
     : [];
-  // console.log(selectedCityObj?.wards.map(ward => ward.num))
+  // //console.log(selectedCityObj?.wards.map(ward => ward.num))
   // const selectedWardObj = selectedCityObj?.wards?.find((wardObj) => wardObj.num === ward);
 
   const selectedWardObj = selectedCityObj?.wards?.find(
@@ -108,9 +108,9 @@ const useGetListedFree = () => {
     : [];
 
   const tolORmargaObj = selectedWardObj?.tolORmargas;
-  // console.log(tolORmargaObj)
-  // console.log(tolORmarga)
-  // console.log(ward)
+  // //console.log(tolORmargaObj)
+  // //console.log(tolORmarga)
+  // //console.log(ward)
   const tolORmargasOptions = !ward
     ? [
         <option key="default" value="">
@@ -178,7 +178,7 @@ const useGetListedFree = () => {
   });
   const handleOpenTimeChange = (e) => {
     setOpenFrom(e.target.value);
-    console.log("e");
+    //console.log("e");
   };
   const handleCloseTimeChange = (e) => {
     setOpenTill(e.target.value);
@@ -212,9 +212,9 @@ const useGetListedFree = () => {
 
     setErrorMsg("success");
   }
-  console.log(OpeningDays);
+  //console.log(OpeningDays);
 
-  // console.log(businessName, businessEmail, catg, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
+  // //console.log(businessName, businessEmail, catg, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
   return {
     handleBusinesFullAddress,
     businessFullAddress,

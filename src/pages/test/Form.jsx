@@ -20,7 +20,7 @@ const Map = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(location);
+    //console.log(location);
   };
   return (
     <form onSubmit={handleSubmit}>

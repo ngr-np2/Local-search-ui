@@ -6,12 +6,12 @@ const PopularCatgCard = () => {
 
   const handleImageLoad = () => {
     setImageLoaded(true);
-    console.log("0");
+    //console.log("0");
   };
 
   const handleImageError = () => {
     setErr(true);
-    console.log("1");
+    //console.log("1");
   };
   const datas = [
     {

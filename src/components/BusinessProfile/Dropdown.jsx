@@ -7,8 +7,8 @@ const Dropdown = ({ data }) => {
   const currentDay = new Date().getDay();
 
   const openDays = data.days.map((day) => daysName[day]);
-  // console.log(daysName[currentDay]);
-  // console.log(currentDay);
+  // //console.log(daysName[currentDay]);
+  // //console.log(currentDay);
 
   const allDays = [0, 1, 2, 3, 4, 5, 6];
   const closedDays = allDays.filter((day) => !data.days.includes(day));
@@ -25,12 +25,12 @@ const Dropdown = ({ data }) => {
       </li>
     );
   });
-  // console.log("is", closedDays.includes(currentDay));
+  // //console.log("is", closedDays.includes(currentDay));
   return (
     <div className="relative pt-3 text-gray-700">
       <button
         onClick={() => setShow(!show)}
-        className="flex max-sm:min-w-fit max-sm:px-3 max-sm:py-2 items-center whitespace-nowrap  w-full max-w-screen-sm rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal  shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]motion-reduce:transition-none text-gray-900"
+        className="flex max-sm:min-w-fit max-sm:px-3 max-sm:py-2 items-center whitespace-nowrap  w-full max-w-screen-sm rounded  px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal  shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-100 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-100 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-200 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]motion-reduce:transition-none text-gray-900"
         type="button"
       >
         <div className="w-20">{daysName[currentDay]}</div>:
