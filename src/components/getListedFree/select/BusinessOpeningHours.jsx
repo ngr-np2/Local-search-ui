@@ -1,24 +1,31 @@
 import useGetListedFree from "../../../Hooks/useGetListedFree";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CheckBoxOutlined from "@mui/icons-material/CheckBoxOutlined";
 
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DropDownArrowSvg from "../../buttons/DropDownArrowSvg";
-
+const days = [
+  { num: 0, day: "Sunday" },
+  { num: 1, day: "Monday" },
+  { num: 2, day: "Tuesday" },
+  { num: 3, day: "Wednesday" },
+  { num: 4, day: "Thursday" },
+  { num: 5, day: "Friday" },
+  { num: 6, day: "Sataurday" },
+];
 const BusinessOpeningHours = () => {
   const {
-    handleFromDayOffChange,
-    handleToDayOffChange,
+    handleOpeningDaysChange,
     openAllDayAndWeek,
     setOpenAllDayAndWeek,
     times,
     setOpenFrom,
     setOpenTill,
-    setDayOffFrom,
-    setDayOffTill,
+    setOpeningDays,
     handleOpenTimeChange,
     handleCloseTimeChange,
   } = useGetListedFree();
+  
+
   return (
     <>
       <div className="flex gap-10 justify-center m-auto mt-10 w-full max-lg:flex-wrap">
@@ -42,8 +49,7 @@ const BusinessOpeningHours = () => {
                   setOpenAllDayAndWeek(!openAllDayAndWeek),
                   setOpenTill(""),
                   setOpenFrom(""),
-                  setDayOffFrom(""),
-                  setDayOffTill("")
+                  setOpeningDays("")
                 )}
               />
             ) : (
@@ -75,7 +81,7 @@ const BusinessOpeningHours = () => {
             className={`ease-in duration-200 peer bg-[#1a1f2d] w-full outline-none pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 
                         ${
                           openAllDayAndWeek
-                            ? "text-gray-900  cursor-not-allowed -z-1"
+                            ? "text-gray-600  cursor-not-allowed -z-1"
                             : "cursor-pointer"
                         }
                         `}
@@ -91,10 +97,10 @@ const BusinessOpeningHours = () => {
 
           <label
             htmlFor="openingHours"
-            className={`block mb-2 text-sm font-medium text-left text-gray-900 peer-focus:text-blue-600 peer-focus:dark:text-blue-500  
+            className={`block mb-2 text-sm font-medium text-left text-gray-200 peer-focus:text-blue-600 peer-focus:dark:text-blue-500  
                         ${
                           openAllDayAndWeek
-                            ? "text-gray-600 cursor-not-allowed -z-1"
+                            ? "text-gray-500 cursor-not-allowed -z-1"
                             : "text-white"
                         }
                         `}
@@ -117,7 +123,7 @@ const BusinessOpeningHours = () => {
             className={`ease-in duration-200 bg-[#1a1f2d] w-full outline-none peer pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600  
                         ${
                           openAllDayAndWeek
-                            ? "text-gray-900 cursor-not-allowed -z-1"
+                            ? "text-gray-600 cursor-not-allowed -z-1"
                             : "cursor-pointer"
                         }
                         `}
@@ -159,8 +165,49 @@ const BusinessOpeningHours = () => {
           </label>
         </div>
       </div>
-      <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
-        <div
+      <div className="flex gap-10 justify-between m-auto w-full flex-wrap">
+        {days.map((day) => {
+          return (
+            <div
+              disabled={openAllDayAndWeek}
+              key={day.num}
+              className="flex gap-3 font-font-1 text-base w-28"
+            >
+              <input
+                className={
+                  openAllDayAndWeek
+                    ? "text-red-900 cursor-not-allowed -z-1"
+                    : "cursor-pointer"
+                }
+                disabled={openAllDayAndWeek}
+                type="checkbox"
+                value={day.num}
+                onChange={
+                  !openAllDayAndWeek ? handleOpeningDaysChange : undefined
+                }
+                id={day.day}
+              />
+              <label
+                className={
+                  openAllDayAndWeek
+                    ? "text-gray-600 cursor-not-allowed -z-1"
+                    : "cursor-pointer"
+                }
+                htmlFor={day.day}
+              >
+                {day.day}
+              </label>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+export default BusinessOpeningHours;
+
+// {
+/* <div
           title="from which day day Business will be closed"
           className={`relative w-full flex flex-col-reverse duration-200 ease-in group ${
             openAllDayAndWeek && "cursor-not-allowed opacity-50"
@@ -175,7 +222,7 @@ const BusinessOpeningHours = () => {
             onChange={!openAllDayAndWeek ? handleFromDayOffChange : undefined}
             className={`ease-in duration-200 peer bg-[#1a1f2d] w-full outline-none pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 ${
               openAllDayAndWeek
-                ? "text-gray-900 cursor-not-allowed -z-1"
+                ? "text-gray-600 cursor-not-allowed -z-1"
                 : "cursor-pointer"
             }`}
           >
@@ -200,8 +247,11 @@ const BusinessOpeningHours = () => {
           >
             From
           </label>
-        </div>
-        <div
+        </div> */
+// }
+
+// {
+/* <div
           title="till which day the business will be close"
           className={`relative w-full duration-200 flex flex-col-reverse ease-in group 
         ${openAllDayAndWeek && "cursor-not-allowed opacity-50 "}
@@ -217,7 +267,7 @@ const BusinessOpeningHours = () => {
             className={`ease-in duration-200 peer bg-[#1a1f2d] w-full outline-none pl-3 text-sm appearance-none h-12 text-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600  
                 ${
                   openAllDayAndWeek
-                    ? "text-gray-900 cursor-not-allowed -z-1"
+                    ? "text-gray-600 cursor-not-allowed -z-1"
                     : "cursor-pointer"
                 }
                 `}
@@ -243,9 +293,5 @@ const BusinessOpeningHours = () => {
           >
             To
           </label>
-        </div>
-      </div>
-    </>
-  );
-};
-export default BusinessOpeningHours;
+        </div> */
+// }

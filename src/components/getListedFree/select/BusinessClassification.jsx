@@ -10,11 +10,19 @@ const animatedComponents = makeAnimated();
 
 const BusinessClassification = () => {
     const [loading, setLoading] = useState(false);
-    const { classification, setClassification } = useGetListedFree();
+    const { catg, setcatg } = useGetListedFree();
     const [classificationData, setClassificationData] = useState();
+    console.log(catg)
+    const fetchCatg = async()=>{
+        try {
+            const res = await fetch('https')
+        } catch (err) {
+            
+        }
+    }
 
     const handleClassificationChange = (selectedOptions) => {
-        setClassification(selectedOptions);
+        setcatg(selectedOptions);
     };
     // console.log(classificationData)
     const handleInputFocus = () => {
@@ -47,7 +55,7 @@ const BusinessClassification = () => {
 
 
                     <CreatableSelect
-                        value={classification}
+                        value={catg}
                         classNamePrefix="peer"
                         className=" cursor-pointer  ease-in duration-200 text-start 
                         bg-[#1a1f2d] bg-red-300!important border-[1px] peer  border-gray-300!important Z-11 text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600
