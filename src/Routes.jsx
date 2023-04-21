@@ -15,6 +15,20 @@ export const AllRoutes = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/getlistedfree", element: <GetListedFree /> },
   { path: "/search/:id", element: <ListsPage /> },
+  // {
+  //   path: "/",
+  //   children: [
+  //     {
+  //       path: "/search/:id",
+  //       element: <ListsPage />,
+  //       children: [
+  //         { path: "/search/:id/:page", element: <ListsPage /> },
+  //         { path: "/search/:id/:limit/:limit", element: <ListsPage /> },
+  //       ],
+  //     },
+  //   ],
+  // },
+  // { path: "/business", element: <ListsPage /> },
   { path: "/profile/:id", element: <BusinessProfile /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },

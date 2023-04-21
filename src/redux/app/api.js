@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:8081",
-  baseUrl: "local-search-api-production.up.railway.app"
+  baseUrl: "https://local-search-api-production.up.railway.app"
 
  
 });

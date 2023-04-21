@@ -7,14 +7,14 @@ import SignOfOpeningAndClosing from "./SignOfOpeningAndClosing";
 import Buttons from "./Buttons";
 import calcTime from "./CalcTime";
 
-const ListComp = ({ data, calc }) => {
+const ListComp = ({ data, display }) => {
   //console.log("----")
   //console.log("listComp called");
   const [status, setStatus] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(null);
 
   useEffect(() => {
-    if(calc){
+    if (display) {
       const [status, timeRemaining] = calcTime(data);
       setStatus(status);
       setTimeRemaining(timeRemaining);
@@ -24,18 +24,16 @@ const ListComp = ({ data, calc }) => {
   const dataLength = data && data.catg && data.catg.length;
 
   return (
-    <div className="pt-8 pb-5  bg-white rounded-xl max-w-screen-lg mx-auto border-2 border-gray-100">
+    <div className="pt-8 pb-5 mx-auto max-w-screen-lg bg-white rounded-xl border-2 border-gray-100">
       <div className="flex relative gap-4 items-start px-4 pt-4 pb-0 max-sm:flex-col sm:px-6 lg:px-8">
-        <Link to="#" className="block shrink-0">
-          <img
-            alt="Speaker"
-            src="/ITAHARI.jpeg"
-            className="object-cover max-sm:w-screen  object-bottom max-sm:h-[190px] w-28 h-28 rounded-md"
-          />
-        </Link>
+        <img
+          alt={data?.name}
+          src="/ITAHARI.jpeg"
+          className="object-cover max-sm:w-screen  object-bottom max-sm:h-[190px] w-28 h-28 rounded-md"
+        />
         <div className="flex flex-wrap w-full">
           <div className="flex-[2]">
-            <div className="flex gap-1 mb-1 items-center font-medium text-gray-700 text-start sm:text-lg">
+            <div className="flex gap-1 items-center mb-1 font-medium text-gray-700 text-start sm:text-lg">
               <Link
                 to={`/profile/${data?._id}`}
                 className="mr-4 hover:underline"
@@ -76,7 +74,7 @@ const ListComp = ({ data, calc }) => {
         {status && <SignOfOpeningAndClosing status={status} />}
       </div>
 
-      <Buttons data={data}/>
+      <Buttons display={display} data={data} />
     </div>
   );
 };

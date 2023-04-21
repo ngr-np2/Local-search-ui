@@ -21,7 +21,7 @@ const MapView = ({ height, data }) => {
         iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
       });
 
-      const title = `<div><b>${name}</b></div><br><i>${catg[0]}</i><br> <small>${address}</small>`;
+      const title = `<div><b>${name}</b></div><br><i>${catg[0].label}</i><br> <small>${address}</small>`;
       const marker = L.marker([lat, lng], {
         icon: icon,
       })

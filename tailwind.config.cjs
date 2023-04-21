@@ -113,17 +113,20 @@ module.exports = {
           transform: "rotate(360deg)",
         },
       },
+      ping: {
+        "0%, 100%": {
+          opacity: "1",
+        },
+        "50%": {
+          opacity: ".5",
+        },
+      },
     },
     animation: {
       "loading-circle": "spin 1s linear infinite",
       bounce: "bounce 0.82s cubic-bezier(.36,.07,.19,.97) both",
       shake: "shake 1s",
+      loadingping: "ping 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
     },
-    // screens: {
-    //   'moblg': "475px",
-    //   "mobmd": "375px",
-    //   "mobsm": '325px',
-    // },
   },
-  plugins: [],
 };
