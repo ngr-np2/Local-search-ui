@@ -1,4 +1,3 @@
-import React from 'react'
 import ListSection from '../sections/Lists/ListSection'
 
 const ListsPage = () => {

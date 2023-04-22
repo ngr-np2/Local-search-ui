@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
-
 const blink = keyframes`
 0%{
     transform: scale(0.15);
@@ -12,35 +11,33 @@ const blink = keyframes`
     transform: scale(1);
     opacity: 0;
 }
-`
+`;
 const Loader = styled.div`
- width: 64px;
- height: 64px;
- border-radius: 50%;
- background: #ffffff;
- animation: ${blink} 0.85s infinite linear;
-`
+  animation: ${blink} 0.85s infinite linear;
+`;
 const LoadingCircle = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       setLoading(false);
     } else {
-      window.onload = () => setLoading(false)
+      window.onload = () => setLoading(false);
     }
   }, []);
 
   return (
     <>
-      {loading &&
+      {loading && (
         <div className="fixed z-50 mt-9 w-screen text-center text-gray-300">
           <div className="inline-block relative w-20 h-20 lds-ring">
-            <Loader />
-
+            <Loader className="absolute w-16 h-16 rounded-full ring-2 ring-green-400 ring-offset-8 bg-slate-50" />
+            <Loader className="absolute mt-1 ml-1 w-14 h-14 rounded-full ring-1 ring-green-400 ring-offset-4 bg-slate-50" />
+            <Loader className="absolute mt-2 ml-2 w-12 h-12 rounded-full ring-1 ring-green-400 ring-offset-4 bg-slate-50" />
+            <Loader className="mt-3 ml-3 w-10 h-10 rounded-full ring-2 ring-green-400 ring-offset-2" />
           </div>
         </div>
-      }
+      )}
     </>
   );
 };
