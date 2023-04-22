@@ -28,9 +28,9 @@ const ListComp = ({ data, display }) => {
   useEffect(() => {
     const handleScroll = () => {
       const el = document.getElementById(data._id);
-      const rect = el.getBoundingClientRect();
+      const rect = el?.getBoundingClientRect();
       const threshold = window.innerHeight - 100;
-      const isElementVisible = rect.top <= threshold;
+      const isElementVisible = rect?.top <= threshold;
       setVisible(isElementVisible);
     };
     handleScroll();
@@ -41,6 +41,7 @@ const ListComp = ({ data, display }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [data._id]);
+  
   return (
     <motion.div
       id={data._id}
