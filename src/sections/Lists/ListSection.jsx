@@ -14,7 +14,9 @@ const ListSection = () => {
   const location = useLocation();
 
   const search = location.pathname.split("/")[2];
-
+  const query = location.search;
+  console.log(query);
+  console.log(datas);
   const {
     data: data,
     isLoading,
@@ -26,6 +28,7 @@ const ListSection = () => {
     page,
     limit,
     search,
+    query,
   });
   console.log("----");
   console.log("load", isLoading);
@@ -71,16 +74,18 @@ const ListSection = () => {
             ))
           )}
         </div>
-        <AsideAds />
+        <AsideAds data={datas?.ads} />
       </div>
-      <Pagination
-        datas={datas}
-        data={data}
-        setPage={setPage}
-        isFetching={isFetching}
-        page={page}
-        limit={limit}
-      />
+      {!query && (
+        <Pagination
+          datas={datas}
+          data={data}
+          setPage={setPage}
+          isFetching={isFetching}
+          page={page}
+          limit={limit}
+        />
+      )}
     </section>
   );
 };

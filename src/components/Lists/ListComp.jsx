@@ -29,7 +29,7 @@ const ListComp = ({ data, display }) => {
     const handleScroll = () => {
       const el = document.getElementById(data._id);
       const rect = el?.getBoundingClientRect();
-      const threshold = window.innerHeight - 100;
+      const threshold = window.innerHeight + 80;
       const isElementVisible = rect?.top <= threshold;
       setVisible(isElementVisible);
     };
@@ -46,7 +46,7 @@ const ListComp = ({ data, display }) => {
     <motion.div
       id={data._id}
       className="map-card"
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 100 }}
       transition={{ duration: 0.5 }}
     >
