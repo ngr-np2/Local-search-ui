@@ -40,7 +40,7 @@ const Buttons = ({ data, display }) => {
         </>
       ) : (
         <>
-          <Link to={`${!display ? `/profile/${data?._id}` : "#"}`}>
+          <Link to={`/profile/${data?._id}`}>
             <strong title="Number" className={bottonStyle}>
               <LocalPhoneIcon fontSize="small" />
               <span className={bottonTextStyle}>Calll Us</span>

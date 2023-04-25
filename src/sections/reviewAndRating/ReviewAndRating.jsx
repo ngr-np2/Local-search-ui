@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import StarRateIcon from "@mui/icons-material/StarRate";
+import React, { useEffect, useState } from "react";
 import ReviewComp from "../../components/RatingAndReview/ReviewComp";
-import { stackClasses } from "@mui/material";
+import { useGetReviewQuery } from "../../redux/review/getReviewsApiSlice";
+import { useLocation } from "react-router-dom";
 const requireLableClass = "text-red-700 dark:text-red-500";
 const requireInputClass =
   "border-red-500 text-red-900 bg-red-50 placeholder-red-700  focus:ring-red-500  focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
@@ -10,31 +10,44 @@ const ReviewAndRating = () => {
   const stars = Array(5).fill(0);
   const [startValue, setStarValue] = useState(0);
   const [hoverStarValue, setHoverStarValue] = useState(undefined);
-
+  const [reviews, setReviews] = useState([]);
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
   //console.log("hov", hoverStarValue);
   //console.log("star", startValue);
   const handleClick = (e, val) => {
-    // e.preventDefault();
     setStarValue(val);
   };
 
   const handleHover = (e, idx) => {
-    // if (startValue === 0) {
     setHoverStarValue(idx + 1);
-    // }
   };
 
   const handleHoverOut = () => {
     setHoverStarValue(undefined);
   };
+  const {
+    data: data,
+    isLoading,
+    isFetching,
+    isError,
+  } = useGetReviewQuery({
+    id,
+  });
+  console.log(data);
+  useEffect(() => {
+    if (data) {
+      setReviews(data.reviews);
+    }
+  }, [data]);
   return (
     <section className="pt-16 bg-slate-100">
-      <div className="px-9 max-w-screen-xl m-auto">
+      <div className="px-9 m-auto max-w-screen-xl">
         <div className="">
-          <h4 className="text-center font-font-3 text-xl font-bold tracking-widest">
+          <h4 className="text-xl font-bold tracking-widest text-center font-font-3">
             Write a Review
           </h4>
-          <div className="flex justify-center transition duration-1000 ease-in-out mt-6">
+          <div className="flex justify-center mt-6 transition duration-1000 ease-in-out">
             {stars.map((_, idx) => {
               return (
                 <div
@@ -42,10 +55,10 @@ const ReviewAndRating = () => {
                   onClick={(e) => handleClick(e, idx + 1)}
                   onMouseOver={(e) => handleHover(e, idx)}
                   onMouseLeave={handleHoverOut}
-                  className="mx-1 cursor-pointer rounded-full transition-colors duration-300 ease-linear "
+                  className="mx-1 rounded-full transition-colors duration-300 ease-linear cursor-pointer"
                 >
-                  <StarRateIcon
-                    fontSize="large"
+                  <svg
+                    aria-hidden="true"
                     className={`${
                       hoverStarValue
                         ? hoverStarValue > idx
@@ -54,8 +67,13 @@ const ReviewAndRating = () => {
                         : startValue > idx
                         ? "text-yellow-400"
                         : "text-gray-500"
-                    } transition duration-100 ease-in-out `}
-                  />
+                    } transition duration-100 ease-in-out w-8 h-8 `}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
                 </div>
               );
             })}
@@ -72,6 +90,7 @@ const ReviewAndRating = () => {
                 <input
                   type="text"
                   id="title"
+                  required
                   className="bg-gray-100 border text-sm rounded-lg block w-full p-2.5
                   border-gray-300 text-gray-900  focus:ring-blue-500  focus:border-blue-500 active:border-blue-500"
                   placeholder="Enter short title"
@@ -82,13 +101,12 @@ const ReviewAndRating = () => {
               </div>
 
               <div className="mb-4 w-full bg-gray-50 rounded-lg border border-gray-200">
-                <div className="px-4 py-2 bg-salte-100 rounded-t-lg">
+                <div className="px-4 py-2 rounded-t-lg bg-slate-100">
                   <textarea
                     id="desc"
                     rows="4"
-                    className="px-4 py-3 w-full text-sm text-gray-600 bg-slate-50 border-0 focus:ring-0"
+                    className="px-4 py-3 w-full text-sm text-gray-600 border-0 bg-slate-50 focus:ring-0"
                     placeholder="Describe how was your exprince..."
-                    required
                   ></textarea>
                 </div>
                 <div className="flex justify-end items-center px-3 py-2 border-t border-gray-600">
@@ -96,14 +114,17 @@ const ReviewAndRating = () => {
                     type="submit"
                     className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-800"
                   >
-                    Post comment
+                    Submit
                   </button>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        <ReviewComp />
+        {reviews &&
+          reviews.map((review) => {
+            return <ReviewComp key={review._id} data={review} />;
+          })}
       </div>
     </section>
   );

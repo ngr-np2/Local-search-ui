@@ -29,12 +29,12 @@ const LoadingCircle = () => {
   return (
     <>
       {loading && (
-        <div className="fixed z-50 mt-9 w-screen text-center text-gray-300">
+        <div className="fixed z-50 mt-9 w-screen text-center">
           <div className="inline-block relative w-20 h-20 lds-ring">
-            <Loader className="absolute w-16 h-16 rounded-full ring-2 ring-green-400 ring-offset-8 bg-slate-50" />
-            <Loader className="absolute mt-1 ml-1 w-14 h-14 rounded-full ring-1 ring-green-400 ring-offset-4 bg-slate-50" />
-            <Loader className="absolute mt-2 ml-2 w-12 h-12 rounded-full ring-1 ring-green-400 ring-offset-4 bg-slate-50" />
-            <Loader className="mt-3 ml-3 w-10 h-10 rounded-full ring-2 ring-green-400 ring-offset-2" />
+            <Loader className="absolute w-16 h-16 rounded-full ring-2 ring-offset-green-200 ring-slate-400 ring-offset-8 " />
+            <Loader className="absolute mt-1 ml-1 w-14 h-14 rounded-full ring-1 ring-offset-green-200 ring-slate-400 ring-offset-4" />
+            <Loader className="absolute mt-2 ml-2 w-12 h-12 rounded-full ring-1 ring-offset-green-200 ring-slate-400 ring-offset-4 " />
+            <Loader className="mt-3 ml-3 w-10 h-10 rounded-full ring-2 ring-offset-green-200 ring-slate-400 ring-offset-2" />
           </div>
         </div>
       )}
