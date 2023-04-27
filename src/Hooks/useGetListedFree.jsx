@@ -212,6 +212,7 @@ const useGetListedFree = () => {
 
     setErrorMsg("success");
   }
+  
   //console.log(OpeningDays);
 
   // //console.log(businessName, businessEmail, catg, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)

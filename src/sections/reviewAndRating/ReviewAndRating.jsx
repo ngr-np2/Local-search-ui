@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ReviewComp from "../../components/RatingAndReview/ReviewComp";
-import { useGetReviewQuery } from "../../redux/review/getReviewsApiSlice";
-import { useLocation } from "react-router-dom";
+import ReviewScletion from "../../components/loading/ReviewScletion";
 const requireLableClass = "text-red-700 dark:text-red-500";
 const requireInputClass =
   "border-red-500 text-red-900 bg-red-50 placeholder-red-700  focus:ring-red-500  focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
 const requireMsgClass = " text-red-600 dark:text-red-500";
-const ReviewAndRating = () => {
+const ReviewAndRating = ({ dataId }) => {
+  const ref = useRef();
   const stars = Array(5).fill(0);
   const [startValue, setStarValue] = useState(0);
   const [hoverStarValue, setHoverStarValue] = useState(undefined);
-  const [reviews, setReviews] = useState([]);
-  const location = useLocation();
-  const id = location.pathname.split("/")[2];
-  //console.log("hov", hoverStarValue);
-  //console.log("star", startValue);
+  const [inView, setInView] = useState(false);
   const handleClick = (e, val) => {
     setStarValue(val);
   };
@@ -26,20 +22,26 @@ const ReviewAndRating = () => {
   const handleHoverOut = () => {
     setHoverStarValue(undefined);
   };
-  const {
-    data: data,
-    isLoading,
-    isFetching,
-    isError,
-  } = useGetReviewQuery({
-    id,
-  });
-  console.log(data);
+
+  let callback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setInView(true);
+      }
+    });
+  };
+
   useEffect(() => {
-    if (data) {
-      setReviews(data.reviews);
+    let observer = new IntersectionObserver(callback);
+    if (ref?.current) {
+      observer.observe(ref.current);
     }
-  }, [data]);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  console.log(inView);
   return (
     <section className="pt-16 bg-slate-100">
       <div className="px-9 m-auto max-w-screen-xl">
@@ -121,10 +123,13 @@ const ReviewAndRating = () => {
             </form>
           </div>
         </div>
-        {reviews &&
-          reviews.map((review) => {
-            return <ReviewComp key={review._id} data={review} />;
-          })}
+        <div ref={ref} className="py-4">
+          {inView ? (
+            <ReviewComp  dataId={dataId} />
+          ) : (
+            <ReviewScletion />
+          )}
+        </div>
       </div>
     </section>
   );

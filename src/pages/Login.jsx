@@ -86,7 +86,7 @@ const Login = () => {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
                   placeholder="name@email.com"
                   required
                 />
@@ -106,21 +106,21 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
                   required
                 />
               </div>
               <div className="flex justify-end">
                 <Link
                   to="#"
-                  className="text-sm font-medium text-primary-600 hover:underline -500"
+                  className="text-sm font-medium text-green-600 hover:underline -500"
                 >
                   Forgot password?
                 </Link>
               </div>
               <button
                 onClick={handleClick}
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center -600 -primary-700 -primary-800"
+                className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center -600 -green-700 -green-800"
               >
                 Login
               </button>
@@ -128,7 +128,7 @@ const Login = () => {
                 Don’t have an account yet?{" "}
                 <Link
                   to="/register"
-                  className="font-medium text-primary-600 hover:underline -500"
+                  className="font-medium text-green-600 hover:underline -500"
                 >
                   Register
                 </Link>

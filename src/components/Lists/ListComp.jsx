@@ -23,11 +23,11 @@ const ListComp = ({ data, display }) => {
     }
   }, []);
 
-  const dataLength = data && data.catg && data.catg.length;
+  const dataLength = data && data?.catg && data?.catg.length;
 
   useEffect(() => {
     const handleScroll = () => {
-      const el = document.getElementById(data._id);
+      const el = document.getElementById(data?._id);
       const rect = el?.getBoundingClientRect();
       const threshold = window.innerHeight + 80;
       const isElementVisible = rect?.top <= threshold;
@@ -40,11 +40,11 @@ const ListComp = ({ data, display }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [data._id]);
+  }, [data?._id]);
   
   return (
     <motion.div
-      id={data._id}
+      id={data?._id}
       className="map-card"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 100 }}
@@ -81,7 +81,7 @@ const ListComp = ({ data, display }) => {
                   Categories:
                   {dataLength > 0 && (
                     <p className="mx-1 text-base text-gray-800 capitalize sm:overflow-hidden sm:whitespace-nowrap sm:text-ellipsis">
-                      {data.catg[0].label},
+                      {data?.catg[0].label},
                     </p>
                   )}
                   {dataLength > 1 && (
@@ -93,7 +93,7 @@ const ListComp = ({ data, display }) => {
                     </div>
                   )}
                 </div>
-                {data.time && <OpeningFromAndTo data={data} status={status} />}
+                {data?.time && <OpeningFromAndTo data={data} status={status} />}
               </div>
             </div>
           </div>

@@ -24,7 +24,6 @@ const BusinessOpeningHours = () => {
     handleOpenTimeChange,
     handleCloseTimeChange,
   } = useGetListedFree();
-  
 
   return (
     <>
@@ -154,14 +153,14 @@ const BusinessOpeningHours = () => {
         }`}
       >
         <div
-          title="business closing day"
+          title="business opening weeks"
           className="relative w-full duration-200 ease-in group"
         >
           <label
-            htmlFor="dayofffrom"
+            htmlFor="dayOpened"
             className="block mb-2 text-sm font-medium text-left text-gay-400 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
           >
-            OFF DAYS
+            OPENING WEEKS
           </label>
         </div>
       </div>

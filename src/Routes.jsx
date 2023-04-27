@@ -9,35 +9,27 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/admin/Dashboard";
 import AdminLayout from "./layout/AdminLayout";
 import Businesses from "./pages/admin/Businesses";
+import Ads from "./pages/admin/Ads";
+import UserProfile from "./pages/admin/UserProfile";
+
 // import Map from "./pages/test/Form";
 
 export const AllRoutes = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/getlistedfree", element: <GetListedFree /> },
   { path: "/search/:id", element: <ListsPage /> },
-  // {
-  //   path: "/",
-  //   children: [
-  //     {
-  //       path: "/search/:id",
-  //       element: <ListsPage />,
-  //       children: [
-  //         { path: "/search/:id/:page", element: <ListsPage /> },
-  //         { path: "/search/:id/:limit/:limit", element: <ListsPage /> },
-  //       ],
-  //     },
-  //   ],
-  // },
-  // { path: "/business", element: <ListsPage /> },
   { path: "/profile/:id", element: <BusinessProfile /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
   {
-    path: "/",
+    path: "/dashboard",
     element: <AdminLayout />,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
-      { path: "/businesses", element: <Businesses /> },
+      { path: "/dashboard/businesses", element: <Businesses /> },
+      { path: "/dashboard/ads", element: <Ads /> },
+
+      { path: "/dashboard/users/:id", element: <UserProfile /> },
     ],
   },
   // { path: "/register", element: <Register /> },

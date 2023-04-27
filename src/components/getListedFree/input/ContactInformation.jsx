@@ -1,26 +1,37 @@
-import React from 'react'
-import useGetListedFree from '../../../Hooks/useGetListedFree'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import DropDownArrowSvg from '../../buttons/DropDownArrowSvg';
+import React from "react";
+import useGetListedFree from "../../../Hooks/useGetListedFree";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import DropDownArrowSvg from "../../buttons/DropDownArrowSvg";
 
 const ContactInformation = () => {
-    const { firstName, lastName, mobileNum, email, handleContactInfo, message, role } = useGetListedFree()
+  const {
+    firstName,
+    lastName,
+    mobileNum,
+    email,
+    handleContactInfo,
+    message,
+    role,
+  } = useGetListedFree();
+  console.log(role)
 
-    return (
-        <>
-            <div className="flex justify-center m-auto mt-20 w-full max-lg:flex-wrap">
-                <div title="Contact information of the person who is filling this form"
-                    className="relative w-full duration-200 ease-in group">
-                    <label
-                        htmlFor="firstName"
-                        className="block mb-2 text-sm font-medium text-left text-gray-300 cursor-pointer peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
-                    >
-                        Contact information
-                    </label>
-                </div>
-            </div>
-            <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
-                <div title="first name" className="relative z-0 w-full group">
+  return (
+    <>
+      <div className="flex justify-center m-auto mt-20 w-full max-lg:flex-wrap">
+        <div
+          title=" Information of the person who is filling this form"
+          className="relative w-full duration-200 ease-in group"
+        >
+          <label
+            htmlFor="firstName"
+            className="block mb-2 text-sm font-medium text-left text-gray-300 cursor-pointer peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+          >
+            Your role in this Businesses
+          </label>
+        </div>
+      </div>
+      {/*<div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
+                 <div title="first name" className="relative z-0 w-full group">
                     <input
                         required
                         type="text"
@@ -91,44 +102,51 @@ const ContactInformation = () => {
                     </label>
                 </div>
 
-            </div>
-            <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
-                <div title="your current position" className="relative w-full duration-200 ease-in group flex flex-col-reverse">
-                    <DropDownArrowSvg />
-                    <select
-                        name="role"
-                        defaultValue={'role'}
-                        onChange={(e) => handleContactInfo(e.target.value, 'role')}
-                        className="block cursor-pointer peer ease-in pr-7 duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 border-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-gray-100 text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
-                    >
-                        <option value="role" disabled>
-                            select your Role ✳️
-                        </option>
-                        <option value="Onr">Owner</option>
-                        <option value="gm">General Manager</option>
-                        <option value="MM">Marketing Manager</option>
-                        <option value="BM">Branch Manager</option>
-                        <option value="0">Other</option>
-                    </select>
-                    <label
-                        htmlFor="role"
-                        className="block mb-2 text-sm font-medium text-left text-gray-500 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
-                    >
-                        Job Title
-                    </label>
-                </div>
-            </div>
-            <fieldset className="max-w-2xl mt-4 text-white  rounded-sm border-[1px]  border-gray-300 dark:text-white text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 text-start pl-4">
+            </div> */}
+      <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
+        <div
+          title="your current position"
+          className="relative w-full duration-200 ease-in group flex flex-col-reverse"
+        >
+          <DropDownArrowSvg />
+          <select
+            name="role"
+            defaultValue={"role"}
+            onChange={(e) => handleContactInfo(e.target.value, "role")}
+            className="block cursor-pointer peer ease-in pr-7 duration-200 bg-[#1a1f2d] w-full outline-none p-3 appearance-none h-12 border-b-[1px] rounded-sm border-[1px]  border-gray-300 dark:text-gray-100 text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+          >
+            <option value="role" disabled>
+              select your Role ✳️
+            </option>
+            <option value="Onr">Owner</option>
+            <option value="gm">General Manager</option>
+            <option value="MM">Marketing Manager</option>
+            <option value="BM">Branch Manager</option>
+            <option value="0">Other</option>
+          </select>
+          <label
+            htmlFor="role"
+            className="block mb-2 text-sm font-medium text-left text-gray-500 peer-focus:text-blue-600 peer-focus:dark:text-blue-500"
+          >
+            Job Title
+          </label>
+        </div>
+      </div>
+      <fieldset className="max-w-2xl mt-4 text-white  rounded-sm border-[1px]  border-gray-300 dark:text-white text-base dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 text-start pl-4">
+        <legend className="text-sm text-gray-300 cursor-pointer">
+          Message
+        </legend>
+        <textarea
+          name="message"
+          value={message}
+          placeholder=""
+          onChange={(e) => handleContactInfo(e.target.value, "message")}
+          className="block pr-4 mt-2 w-full text-sm tracking-wider text-white overflow-ellipsis bg-transparent outline-none"
+          rows="7"
+        />
+      </fieldset>
+    </>
+  );
+};
 
-                <legend className='text-sm text-gray-300 cursor-pointer'>
-                    Message
-                </legend>
-                <textarea name="message" value={message} onChange={(e) => handleContactInfo(e.target.value, "message")} className="block pr-4 mt-2 w-full text-sm tracking-wider text-white overflow-ellipsis bg-transparent outline-none"
-                    rows="7" />
-            </fieldset>
-
-        </>
-    )
-}
-
-export default ContactInformation
+export default ContactInformation;

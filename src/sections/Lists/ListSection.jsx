@@ -6,6 +6,7 @@ import { details } from "../../assets/data.json";
 import CardLoading from "../../components/loading/cardLoading";
 import Pagination from "../../components/Lists/Pagination";
 import AsideAds from "../Ads/AsideAds";
+import BusinessesNotFound from "../../components/Lists/BusinessesNotFound";
 
 const ListSection = () => {
   const [datas, setDatas] = useState([]);
@@ -43,6 +44,10 @@ const ListSection = () => {
     setDatas(data);
   }, [data, error]);
 
+  const noData = {
+    _id: 1,
+    name: "Businesses not found",
+  };
   return (
     <section className="bg-slate-100">
       <select value={limit} onChange={handleLimit} name="limit" id="limit">
@@ -66,6 +71,8 @@ const ListSection = () => {
               <CardLoading />
               <CardLoading />
             </>
+          ) : data.count === 0 ? (
+            <BusinessesNotFound />
           ) : (
             isSuccess &&
             datas?.businessProfiles &&

@@ -57,7 +57,7 @@ const AdditionalInfo = ({ data }) => {
       {data?.location?.lat && data?.location?.lng && (
         <MapView height={"h-[40vmin] max-sm:h-[60vh]"} data={data} />
       )}
-      <ReviewAndRating />
+      <ReviewAndRating dataId={data?._id} />
     </div>
   );
 };
