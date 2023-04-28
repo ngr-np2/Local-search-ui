@@ -19,8 +19,8 @@ const PopularCatgCard = () => {
   const handleImageError = () => {
     setErr(true);
   };
-  const responsibeCardWidth = "max-sm:h-96 sm:h-72 xl:h-56 ";
-  const responsibeCardheight = "  max-sm:w-[85vw] sm:w-[45vw] lg:w-[30vw] xl:w-[18rem]";
+  const responsibeCardheight = "max-sm:h-96 sm:h-72 xl:h-56 ";
+  const responsibeCardWidth = " xl:w-[18rem]";
 
   // const datas = [
   //   {

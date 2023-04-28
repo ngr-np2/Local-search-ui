@@ -1,46 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import BusinessesCountCard from "../../components/admin/BusinessesCountCard";
 import AdsCountCard from "../../components/admin/AdsCountCard";
+import PendingDataSection from "./dashboard/PendingDataSection";
+import TotalCountSection from "./dashboard/TotalCountSection";
+import PopularCatgCard from "../../components/home/popularCatg/PopularCatgCard";
 
 const Status = () => {
   const user = {
     total: 40,
   };
-  const ads = {
-    total: 12,
-    pending: 1,
-    revenu: 2990,
-  };
+
   return (
-    <div className="p-4 sm:ml-64">
+    <div className="m-auto max-w-screen-xl space-y-10 w-[90%] ">
+      <PendingDataSection />
+      <TotalCountSection />
       <AdsCountCard />
-      <BusinessesCountCard />
       <div className="p-4 rounded-lg border-2 border-gray-200 border-dashed">
-        <div className="grid grid-cols-3 gap-4 mb-4 max-sm:grid-cols-1">
-          <div className="flex flex-col gap-2 justify-center items-center px-1 py-3 bg-gray-50 rounded h-33">
-            <p className="tracking-wider text-center text-green-500 font-font-7">
-              Users
-            </p>
-            <div className="px-3 py-1 bg-gray-200 text-slate-900 font-font-3">
-              {user.total}
-            </div>
-          </div>
+        <h5 className=" font-font-2 py-4 capitalize text-2xl text-center text-slate-800">
+          Popular Category
+        </h5>
+        <div className="grid place-items-center sm:px-4 lg:px-8 py-4 m-auto max-w-screen-xl gap-20 grid-cols-[repeat(auto-fit,_minmax(14rem,_1fr))]">
+          <PopularCatgCard />
           <div
             title="Total listed Business"
             className="flex flex-col gap-2 justify-center items-center px-1 py-3 bg-gray-50 rounded h-33"
           >
-            <p className="px-2 tracking-wider text-center text-green-500 font-font-7">
-              Businesses
-            </p>
             <div className="px-3 py-1 bg-gray-200 text-slate-900 font-font-3">
               {user.total}
             </div>
           </div>
           <div className="flex flex-col gap-2 justify-center items-center px-1 py-2 bg-gray-50 rounded h-33">
-            <p className="px-2 tracking-wider text-center text-green-500 font-font-7">
-              ADs
-            </p>
             <div className="px-3 py-1 bg-gray-200 text-slate-900 font-font-3">
               {user.total}
             </div>

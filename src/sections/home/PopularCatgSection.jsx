@@ -11,7 +11,7 @@ const PopularCatgSecion = () => {
           Explore some of the best Business Across NEAPL
         </p>
       </div>
-      <div className="grid gap-6 place-items-center px-8 py-4 m-auto max-w-screen-xl sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-sm:grid-cols-1">
+      <div className="grid gap-6 place-items-center max-sm:px-2 px-8 py-4 m-auto max-w-screen-xl sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-sm:grid-cols-[repeat(auto-fit,_minmax(15rem,_1fr))]">
         {/* <div className="flex flex-wrap gap-9 justify-between items-center px-8 py-4 max-md:justify-center xl:justify-center"> */}
         {/* grid-cols-[repeat(auto-fit,_minmax(16rem,_1fr))] */}
         <PopularCatgCard />

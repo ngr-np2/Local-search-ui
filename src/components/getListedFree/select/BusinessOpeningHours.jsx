@@ -164,13 +164,13 @@ const BusinessOpeningHours = () => {
           </label>
         </div>
       </div>
-      <div className="flex gap-10 justify-between m-auto w-full flex-wrap">
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(6rem,_1fr))]  gap-8 w-full">
         {days.map((day) => {
           return (
             <div
               disabled={openAllDayAndWeek}
               key={day.num}
-              className="flex gap-3 font-font-1 text-base w-28"
+              className="flex gap-3 w-28 text-base font-font-1"
             >
               <input
                 className={
