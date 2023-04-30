@@ -3,7 +3,7 @@ import TableSec from "../../sections/admin/table";
 
 const Businesses = () => {
   return (
-    <div className="p-4 sm:ml-64">
+    <div className="p-4 md:ml-64">
       <TableSec/>
     </div>
   );

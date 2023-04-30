@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import ReviewComp from "../../components/RatingAndReview/ReviewComp";
 import ReviewScletion from "../../components/loading/ReviewScletion";
+import NoReviewYet from "../../components/RatingAndReview/NoReviewYet";
 const requireLableClass = "text-red-700 dark:text-red-500";
 const requireInputClass =
   "border-red-500 text-red-900 bg-red-50 placeholder-red-700  focus:ring-red-500  focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
 const requireMsgClass = " text-red-600 dark:text-red-500";
-const ReviewAndRating = ({ dataId }) => {
+const ReviewAndRating = ({ totalReview, dataId }) => {
   const ref = useRef();
   const stars = Array(5).fill(0);
   const [startValue, setStarValue] = useState(0);
@@ -40,8 +41,9 @@ const ReviewAndRating = ({ dataId }) => {
       observer.disconnect();
     };
   }, []);
+  const token = "";
 
-  console.log(inView);
+  // console.log(inView);
   return (
     <section className="pt-16 bg-slate-100">
       <div className="px-9 m-auto max-w-screen-xl">
@@ -81,10 +83,10 @@ const ReviewAndRating = ({ dataId }) => {
             })}
           </div>
           <div className="py-5">
-            <form className="m-auto max-w-screen-md">
+            <form className="m-auto  max-w-screen-md">
               <div className="mb-1">
                 <label
-                  htmlFor="error"
+                  htmlFor="title"
                   className="block mb-2 text-sm font-medium text-gray-600"
                 >
                   Title
@@ -93,8 +95,8 @@ const ReviewAndRating = ({ dataId }) => {
                   type="text"
                   id="title"
                   required
-                  className="bg-gray-100 border text-sm rounded-lg block w-full p-2.5
-                  border-gray-300 text-gray-900  focus:ring-blue-500  focus:border-blue-500 active:border-blue-500"
+                  className="bg-gray-100 border text-md outline-none font-bold font-font-6 rounded-lg block w-full p-2.5
+                  border-gray-300  text-salte-800  focus:ring-green-500  focus:border-green-500 active:border-green-500"
                   placeholder="Enter short title"
                 />
                 <p className="mt-2 mb-4 text-sm opacity-0">
@@ -107,16 +109,18 @@ const ReviewAndRating = ({ dataId }) => {
                   <textarea
                     id="desc"
                     rows="4"
-                    className="px-4 py-3 w-full text-sm text-gray-600 border-0 bg-slate-50 focus:ring-0"
+                    className="px-4 py-3 w-full  text-sm outline-none focus:ring-green-500  focus:border-green-500 active:border-green-500 text-gray-600 border bg-slate-50 focus:ring-0"
                     placeholder="Describe how was your exprince..."
                   ></textarea>
                 </div>
-                <div className="flex justify-end items-center px-3 py-2 border-t border-gray-600">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 hover:bg-blue-800"
-                  >
-                    Submit
+                <div className="flex gap-4  justify-end items-center px-3 py-2 border-t border-gray-600">
+                  {!token && (
+                    <p className="tracking-widest font-font-4">
+                      First Login & add Review
+                    </p>
+                  )}
+                  <button className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-600 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-800">
+                    {token ? "Submit" : "Login"}
                   </button>
                 </div>
               </div>
@@ -124,8 +128,10 @@ const ReviewAndRating = ({ dataId }) => {
           </div>
         </div>
         <div ref={ref} className="py-4">
-          {inView ? (
-            <ReviewComp  dataId={dataId} />
+          {!totalReview ? (
+            <NoReviewYet />
+          ) : inView ? (
+            <ReviewComp dataId={dataId} />
           ) : (
             <ReviewScletion />
           )}

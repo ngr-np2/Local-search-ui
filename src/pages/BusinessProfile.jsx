@@ -23,7 +23,7 @@ const BusinessProfile = () => {
   } = useGetBusinessProfileQuery({
     id,
   });
-  console.log(error);
+  // console.log(error);
   useEffect(() => {
     if (isError) {
       navigate(from, {

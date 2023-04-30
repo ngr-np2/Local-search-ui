@@ -4,10 +4,8 @@ import ArrowRight from "@mui/icons-material/ArrowRight";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import LoadingCircleSvg from "../loading/loadingCircleSvg";
 
-const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
+const Pagination = ({ datas, isFetching, limit, setPage, page }) => {
   const [visible, setVisible] = useState(false);
-  const [pageNumbers, setPageNumbers] = useState([0]);
-  console.log(data);
   useEffect(() => {
     const handleScroll = () => {
       const threshold = 75;
@@ -23,31 +21,59 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const start = (datas?.currentPage - 1) * limit + 1 || 0;
-  const end = Math.min(datas?.currentPage * limit, datas?.count) || 0;
+  const start = (datas?.page - 1) * limit + 1 || 0;
+  const end = Math.min(datas?.page * limit, datas?.count) || 0;
   const handlePage = (e, value) => {
     e.preventDefault();
     if (value === "next") {
-      if (data?.totalPages > data?.currentPage) {
-        setPage(data?.currentPage + 1);
+      if (datas?.totalPages > datas?.page) {
+        setPage(datas?.page + 1);
       }
     } else {
-      if (data?.currentPage > 1) {
-        setPage(data?.currentPage - 1);
+      if (datas?.page > 1) {
+        setPage(datas?.page - 1);
       }
     }
   };
-  useEffect(() => {
-    const pages = [];
-    if (datas) {
-      for (let i = 1; i <= datas?.totalPages; i++) {
-        pages.push(i);
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const maxPageNumbers = 5;
+    const totalPages = datas?.totalPages;
+    const currentPage = datas?.page;
+    if (totalPages <= maxPageNumbers) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
       }
+    } else if (currentPage <= maxPageNumbers - 1) {
+      for (let i = 1; i <= maxPageNumbers; i++) {
+        pageNumbers.push(i);
+      }
+      pageNumbers.push("...");
+      pageNumbers.push(totalPages);
+    } else if (
+      currentPage >= totalPages - maxPageNumbers + 2 &&
+      currentPage <= totalPages
+    ) {
+      pageNumbers.push(1);
+      pageNumbers.push("...");
+      for (let i = totalPages - maxPageNumbers + 2; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      pageNumbers.push(1);
+      pageNumbers.push("...");
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        pageNumbers.push(i);
+      }
+      pageNumbers.push("...");
+      pageNumbers.push(totalPages);
     }
-    setPageNumbers(pages);
-  }, [datas]);
+
+    return pageNumbers;
+  };
+
   useEffect(() => {
-    if (data?.currentPage) {
+    if (datas?.page) {
       window.scrollTo({
         top: 0,
         left: 0,
@@ -55,7 +81,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
         duration: 10000,
       });
     }
-  }, [data]);
+  }, [datas]);
   return (
     <>
       {datas && (
@@ -74,7 +100,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
               <div
                 onClick={(e) => handlePage(e, "prev")}
                 className={`${
-                  data?.currentPage <= 1
+                  datas?.page <= 1
                     ? "cursor-not-allowed opacity-50"
                     : "cursor-pointer "
                 } inline-flex relative items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50`}
@@ -103,7 +129,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
               <div
                 onClick={(e) => handlePage(e, "next")}
                 className={`${
-                  data?.totalPages > data?.currentPage
+                  datas?.totalPages > datas?.page
                     ? "cursor-pointer"
                     : "cursor-not-allowed opacity-50"
                 } inline-flex relative items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white rounded-md border border-gray-300 hover:bg-gray-50`}
@@ -121,9 +147,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
                 </p>
               </div>
               <div className="flex justify-center items-center">
-                {isFetching && (
-                  <LoadingCircleSvg/>
-                )}
+                {isFetching && <LoadingCircleSvg />}
                 <nav
                   className="inline-flex isolate -space-x-px rounded-md shadow-sm"
                   aria-label="Pagination"
@@ -131,7 +155,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
                   <div
                     onClick={(e) => handlePage(e, "prev")}
                     className={`${
-                      data?.currentPage <= 1
+                      datas?.page <= 1
                         ? "cursor-not-allowed"
                         : "cursor-pointer"
                     } inline-flex relative items-center px-2 py-2 text-gray-400 rounded-l-md ring-1 ring-inset ring-gray-300  hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
@@ -139,14 +163,16 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
                     <ArrowLeft />
                   </div>
 
-                  {pageNumbers.map((page) => {
+                  {/* {pageNumbers.map((page) => { */}
+                  {getPageNumbers().map((page, idx) => {
                     return (
                       <div
-                        key={page}
-                        onClick={(e) => setPage(page)}
+                      
+                        key={idx}
+                        onClick={() => page !== "..." && setPage(page)}
                         aria-current="page"
                         className={`${
-                          datas?.currentPage === page
+                          datas?.page === page
                             ? " z-10  bg-green-600 text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             : " text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50  focus:outline-offset-0"
                         } ${isFetching ? "cursor-wait" : "cursor-pointer"}
@@ -161,7 +187,7 @@ const Pagination = ({ datas, data, isFetching, limit, setPage, page }) => {
                   <div
                     onClick={(e) => handlePage(e, "next")}
                     className={`${
-                      data?.totalPages > data?.currentPage
+                      datas?.totalPages > datas?.page
                         ? "cursor-pointer"
                         : "cursor-not-allowed"
                     } inline-flex relative items-center px-2 py-2 text-gray-400 rounded-r-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}

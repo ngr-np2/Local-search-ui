@@ -59,7 +59,7 @@ const Mid = () => {
         <div className="flex items-center max-sm:justify-center">
           <button
             onClick={handleSubmit}
-            className="px-4 py-1 h-9 text-white bg-green-500 rounded-sm border-2 outline-none select-none font-font-1 border-l-teal-100"
+            className="px-4 py-1 h-9 text-white bg-green-600 rounded-sm border-2 outline-none select-none font-font-11  tracking-wider border-l-teal-100"
           >
             search
           </button>

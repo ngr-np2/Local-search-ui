@@ -2,7 +2,7 @@ import EmailSvg from "../components/svg/EmailSvg";
 import PhoneSvg from "../components/svg/PhoneSvg";
 import { Link } from "react-router-dom";
 import PhoneOut from "../components/svg/PhoneOut";
-import VerifyBadgeedSvg from "../components/svg/VerifyedBadgeSvg";
+import VerifiedBadgedSvg from "../components/svg/VerifiedBadgedSvg";
 
 const UserProfileCard = () => {
   return (
@@ -24,7 +24,7 @@ const UserProfileCard = () => {
                 />
               </Link>
               <div className="absolute bottom-0 right-2 bg-green-500 rounded-full">
-                <VerifyBadgeedSvg />
+                <VerifiedBadgedSvg />
               </div>
             </div>
           </div>

@@ -28,7 +28,7 @@ const TimeAgo = ({ date }) => {
   const [time, setTime] = useState(getTimeSince(date));
 
   useEffect(() => {
-    console.log("called");
+    // console.log("called");
     setTime(getTimeSince(date));
   }, [date]);
 

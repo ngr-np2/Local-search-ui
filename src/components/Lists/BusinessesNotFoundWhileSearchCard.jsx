@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-const BusinessesNotFound = () => {
+const BusinessesNotFoundWhileSearchCard = () => {
     const location = useLocation()
     const path = location.pathname.split("/")[2]
   return (
@@ -33,4 +33,4 @@ const BusinessesNotFound = () => {
   );
 };
 
-export default BusinessesNotFound;
+export default BusinessesNotFoundWhileSearchCard;

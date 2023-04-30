@@ -6,7 +6,7 @@ import { details } from "../../assets/data.json";
 import CardLoading from "../../components/loading/cardLoading";
 import Pagination from "../../components/Lists/Pagination";
 import AsideAds from "../Ads/AsideAds";
-import BusinessesNotFound from "../../components/Lists/BusinessesNotFound";
+import BusinessesNotFoundWhileSearchCard from "../../components/Lists/BusinessesNotFoundWhileSearchCard";
 
 const ListSection = () => {
   const [datas, setDatas] = useState([]);
@@ -15,9 +15,11 @@ const ListSection = () => {
   const location = useLocation();
 
   const search = location.pathname.split("/")[2];
+  const id = location.pathname.split("/")[3];
+
   const query = location.search;
-  console.log(query);
-  console.log(datas);
+  // console.log(query);
+  // console.log(datas);
   const {
     data: data,
     isLoading,
@@ -30,9 +32,10 @@ const ListSection = () => {
     limit,
     search,
     query,
+    id,
   });
-  console.log("----");
-  console.log("load", isLoading);
+  // console.log("----");
+  // console.log("load", isLoading);
   const handleLimit = (e) => {
     e.preventDefault();
     setLimit(e.target.value);
@@ -43,11 +46,7 @@ const ListSection = () => {
     // setDatas(details);
     setDatas(data);
   }, [data, error]);
-
-  const noData = {
-    _id: 1,
-    name: "Businesses not found",
-  };
+console.log("-------------------",data)
   return (
     <section className="bg-slate-100">
       <select value={limit} onChange={handleLimit} name="limit" id="limit">
@@ -72,7 +71,7 @@ const ListSection = () => {
               <CardLoading />
             </>
           ) : data.count === 0 ? (
-            <BusinessesNotFound />
+            <BusinessesNotFoundWhileSearchCard />
           ) : (
             isSuccess &&
             datas?.businessProfiles &&
@@ -86,7 +85,7 @@ const ListSection = () => {
       {!query && (
         <Pagination
           datas={datas}
-          data={data}
+          data={datas}
           setPage={setPage}
           isFetching={isFetching}
           page={page}

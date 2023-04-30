@@ -67,7 +67,10 @@ const ReviewComp = ({ dataId }) => {
       ) : (
         reviews.map((data) => {
           return (
-            <article className="px-5 py-4 mb-14 rounded-lg bg-slate-200">
+            <article
+              key={data?._id}
+              className="px-5 py-4 mb-14 rounded-lg bg-slate-200"
+            >
               <div className="flex items-center mb-4 space-x-4">
                 <img
                   className="w-10 h-10 rounded-full"
@@ -114,7 +117,7 @@ const ReviewComp = ({ dataId }) => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="mx-1 w-6 h-6 cursor-pointer hover:fill-green-400"
+                      className="mx-1 w-6 h-6 cursor-pointer hover:fill-green-300 ease-in-out transform transition hover:-translate-y-1 duration-200 active:-rotate-12"
                     >
                       <path
                         strokeLinecap="round"
@@ -131,7 +134,7 @@ const ReviewComp = ({ dataId }) => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6 cursor-pointer hover:fill-gray-200"
+                      className="w-6 h-6 cursor-pointer hover:fill-red-400 ease-in-out transform transition hover:translate-y-1 duration-200 active:-rotate-12"
                     >
                       <path
                         strokeLinecap="round"

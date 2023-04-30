@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const AsideAds = ({ data }) => {
-  console.log("1", data);
+  // console.log("1", data);
   const [importantAds, setImportantAds] = useState([]);
 
   useEffect(() => {
     const impAds = data?.filter((ads) => ads.important === true);
-    console.log("im", impAds);
+    // console.log("im", impAds);
     if (impAds) {
       setImportantAds((prev) => [...prev, ...impAds]);
     }
@@ -45,7 +45,7 @@ const AsideAds = ({ data }) => {
         <div className="sticky top-8">
           {data?.length === 0 &&
             importantAds.map((ads) => {
-              console.log("ads imp", ads);
+              // console.log("ads imp", ads);
               return (
                 <div key={ads._id} className="px-2 top-8 py-3">
                   <div className="relative">
@@ -94,7 +94,7 @@ const AsideAds = ({ data }) => {
             data
               .filter((ads) => ads.important == false)
               .map((ads) => {
-                console.log("false", ads);
+                // console.log("false", ads);
                 return (
                   <div key={ads._id} className="px-2 top-8 py-3">
                     <div className="relative">

@@ -7,6 +7,7 @@ import SignOfOpeningAndClosing from "./SignOfOpeningAndClosing";
 import Buttons from "./Buttons";
 import calcTime from "./CalcTime";
 import { motion } from "framer-motion";
+import VerifiedBadgedSvg from "../svg/VerifiedBadgedSvg";
 
 const ListComp = ({ data, display }) => {
   //console.log("----")
@@ -41,7 +42,7 @@ const ListComp = ({ data, display }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [data?._id]);
-  
+
   return (
     <motion.div
       id={data?._id}
@@ -62,13 +63,26 @@ const ListComp = ({ data, display }) => {
               <div className="flex gap-1 items-center mb-1 font-medium text-gray-700 text-start sm:text-lg">
                 <Link
                   to={`/profile/${data?._id}`}
-                  className="mr-4 hover:underline"
+                  className="mr-1 hover:underline"
                 >
-                  <h3 className="text-2xl font-bold text-gray-600 font-font-8">
-                    {data?.name}
+                  <h3 className="text-2xl font-bold  text-gray-600 font-font-8">
+                    {data?.name}{" "}
                   </h3>
                 </Link>
-                <Star className="text-green-600 hover:text-green-500" />
+                {data?.status === "true" && (
+                  <VerifiedBadgedSvg color={"text-green-500"} />
+                )}
+                <div className="text-yellow-400 ml-4 hover:text-yellow-500 ease-in-out duration-500 transform transition active:translate-y-0 hover:-translate-y-1">
+                  <svg
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                </div>
                 <div className="items-center text-gray-500 font-font-11">
                   {data?.rating}
                 </div>

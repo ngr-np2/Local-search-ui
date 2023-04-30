@@ -13,7 +13,6 @@ const ContactInformation = () => {
     message,
     role,
   } = useGetListedFree();
-  console.log(role)
 
   return (
     <>

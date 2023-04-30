@@ -27,10 +27,10 @@ const Dropdown = ({ data }) => {
   });
   // //console.log("is", closedDays.includes(currentDay));
   return (
-    <div className="relative pt-3 text-gray-700">
+    <div className="relative pt-3 bg-slate-100 text-gray-700 ease-in-out duration-200  transition-all">
       <button
         onClick={() => setShow(!show)}
-        className="flex max-sm:min-w-fit max-sm:px-3 max-sm:py-2 items-center whitespace-nowrap  w-full max-w-screen-sm rounded  px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal  shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-100 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-100 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-200 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]motion-reduce:transition-none text-gray-900"
+        className="flex max-sm:min-w-fit bg-slate-100 max-sm:px-3 max-sm:py-2 items-center whitespace-nowrap  w-full max-w-screen-sm rounded  px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal  shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-gray-100 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-gray-50 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-gray-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]motion-reduce:transition-none text-gray-900"
         type="button"
       >
         <div className="w-20">{daysName[currentDay]}</div>:
@@ -60,10 +60,7 @@ const Dropdown = ({ data }) => {
         </div>
       </button>
       {show && (
-        <ul
-          className="absolute z-[9000] m-0 pl-[0.4rem] min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg top-3"
-          aria-labelledby="dropdownMenuButton1"
-        >
+        <ul className="absolute ease-in-out duration-200  transition-all z-[9000] m-0 pl-[0.4rem] min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg top-3">
           {openDays.map((day, idx) => {
             const isToday = day === daysName[currentDay];
             return (

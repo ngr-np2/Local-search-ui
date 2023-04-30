@@ -2,7 +2,7 @@ import { apiSlice } from "../app/api";
 export const searchApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getSearch: builder.query({
-      query: ({ search, page, limit,query }) =>
+      query: ({ id, search, page, limit, query }) =>
         //  page && limit
         // ? `/business?search=${search}&page=${page}&limit=${limit}`
         // : page
@@ -11,7 +11,9 @@ export const searchApiSlice = apiSlice.injectEndpoints({
         // : search
         // &&
         query
-          ? `/business${query + "&search=" + search}`
+          ? `/business${query}&search=${search}`
+          : id
+          ? `/business/${search}/${id}?page=${page}&limit=${limit}`
           : `/business?search=${search}&page=${page}&limit=${limit}`,
       keepUnusedDataFor: 20,
     }),
