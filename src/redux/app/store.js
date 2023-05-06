@@ -14,7 +14,7 @@ import authReducer from "../auth/authSlice";
 import { apiSlice } from "./api";
 
 const persistConfig = {
-  key: "root",
+  key: "local-search",
   version: 1,
   storage,
 };

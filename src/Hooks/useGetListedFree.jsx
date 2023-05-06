@@ -9,7 +9,7 @@ const useGetListedFree = () => {
   const [city, setCity] = useState("");
   const [ward, setWard] = useState(undefined);
   const [tolORmarga, setTolORmarga] = useState("");
-
+  const [logo, setLogo] = useState("");
   const [catg, setcatg] = useState(null);
   const [keyword, setKeyword] = useState(null);
 
@@ -212,11 +212,12 @@ const useGetListedFree = () => {
 
     setErrorMsg("success");
   }
-  
+
   //console.log(OpeningDays);
 
   // //console.log(businessName, businessEmail, catg, establishIn, city, ward, tolORmarga, website, WebsiteUrl, openAllDayAndWeek, openFrom, openTill, role, message, mobileNum, lastName, firstName)
   return {
+    setLogo,
     handleBusinesFullAddress,
     businessFullAddress,
     handleProvinceChange,

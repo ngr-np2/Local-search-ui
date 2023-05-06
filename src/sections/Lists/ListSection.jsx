@@ -7,6 +7,7 @@ import CardLoading from "../../components/loading/cardLoading";
 import Pagination from "../../components/Lists/Pagination";
 import AsideAds from "../Ads/AsideAds";
 import BusinessesNotFoundWhileSearchCard from "../../components/Lists/BusinessesNotFoundWhileSearchCard";
+import ListMapping from "../../components/Lists/listMapping";
 
 const ListSection = () => {
   const [datas, setDatas] = useState([]);
@@ -45,8 +46,8 @@ const ListSection = () => {
   useEffect(() => {
     // setDatas(details);
     setDatas(data);
-  }, [data, error]);
-console.log("-------------------",data)
+  }, [data]);
+  // console.log("-------------------",data)
   return (
     <section className="bg-slate-100">
       <select value={limit} onChange={handleLimit} name="limit" id="limit">
@@ -56,32 +57,14 @@ console.log("-------------------",data)
         <option value="20">20</option>
         <option value="25">25</option>
       </select>
-      <div className="flex justify-center px-4 pt-16 m-auto max-w-screen-xl max-md:flex-col">
-        <div className="flex flex-col gap-6 sm:flex-1">
-          {isError ? (
-            <div className="text-red-500">
-              something went wrong<Link to="/">Go back to Home</Link>
-            </div>
-          ) : !datas?.businessProfiles || isLoading ? (
-            <>
-              <CardLoading />
-              <CardLoading />
-              <CardLoading />
-              <CardLoading />
-              <CardLoading />
-            </>
-          ) : data.count === 0 ? (
-            <BusinessesNotFoundWhileSearchCard />
-          ) : (
-            isSuccess &&
-            datas?.businessProfiles &&
-            datas?.businessProfiles.map((data) => (
-              <ListComp key={data._id} display={false} data={data} />
-            ))
-          )}
-        </div>
-        <AsideAds data={datas?.ads} />
-      </div>
+      
+      <ListMapping
+        isError={isError}
+        datas={datas}
+        isLoading={isLoading}
+        data={data}
+        isSuccess={isSuccess}
+      />
       {!query && (
         <Pagination
           datas={datas}

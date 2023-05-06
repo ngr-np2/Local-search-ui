@@ -16,7 +16,7 @@ const ContactInformation = () => {
 
   return (
     <>
-      <div className="flex justify-center m-auto mt-20 w-full max-lg:flex-wrap">
+      <div className="flex justify-center m-auto mt-4 w-full max-lg:flex-wrap">
         <div
           title=" Information of the person who is filling this form"
           className="relative w-full duration-200 ease-in group"
@@ -105,7 +105,7 @@ const ContactInformation = () => {
       <div className="flex gap-10 justify-center m-auto w-full max-lg:flex-wrap">
         <div
           title="your current position"
-          className="relative w-full duration-200 ease-in group flex flex-col-reverse"
+          className="flex relative flex-col-reverse w-full duration-200 ease-in group"
         >
           <DropDownArrowSvg />
           <select

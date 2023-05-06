@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useVisible from "../../../Hooks/useVisible";
 
 const TrendingBusinessCard = ({ business }) => {
-  const visible = useVisible(business._id, 80);
+  const visible = useVisible(business?._id, 80);
   return (
     <div
       id={business?._id}

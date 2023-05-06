@@ -23,7 +23,7 @@ const PopularKeywordComp = () => {
             {chunk.map((item, j) => (
               <li key={j} className="mb-4">
                 <Link
-                  to={`/search/keywords/${item?._id}`}
+                  to={`/search/keyword/${item?._id}`}
                   className="hover:underline capitalize"
                 >
                   {item.label}

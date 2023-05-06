@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import ReviewComp from "../../components/RatingAndReview/ReviewComp";
 import ReviewScletion from "../../components/loading/ReviewScletion";
 import NoReviewYet from "../../components/RatingAndReview/NoReviewYet";
+import { useSelector } from "react-redux";
+import { selectCurrentToken } from "../../redux/auth/authSlice";
+import LoginDailog from "../../components/dailog/LoginDailog";
 const requireLableClass = "text-red-700 dark:text-red-500";
 const requireInputClass =
   "border-red-500 text-red-900 bg-red-50 placeholder-red-700  focus:ring-red-500  focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500";
@@ -12,6 +15,7 @@ const ReviewAndRating = ({ totalReview, dataId }) => {
   const [startValue, setStarValue] = useState(0);
   const [hoverStarValue, setHoverStarValue] = useState(undefined);
   const [inView, setInView] = useState(false);
+  const [popup, setPopup] = useState(false);
   const handleClick = (e, val) => {
     setStarValue(val);
   };
@@ -41,8 +45,12 @@ const ReviewAndRating = ({ totalReview, dataId }) => {
       observer.disconnect();
     };
   }, []);
-  const token = "";
 
+  // const token = useSelector(selectCurrentToken);
+  const token = "";
+  const handleLogin = () => {
+    setPopup(true);
+  };
   // console.log(inView);
   return (
     <section className="pt-16 bg-slate-100">
@@ -83,7 +91,7 @@ const ReviewAndRating = ({ totalReview, dataId }) => {
             })}
           </div>
           <div className="py-5">
-            <form className="m-auto  max-w-screen-md">
+            {/* <form className="m-auto  max-w-screen-md"> */}
               <div className="mb-1">
                 <label
                   htmlFor="title"
@@ -114,17 +122,27 @@ const ReviewAndRating = ({ totalReview, dataId }) => {
                   ></textarea>
                 </div>
                 <div className="flex gap-4  justify-end items-center px-3 py-2 border-t border-gray-600">
-                  {!token && (
-                    <p className="tracking-widest font-font-4">
-                      First Login & add Review
-                    </p>
+                  {!token ? (
+                    <>
+                      <p className="tracking-widest font-font-4">
+                        First Login & add Review
+                      </p>
+                      <button
+                        onClick={handleLogin}
+                        className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-600 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-800"
+                      >
+                        Login
+                      </button>
+                      {popup && <LoginDailog />}
+                    </>
+                  ) : (
+                    <button className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-600 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-800">
+                      "Submit"
+                    </button>
                   )}
-                  <button className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-green-600 rounded-lg focus:ring-4 focus:ring-green-200 hover:bg-green-800">
-                    {token ? "Submit" : "Login"}
-                  </button>
                 </div>
               </div>
-            </form>
+            {/* </form> */}
           </div>
         </div>
         <div ref={ref} className="py-4">

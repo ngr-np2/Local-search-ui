@@ -15,11 +15,10 @@ const TrendingBuninessComp = () => {
       {isLoading ? (
         <p>loading...</p>
       ) : (
+        isSuccess &&
         datas.map((business) => {
           return (
-            <>
-              <TrendingBusinessCard business={business} />
-            </>
+            <TrendingBusinessCard key={business._id} business={business} />
           );
         })
       )}

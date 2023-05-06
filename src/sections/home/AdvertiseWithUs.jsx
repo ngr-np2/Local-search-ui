@@ -1,7 +1,7 @@
-import AdverrtiseWithComp from "../../components/home/AdverrtiseWithComp";
+import { useIntersectionObserver } from "../../Hooks/useIntersectionObserver";
+import AdvertiseMap from "../../components/home/Advertise/AdvertiseMap";
 
 const AdvertiseWithUs = () => {
-
   const datas = [
     {
       name: "Local Search",
@@ -25,6 +25,8 @@ const AdvertiseWithUs = () => {
     },
   ];
 
+  const [ref, inView] = useIntersectionObserver();
+
   return (
     <section>
       <div className="pt-8 pb-4 mx-5 text-center">
@@ -32,10 +34,11 @@ const AdvertiseWithUs = () => {
           Advertise with Us
         </p>
       </div>
-      <div className="flex flex-wrap gap-9 justify-center items-center px-8 py-4 rounded-sm">
-        {datas.map((data, idx) => (
-          <AdverrtiseWithComp key={idx} data={data} />
-        ))}
+      <div
+        ref={ref}
+        className="flex flex-wrap gap-9 justify-center items-center px-8 py-4 rounded-sm"
+      >
+        {inView && <AdvertiseMap />}
       </div>
     </section>
   );

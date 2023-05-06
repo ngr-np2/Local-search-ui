@@ -65,7 +65,7 @@ const PopularCatgCard = ({ data, idx }) => {
         </p>
       </div>
       <button
-        onClick={() => navigate(`/search/categorys/${popular._id}`)}
+        onClick={() => navigate(`/search/category/${popular._id}`)}
         title={`View Alll ${data.totalBusinessCount} Business in this ${popular.label} Category`}
         className="px-6 py-3 mb-4 text-xs bg-white rounded-full shadow-md duration-500 ease-in-out text-stone-900 group-hover:hover:shadow-lg group-hover:bg-red-500 group-hover:hover:bg-red-600 group-hover:text-white"
       >

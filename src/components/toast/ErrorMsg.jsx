@@ -4,9 +4,9 @@ import React from "react";
 const ErrorMsg = ({ errMsg }) => {
   return (
     <div
-      className={`fixed top-6 right-0 p-4 bg-red-500 scale-50 text-slate-50 text-4xl font-font-1 tracking-widest rounded-md items-center justify-center gap-3 z-50`}
+      className={`fixed flex top-8 right-2 py-2 px-3 bg-red-500  text-slate-50 text-xl font-font-8 tracking-widest rounded-md items-center justify-center gap-3 z-50`}
     >
-      <Dangerous fontSize="large" /> {errMsg}
+      <Dangerous fontSize="large" /> <p>{errMsg}</p>
     </div>
   );
 };
