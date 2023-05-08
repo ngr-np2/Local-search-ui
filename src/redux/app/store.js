@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 import authReducer from "../auth/authSlice";
 import { apiSlice } from "./api";
-
+import toastReducer from "../customToast/TostSlice";
 const persistConfig = {
   key: "local-search",
   version: 1,
@@ -24,6 +24,7 @@ const authPersistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    toast: toastReducer,
     auth: authPersistedReducer,
   },
   middleware: (getDefaultMiddleware) =>

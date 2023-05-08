@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../redux/auth/authApiSlice";
+import { useLoginMutation } from "../redux/auth/loginAuthApiSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentToken, setCredentials } from "../redux/auth/authSlice";
+import { selectCurrentToken, selectCurrentuserName, setCredentials } from "../redux/auth/authSlice";
 import ErrorMsg from "../components/toast/ErrorMsg";
 const Login = () => {
   const navigate = useNavigate();
   const token = useSelector(selectCurrentToken);
+  const username = useSelector(selectCurrentuserName);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +31,7 @@ const Login = () => {
     setErrMsg("");
     setShowToast(false);
   }, [email, password]);
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLoading) {
       return;
@@ -46,6 +47,12 @@ const Login = () => {
       dispatch(setCredentials(userData));
       setEmail("");
       setPassword("");
+      dispatch(
+        showToastMessage({
+          message: `Welcome Back ${username}`,
+          type: "success",
+        })
+      );
       navigate(from, {
         replace: true,
       });
@@ -83,7 +90,7 @@ const Login = () => {
             <h1 className="text-xl font-bold tracking-tight leading-tight text-center text-gray-900 md:text-2xl">
               Login to your account
             </h1>
-            <form className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -131,7 +138,6 @@ const Login = () => {
               </div>
               <button
                 disabled={isLoading}
-                onClick={handleClick}
                 className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center -600 -green-700 -green-800"
               >
                 Login

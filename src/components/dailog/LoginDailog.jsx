@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorMsg from "../toast/ErrorMsg";
-import { useLoginMutation } from "../../redux/auth/authApiSlice";
 import { setCredentials } from "../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
+import { useLoginMutation } from "../../redux/auth/loginAuthApiSlice";
 
 const LoginDailog = () => {
   const [email, setEmail] = useState("");

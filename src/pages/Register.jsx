@@ -1,10 +1,98 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import { useDispatch, useSelector } from "react-redux";
+import { useRegisterMutation } from "../redux/auth/registerAuthApiSlice";
+import { selectCurrentToken } from "../redux/auth/authSlice";
+import { showToastMessage } from "../redux/customToast/TostSlice";
+import ErrorMsg from "../components/toast/ErrorMsg";
 
 const Register = () => {
+  const token = useSelector(selectCurrentToken);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const [register, { isLoading }] = useRegisterMutation();
+  const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [errMsg, setErrMsg] = useState("");
+  const [showToast, setShowToast] = useState(false);
+
+  const from = location.state?.from?.pathname || "/";
+  useEffect(() => {
+    if (token) {
+      navigate(from, {
+        replace: true,
+      });
+    }
+  }, []);
+  useEffect(() => {
+    setErrMsg("");
+    setShowToast(false);
+  }, [username, firstName, lastName, email, password]);
+  const handleSubmit = async () => {
+    e.preventDefault();
+    if (isLoading) {
+      return;
+    }
+    if (!username) {
+      setErrMsg("Choose username");
+      return;
+    }
+    if (!firstName) {
+      setErrMsg("enter your first name");
+      return;
+    }
+    if (!email) {
+      setErrMsg("enter your email");
+      return;
+    }
+    if (!password && password.length < 8) {
+      setErrMsg("enter a strong password");
+      return;
+    }
+    try {
+      const registerUser = await register({
+        username,
+        firstName,
+        lastName,
+        email,
+        phone,
+        password,
+      }).unwrap();
+      setErrMsg(registerUser);
+      dispatch(
+        showToastMessage({
+          message: registerUser,
+          type: "success",
+        })
+      );
+    } catch (err) {
+      const resp = err?.response?.data;
+      setShowToast(true);
+      if (!resp) {
+        setErrMsg("server is not responding, Reload and try again");
+      } else if (resp?.status === 400) {
+        setErrMsg(resp?.errMsg);
+      } else if (resp?.status === 409) {
+        setErrMsg(resp?.errMsg);
+      } else if (resp) {
+        setErrMsg(resp?.errMsg);
+      } else {
+        setErrMsg("register failed! 😔");
+      }
+    }
+    setShowToast(false);
+  };
   return (
     <section className="bg-gray-50 -900">
+      {errMsg && <ErrorMsg errMsg={errMsg} errRef={errRef} />}
       <div className="flex flex-col justify-center items-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link
           to="#"
@@ -19,21 +107,58 @@ const Register = () => {
             <h1 className="text-xl font-bold tracking-tight leading-tight text-center text-gray-900 md:text-2xl">
               Register for a free account
             </h1>
-            <form className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
                 <label
-                  for="fullName"
+                  for="username"
                   className="block mb-2 text-sm font-medium text-gray-900"
                 >
-                  Full Name
+                  Username
                 </label>
                 <input
                   type="text"
-                  name="fullName"
-                  id="fullName"
+                  name="username"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
-                  placeholder="tej karki"
-                  required=""
+                  placeholder="tej_karki"
+                  // required
+                />
+              </div>
+              <div>
+                <label
+                  for="First Name"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="First Name"
+                  id="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
+                  placeholder="tej"
+                  // required
+                />
+              </div>
+              <div>
+                <label
+                  for="Last Name"
+                  className="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="Last Name"
+                  id="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
+                  placeholder="karki"
                 />
               </div>
               <div>
@@ -47,9 +172,11 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
                   placeholder="name@company.com"
-                  required=""
+                  // required
                 />
               </div>
               <div>
@@ -63,9 +190,11 @@ const Register = () => {
                   type="tel"
                   name="phone number"
                   id="phone number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 -700 -600 -400  -blue-500 -blue-500"
                   placeholder="98********"
-                  required=""
+                  // required
                 />
               </div>
               <div>
@@ -80,8 +209,10 @@ const Register = () => {
                   name="password"
                   id="password"
                   placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
-                  required=""
+                  // required
                 />
               </div>
               <button className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
